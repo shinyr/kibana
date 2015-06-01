@@ -1,6 +1,6 @@
 define(function (require) {
   var _ = require('lodash');
-  var AggConfigResult = require('components/vis/_agg_config_result');
+  var AggConfigResult = require('vis/_agg_config_result');
 
   describe('AggConfigResult', function () {
 
@@ -10,8 +10,8 @@ define(function (require) {
 
     beforeEach(module('kibana'));
     beforeEach(inject(function (Private) {
-      Vis = Private(require('components/vis/vis'));
-      AggConfig = Private(require('components/vis/_agg_config'));
+      Vis = Private(require('vis/vis'));
+      AggConfig = Private(require('vis/_agg_config'));
       indexPattern = Private(require('fixtures/stubbed_logstash_index_pattern'));
     }));
 

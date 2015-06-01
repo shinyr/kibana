@@ -4,26 +4,26 @@ define(function (require) {
 
     var aggs = {
       metrics: [
-        Private(require('components/agg_types/metrics/count')),
-        Private(require('components/agg_types/metrics/avg')),
-        Private(require('components/agg_types/metrics/sum')),
-        Private(require('components/agg_types/metrics/min')),
-        Private(require('components/agg_types/metrics/max')),
-        Private(require('components/agg_types/metrics/std_deviation')),
-        Private(require('components/agg_types/metrics/cardinality')),
-        Private(require('components/agg_types/metrics/percentiles')),
-        Private(require('components/agg_types/metrics/percentile_ranks'))
+        Private(require('agg_types/metrics/count')),
+        Private(require('agg_types/metrics/avg')),
+        Private(require('agg_types/metrics/sum')),
+        Private(require('agg_types/metrics/min')),
+        Private(require('agg_types/metrics/max')),
+        Private(require('agg_types/metrics/std_deviation')),
+        Private(require('agg_types/metrics/cardinality')),
+        Private(require('agg_types/metrics/percentiles')),
+        Private(require('agg_types/metrics/percentile_ranks'))
       ],
       buckets: [
-        Private(require('components/agg_types/buckets/date_histogram')),
-        Private(require('components/agg_types/buckets/histogram')),
-        Private(require('components/agg_types/buckets/range')),
-        Private(require('components/agg_types/buckets/date_range')),
-        Private(require('components/agg_types/buckets/ip_range')),
-        Private(require('components/agg_types/buckets/terms')),
-        Private(require('components/agg_types/buckets/filters')),
-        Private(require('components/agg_types/buckets/significant_terms')),
-        Private(require('components/agg_types/buckets/geo_hash'))
+        Private(require('agg_types/buckets/date_histogram')),
+        Private(require('agg_types/buckets/histogram')),
+        Private(require('agg_types/buckets/range')),
+        Private(require('agg_types/buckets/date_range')),
+        Private(require('agg_types/buckets/ip_range')),
+        Private(require('agg_types/buckets/terms')),
+        Private(require('agg_types/buckets/filters')),
+        Private(require('agg_types/buckets/significant_terms')),
+        Private(require('agg_types/buckets/geo_hash'))
       ]
     };
 

@@ -190,7 +190,7 @@ define(function (require) {
 
       beforeEach(function () {
         inject(function (d3, Private) {
-          DataFactory = Private(require('components/vislib/lib/data'));
+          DataFactory = Private(require('vislib/lib/data'));
         });
         rowIn = new DataFactory(rowsData, {});
       });
@@ -224,7 +224,7 @@ define(function (require) {
 
       beforeEach(function () {
         inject(function (Private) {
-          DataFactory = Private(require('components/vislib/lib/data'));
+          DataFactory = Private(require('vislib/lib/data'));
           data = new DataFactory(pieData, {});
           data._removeZeroSlices(pieData.slices);
         });
@@ -251,7 +251,7 @@ define(function (require) {
 
       beforeEach(function () {
         inject(function (d3, Private) {
-          DataFactory = Private(require('components/vislib/lib/data'));
+          DataFactory = Private(require('vislib/lib/data'));
         });
         serIn = new DataFactory(seriesData, {});
         rowIn = new DataFactory(rowsData, {});
@@ -300,7 +300,7 @@ define(function (require) {
 
       beforeEach(function () {
         inject(function (d3, Private) {
-          Data = Private(require('components/vislib/lib/data'));
+          Data = Private(require('vislib/lib/data'));
           dataSeries = require('vislib_fixtures/mock_data/date_histogram/_series');
           stackedDataSeries = require('vislib_fixtures/mock_data/stacked/_stacked');
           visData = new Data(dataSeries, {});
@@ -349,7 +349,7 @@ define(function (require) {
 
       beforeEach(function () {
         inject(function (d3, Private) {
-          Data = Private(require('components/vislib/lib/data'));
+          Data = Private(require('vislib/lib/data'));
           dataSeries = require('vislib_fixtures/mock_data/date_histogram/_series');
           stackedDataSeries = require('vislib_fixtures/mock_data/stacked/_stacked');
           visData = new Data(dataSeries, {});

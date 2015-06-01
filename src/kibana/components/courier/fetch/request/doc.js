@@ -2,8 +2,8 @@ define(function (require) {
   return function DocRequestProvider(Private) {
     var _ = require('lodash');
 
-    var docStrategy = Private(require('components/courier/fetch/strategy/doc'));
-    var AbstractRequest = Private(require('components/courier/fetch/request/request'));
+    var docStrategy = Private(require('courier/fetch/strategy/doc'));
+    var AbstractRequest = Private(require('courier/fetch/request/request'));
 
     _(DocRequest).inherits(AbstractRequest);
     function DocRequest(source, defer) {

@@ -2,8 +2,8 @@ define(function (require) {
   return function TileMapConverterFn(Private, timefilter, $compile, $rootScope) {
     var _ = require('lodash');
 
-    var rowsToFeatures = require('components/agg_response/geo_json/rowsToFeatures');
-    var tooltipFormatter = Private(require('components/agg_response/geo_json/_tooltip_formatter'));
+    var rowsToFeatures = require('agg_response/geo_json/rowsToFeatures');
+    var tooltipFormatter = Private(require('agg_response/geo_json/_tooltip_formatter'));
 
     return function (vis, table) {
 

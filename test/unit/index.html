@@ -94,7 +94,7 @@
       function setupSaucelabsReporter(done) {
         require([
           'ScreencastReporter',
-          'css!screencast_reporter_css'
+          'mocha-screencast-reporter/screencast-reporter.css'
         ], function (ScreencastReporter) {
           mocha.reporter(ScreencastReporter);
           done();
@@ -103,7 +103,7 @@
 
       function runTests() {
         require([
-          'text!specList',
+          'specList',
           'kibana',
           'sinon/sinon',
           'angular'

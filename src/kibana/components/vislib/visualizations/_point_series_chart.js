@@ -2,9 +2,9 @@ define(function (require) {
   return function PointSeriesChartProvider(d3, Private) {
     var _ = require('lodash');
 
-    var Chart = Private(require('components/vislib/visualizations/_chart'));
-    var Tooltip = Private(require('components/vislib/components/tooltip/tooltip'));
-    var touchdownTmpl = _.template(require('text!components/vislib/partials/touchdown.tmpl.html'));
+    var Chart = Private(require('vislib/visualizations/_chart'));
+    var Tooltip = Private(require('vislib/components/tooltip/tooltip'));
+    var touchdownTmpl = _.template(require('vislib/partials/touchdown.tmpl.html'));
 
     _(PointSeriesChart).inherits(Chart);
     function PointSeriesChart(handler, chartEl, chartData) {

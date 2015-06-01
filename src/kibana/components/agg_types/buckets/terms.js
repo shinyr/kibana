@@ -1,11 +1,11 @@
 define(function (require) {
   return function TermsAggDefinition(Private) {
     var _ = require('lodash');
-    var BucketAggType = Private(require('components/agg_types/buckets/_bucket_agg_type'));
-    var bucketCountBetween = Private(require('components/agg_types/buckets/_bucket_count_between'));
-    var AggConfig = Private(require('components/vis/_agg_config'));
+    var BucketAggType = Private(require('agg_types/buckets/_bucket_agg_type'));
+    var bucketCountBetween = Private(require('agg_types/buckets/_bucket_count_between'));
+    var AggConfig = Private(require('vis/_agg_config'));
     var Schemas = Private(require('plugins/vis_types/_schemas'));
-    var createFilter = Private(require('components/agg_types/buckets/create_filter/terms'));
+    var createFilter = Private(require('agg_types/buckets/create_filter/terms'));
 
     var orderAggSchema = (new Schemas([
       {
@@ -57,7 +57,7 @@ define(function (require) {
           name: 'order',
           type: 'optioned',
           default: 'desc',
-          editor: require('text!components/agg_types/controls/order_and_size.html'),
+          editor: require('agg_types/controls/order_and_size.html'),
           options: [
             { display: 'Top', val: 'desc' },
             { display: 'Bottom', val: 'asc' }
@@ -72,7 +72,7 @@ define(function (require) {
           name: 'orderAgg',
           type: AggConfig,
           default: null,
-          editor: require('text!components/agg_types/controls/order_agg.html'),
+          editor: require('agg_types/controls/order_agg.html'),
           serialize: function (orderAgg) {
             return orderAgg.toJSON();
           },

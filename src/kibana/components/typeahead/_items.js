@@ -1,9 +1,9 @@
 define(function (require) {
   var _ = require('lodash');
   var typeahead = require('modules').get('kibana/typeahead');
-  var listTemplate = require('text!components/typeahead/partials/typeahead-items.html');
+  var listTemplate = require('typeahead/partials/typeahead-items.html');
 
-  require('components/notify/directives');
+  require('notify/directives');
 
   typeahead.directive('kbnTypeaheadItems', function () {
     return {

@@ -2,8 +2,8 @@ define(function (require) {
   return function MapHandler(d3, Private) {
     var _ = require('lodash');
 
-    var Handler = Private(require('components/vislib/lib/handler/handler'));
-    var Data = Private(require('components/vislib/lib/data'));
+    var Handler = Private(require('vislib/lib/handler/handler'));
+    var Data = Private(require('vislib/lib/data'));
 
     return function (vis) {
       var data = new Data(vis.data, vis._attr);

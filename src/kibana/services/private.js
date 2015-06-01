@@ -22,7 +22,7 @@ define(function (require) {
    * ```js
    * define(function (require) {
    *   return function ServerHealthProvider(Private, Promise) {
-   *     var ping = Private(require('components/ping'));
+   *     var ping = Private(require('ping'));
    *     return {
    *       check: Promise.method(function () {
    *         var attempts = 0;
@@ -53,7 +53,7 @@ define(function (require) {
    *   Private.stub(
    *     // since this module just exports a function, we need to change
    *     // what Private returns in order to modify it's behavior
-   *     require('components/agg_response/hierarchical/_build_split'),
+   *     require('agg_response/hierarchical/_build_split'),
    *     sinon.stub().returns(fakeSplit)
    *   );
    * }));
@@ -73,7 +73,7 @@ define(function (require) {
    *     // since the courier is required automatically before the tests are loaded,
    *     // we can't stub it's internal components unless we do so before the
    *     // application starts. This is why angular has config functions
-   *     require('components/courier/_redirect_when_missing'),
+   *     require('courier/_redirect_when_missing'),
    *     function StubbedRedirectProvider($decorate) {
    *       // $decorate is a function that will instantiate the original module when called
    *       return sinon.spy($decorate());

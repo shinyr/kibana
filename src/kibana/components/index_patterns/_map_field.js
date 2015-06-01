@@ -1,7 +1,7 @@
 define(function (require) {
   return function MapFieldFn(Private, config) {
     var _ = require('lodash');
-    var castMappingType = Private(require('components/index_patterns/_cast_mapping_type'));
+    var castMappingType = Private(require('index_patterns/_cast_mapping_type'));
 
     /**
      * Accepts a field object and its name, and tries to give it a mapping

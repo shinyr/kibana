@@ -1,7 +1,7 @@
 define(function (require) {
   var _ = require('lodash');
   return function GetQueryFromUser(es, Private) {
-    var decorateQuery = Private(require('components/courier/data_source/_decorate_query'));
+    var decorateQuery = Private(require('courier/data_source/_decorate_query'));
 
     /**
      * Take text from the user and make it into a query object

@@ -4,7 +4,8 @@ module.exports = {
     sourceMapRootpath: '/',
     ieCompat: false,
     paths: [
-      '<%= src %>/kibana/bower_components/lesshat/build/'
+      '<%= nodeModules %>/',
+      '<%= nodeModules %>/lesshat/build/'
     ]
   },
   dev: {

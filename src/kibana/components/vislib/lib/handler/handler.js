@@ -3,8 +3,8 @@ define(function (require) {
     var _ = require('lodash');
     var errors = require('errors');
 
-    var Data = Private(require('components/vislib/lib/data'));
-    var Layout = Private(require('components/vislib/lib/layout/layout'));
+    var Data = Private(require('vislib/lib/data'));
+    var Layout = Private(require('vislib/lib/layout/layout'));
 
     /**
      * Handles building all the components of the visualization

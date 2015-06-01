@@ -3,8 +3,8 @@ define(function (require) {
   var errors = require('errors');
 
   return function (Promise, Private, es) {
-    var requestQueue = Private(require('components/courier/_request_queue'));
-    var courierFetch = Private(require('components/courier/fetch/fetch'));
+    var requestQueue = Private(require('courier/_request_queue'));
+    var courierFetch = Private(require('courier/fetch/fetch'));
 
     /**
      * Backend for doUpdate and doIndex

@@ -4,7 +4,7 @@ define(function (require) {
   .directive('kbnSettingsIndexHeader', function (config) {
     return {
       restrict: 'E',
-      template: require('text!plugins/settings/sections/indices/_index_header.html'),
+      template: require('plugins/settings/sections/indices/_index_header.html'),
       scope: {
         indexPattern: '=',
         setDefault: '&',

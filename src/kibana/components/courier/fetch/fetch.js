@@ -3,15 +3,15 @@ define(function (require) {
     var _ = require('lodash');
 
     var strategies = this.strategies = {
-      doc: Private(require('components/courier/fetch/strategy/doc')),
-      search: Private(require('components/courier/fetch/strategy/search'))
+      doc: Private(require('courier/fetch/strategy/doc')),
+      search: Private(require('courier/fetch/strategy/search'))
     };
 
-    var requestQueue = Private(require('components/courier/_request_queue'));
-    var fetchThese = Private(require('components/courier/fetch/_fetch_these'));
+    var requestQueue = Private(require('courier/_request_queue'));
+    var fetchThese = Private(require('courier/fetch/_fetch_these'));
 
-    var callResponseHandlers = Private(require('components/courier/fetch/_call_response_handlers'));
-    var INCOMPLETE = Private(require('components/courier/fetch/_req_status')).INCOMPLETE;
+    var callResponseHandlers = Private(require('courier/fetch/_call_response_handlers'));
+    var INCOMPLETE = Private(require('courier/fetch/_req_status')).INCOMPLETE;
 
     function fetchQueued(strategy) {
       var requests = requestQueue.get(strategy);

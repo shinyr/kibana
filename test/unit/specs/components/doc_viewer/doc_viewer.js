@@ -20,7 +20,7 @@ define(function (require) {
 
   // Load the kibana app dependencies.
   require('services/private');
-  require('components/doc_viewer/doc_viewer');
+  require('doc_viewer/doc_viewer');
 
 
   var $parentScope, $scope, indexPattern, flattened;

@@ -1,13 +1,13 @@
 define(function (require) {
   require('services/compile_recursive_directive');
-  require('components/agg_table/agg_table');
+  require('agg_table/agg_table');
 
   require('modules')
   .get('kibana')
   .directive('kbnAggTableGroup', function (compileRecursiveDirective) {
     return {
       restrict: 'E',
-      template: require('text!components/agg_table/agg_table_group.html'),
+      template: require('agg_table/agg_table_group.html'),
       scope: {
         group: '=',
         perPage: '=?'

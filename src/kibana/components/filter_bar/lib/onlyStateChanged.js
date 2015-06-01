@@ -1,6 +1,6 @@
 define(function (require) {
   var _ = require('lodash');
-  var compareFilters = require('components/filter_bar/lib/compareFilters');
+  var compareFilters = require('filter_bar/lib/compareFilters');
   var compareOptions = { disabled: true, negate: true };
 
   /**

@@ -18,8 +18,8 @@ define(function (require) {
       var timefilter = $injector.get('timefilter');
 
       timeField = indexPattern.timeFieldName;
-      aggTypes = Private(require('components/agg_types/index'));
-      AggConfig = Private(require('components/vis/_agg_config'));
+      aggTypes = Private(require('agg_types/index'));
+      AggConfig = Private(require('vis/_agg_config'));
 
       paramWriter = new AggParamWriter({ aggType: 'date_histogram' });
       writeInterval = function (interval) {

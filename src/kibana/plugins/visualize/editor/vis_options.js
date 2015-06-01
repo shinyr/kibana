@@ -7,7 +7,7 @@ define(function (require) {
   .directive('visEditorVisOptions', function (Private, $timeout, $compile) {
     return {
       restrict: 'E',
-      template: require('text!plugins/visualize/editor/vis_options.html'),
+      template: require('plugins/visualize/editor/vis_options.html'),
       scope: {
         vis: '=',
       },

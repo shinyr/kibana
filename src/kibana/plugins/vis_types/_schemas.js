@@ -2,7 +2,7 @@ define(function (require) {
   return function VisTypeSchemasFactory(Private) {
     var _ = require('lodash');
     var IndexedArray = require('utils/indexed_array/index');
-    var AggParams = Private(require('components/agg_types/_agg_params'));
+    var AggParams = Private(require('agg_types/_agg_params'));
 
     function Schemas(schemas) {
       var self = this;
@@ -18,9 +18,9 @@ define(function (require) {
                 default: true
               }
             ];
-            schema.editor = require('text!plugins/vis_types/controls/rows_or_columns.html');
+            schema.editor = require('plugins/vis_types/controls/rows_or_columns.html');
           } else if (schema.name === 'radius') {
-            schema.editor = require('text!plugins/vis_types/controls/radius_ratio_option.html');
+            schema.editor = require('plugins/vis_types/controls/radius_ratio_option.html');
           }
 
           _.defaults(schema, {

@@ -28,7 +28,7 @@ define(function (require) {
         },
         scales: ['linear', 'log', 'square root'],
         modes: ['stacked', 'overlap', 'percentage', 'wiggle', 'silhouette'],
-        editor: require('text!plugins/vis_types/vislib/editors/area.html')
+        editor: require('plugins/vis_types/vislib/editors/area.html')
       },
       schemas: new Schemas([
         {

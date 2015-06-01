@@ -6,17 +6,17 @@ define(function (require) {
   .directive('dashboardPanel', function (savedVisualizations, savedSearches, Notifier, Private, $compile) {
     var _ = require('lodash');
     var loadPanel = Private(require('plugins/dashboard/components/panel/lib/load_panel'));
-    var filterManager = Private(require('components/filter_manager/filter_manager'));
+    var filterManager = Private(require('filter_manager/filter_manager'));
     var notify = new Notifier();
 
-    require('components/visualize/visualize');
-    require('components/doc_table/doc_table');
+    require('visualize/visualize');
+    require('doc_table/doc_table');
 
     var brushEvent = Private(require('utils/brush_event'));
 
     return {
       restrict: 'E',
-      template: require('text!plugins/dashboard/components/panel/panel.html'),
+      template: require('plugins/dashboard/components/panel/panel.html'),
       requires: '^dashboardGrid',
       link: function ($scope, $el) {
         // using $scope inheritance, panels are available in AppState

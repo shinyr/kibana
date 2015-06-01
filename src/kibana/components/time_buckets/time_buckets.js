@@ -5,8 +5,8 @@ define(function (require) {
 
     var datemath = require('utils/datemath');
     var parseInterval = require('utils/parse_interval');
-    var calcAuto = Private(require('components/time_buckets/calc_auto_interval'));
-    var calcEsInterval = Private(require('components/time_buckets/calc_es_interval'));
+    var calcAuto = Private(require('time_buckets/calc_auto_interval'));
+    var calcEsInterval = Private(require('time_buckets/calc_es_interval'));
     var tzOffset = moment().format('Z');
 
     function isValidMoment(m) {

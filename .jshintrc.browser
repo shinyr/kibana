@@ -1,6 +1,5 @@
 {
   "extends": "./.jshintrc",
-  "node": false,
   "browser": true,
 
   "predef": {

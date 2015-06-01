@@ -4,7 +4,7 @@ define(function (require) {
     var _ = require('lodash');
     var moment = require('moment');
 
-    var ErrorHandler = Private(require('components/vislib/lib/_error_handler'));
+    var ErrorHandler = Private(require('vislib/lib/_error_handler'));
 
     /**
      * Adds an x axis to the visualization

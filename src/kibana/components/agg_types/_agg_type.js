@@ -1,7 +1,7 @@
 define(function (require) {
   return function AggTypeFactory(Private) {
     var _ = require('lodash');
-    var AggParams = Private(require('components/agg_types/_agg_params'));
+    var AggParams = Private(require('agg_types/_agg_params'));
     var fieldFormats = Private(require('registry/field_formats'));
 
     /**

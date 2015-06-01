@@ -9,7 +9,7 @@ define(function (require) {
         list: '=list'
       },
       replace: true,
-      template: require('text!components/notify/partials/toaster.html')
+      template: require('notify/partials/toaster.html')
     };
   });
 });

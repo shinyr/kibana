@@ -7,7 +7,7 @@ define(function (require) {
 
   // Load the kibana app dependencies.
   require('services/private');
-  require('components/doc_table/doc_table');
+  require('doc_table/doc_table');
 
 
   var $parentScope, $scope, $timeout, searchSource;

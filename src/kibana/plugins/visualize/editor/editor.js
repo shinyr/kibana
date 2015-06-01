@@ -6,15 +6,15 @@ define(function (require) {
 
 
   require('directives/saved_object_finder');
-  require('components/visualize/visualize');
-  require('components/clipboard/clipboard');
-  require('components/comma_list_filter');
+  require('visualize/visualize');
+  require('clipboard/clipboard');
+  require('comma_list_filter');
 
   require('filters/uriescape');
 
   require('routes')
   .when('/visualize/create', {
-    template: require('text!plugins/visualize/editor/editor.html'),
+    template: require('plugins/visualize/editor/editor.html'),
     resolve: {
       savedVis: function (savedVisualizations, courier, $route, Private) {
         var visTypes = Private(require('registry/vis_types'));
@@ -31,7 +31,7 @@ define(function (require) {
     }
   })
   .when('/visualize/edit/:id', {
-    template: require('text!plugins/visualize/editor/editor.html'),
+    template: require('plugins/visualize/editor/editor.html'),
     resolve: {
       savedVis: function (savedVisualizations, courier, $route) {
         return savedVisualizations.get($route.current.params.id)
@@ -55,11 +55,11 @@ define(function (require) {
     var _ = require('lodash');
     var angular = require('angular');
     var ConfigTemplate = require('utils/config_template');
-    var Notifier = require('components/notify/_notifier');
-    var docTitle = Private(require('components/doc_title/doc_title'));
+    var Notifier = require('notify/_notifier');
+    var docTitle = Private(require('doc_title/doc_title'));
     var brushEvent = Private(require('utils/brush_event'));
-    var queryFilter = Private(require('components/filter_bar/query_filter'));
-    var filterBarClickHandler = Private(require('components/filter_bar/filter_bar_click_handler'));
+    var queryFilter = Private(require('filter_bar/query_filter'));
+    var filterBarClickHandler = Private(require('filter_bar/filter_bar_click_handler'));
 
     var notify = new Notifier({
       location: 'Visualization Editor'
@@ -79,9 +79,9 @@ define(function (require) {
 
     // config panel templates
     var configTemplate = new ConfigTemplate({
-      save: require('text!plugins/visualize/editor/panels/save.html'),
-      load: require('text!plugins/visualize/editor/panels/load.html'),
-      share: require('text!plugins/visualize/editor/panels/share.html'),
+      save: require('plugins/visualize/editor/panels/save.html'),
+      load: require('plugins/visualize/editor/panels/load.html'),
+      share: require('plugins/visualize/editor/panels/share.html'),
     });
 
     if (savedVis.id) {

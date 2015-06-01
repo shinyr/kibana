@@ -1,5 +1,5 @@
 define(function (require) {
-  var buildRangeFilter = require('components/filter_manager/lib/range');
+  var buildRangeFilter = require('filter_manager/lib/range');
 
   return function createHistogramFitlerProvider(Private) {
     return function (aggConfig, key) {

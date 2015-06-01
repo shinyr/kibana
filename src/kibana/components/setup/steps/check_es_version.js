@@ -9,7 +9,7 @@ define(function (require) {
     });
 
     return notify.timed(function checkEsVersion() {
-      var SetupError = Private(require('components/setup/_setup_error'));
+      var SetupError = Private(require('setup/_setup_error'));
 
       return es.nodes.info()
       .then(function (info) {

@@ -14,7 +14,7 @@ define(function (require) {
       });
 
       beforeEach(inject(function (Private, _$rootScope_, Promise) {
-        extractTimeFilter = Private(require('components/filter_bar/lib/extractTimeFilter'));
+        extractTimeFilter = Private(require('filter_bar/lib/extractTimeFilter'));
         $rootScope = _$rootScope_;
       }));
 

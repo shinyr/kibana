@@ -7,8 +7,8 @@ define(function (require) {
 
     var _ = require('lodash');
     var $ = require('jquery');
-    var aggTypes = Private(require('components/agg_types/index'));
-    var advancedToggleHtml = require('text!plugins/visualize/editor/advanced_toggle.html');
+    var aggTypes = Private(require('agg_types/index'));
+    var advancedToggleHtml = require('plugins/visualize/editor/advanced_toggle.html');
 
     var notify = new Notifier({
       location: 'visAggGroup'
@@ -16,7 +16,7 @@ define(function (require) {
 
     return {
       restrict: 'A',
-      template: require('text!plugins/visualize/editor/agg.html'),
+      template: require('plugins/visualize/editor/agg.html'),
       require: 'form',
       link: function ($scope, $el, attrs, kbnForm) {
         $scope.$bind('outputAgg', 'outputVis.aggs.byId[agg.id]', $scope);

@@ -2,9 +2,9 @@ define(function (require) {
   return function FiltersAggDefinition(Private, Notifier) {
     var _ = require('lodash');
     var angular = require('angular');
-    var BucketAggType = Private(require('components/agg_types/buckets/_bucket_agg_type'));
-    var createFilter = Private(require('components/agg_types/buckets/create_filter/filters'));
-    var decorateQuery = Private(require('components/courier/data_source/_decorate_query'));
+    var BucketAggType = Private(require('agg_types/buckets/_bucket_agg_type'));
+    var createFilter = Private(require('agg_types/buckets/create_filter/filters'));
+    var decorateQuery = Private(require('courier/data_source/_decorate_query'));
     var notif = new Notifier({ location: 'Filters Agg' });
 
     return new BucketAggType({
@@ -14,7 +14,7 @@ define(function (require) {
       params: [
         {
           name: 'filters',
-          editor: require('text!components/agg_types/controls/filters.html'),
+          editor: require('agg_types/controls/filters.html'),
           default: [ {input: {}} ],
           write: function (aggConfig, output) {
             var inFilters = aggConfig.params.filters;

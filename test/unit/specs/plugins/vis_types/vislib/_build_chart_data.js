@@ -11,9 +11,9 @@ define(function (require) {
 
     beforeEach(module('kibana'));
     beforeEach(inject(function (Private) {
-      Table = Private(require('components/agg_response/tabify/_table'));
-      TableGroup = Private(require('components/agg_response/tabify/_table_group'));
-      aggResponse = Private(require('components/agg_response/index'));
+      Table = Private(require('agg_response/tabify/_table'));
+      TableGroup = Private(require('agg_response/tabify/_table_group'));
+      aggResponse = Private(require('agg_response/index'));
       VislibRenderbot = Private(require('plugins/vis_types/vislib/_vislib_renderbot'));
       buildChartData = Private(require('plugins/vis_types/vislib/_build_chart_data'));
     }));

@@ -1,7 +1,7 @@
 define(function (require) {
   var _ = require('lodash');
   return function mapAndFlattenFiltersProvider(Private, Promise) {
-    var mapFilter = Private(require('components/filter_bar/lib/mapFilter'));
+    var mapFilter = Private(require('filter_bar/lib/mapFilter'));
     return function (filters) {
       filters = _(filters)
         .filter(function (filter) {

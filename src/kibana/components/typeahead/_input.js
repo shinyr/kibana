@@ -2,7 +2,7 @@ define(function (require) {
   var _ = require('lodash');
   var typeahead = require('modules').get('kibana/typeahead');
 
-  require('components/notify/directives');
+  require('notify/directives');
 
   typeahead.directive('kbnTypeaheadInput', function ($rootScope) {
 

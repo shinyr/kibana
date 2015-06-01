@@ -1,6 +1,6 @@
 define(function (require) {
   return function FieldListProvider(Private) {
-    var Field = Private(require('components/index_patterns/_field'));
+    var Field = Private(require('index_patterns/_field'));
     var IndexedArray = require('utils/indexed_array/index');
     var _ = require('lodash');
 

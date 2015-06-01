@@ -4,9 +4,7 @@ define(function (require) {
   var addWordBreaks = require('utils/add_word_breaks');
   var module = require('modules').get('app/discover');
 
-  require('components/highlight/highlight');
-  require('components/highlight/highlight_tags');
-  require('components/doc_viewer/doc_viewer');
+  require('doc_viewer/doc_viewer');
   require('filters/trust_as_html');
   require('filters/short_dots');
 
@@ -23,10 +21,10 @@ define(function (require) {
    * ```
    */
   module.directive('kbnTableRow', function ($compile) {
-    var openRowHtml = require('text!components/doc_table/components/table_row/open.html');
-    var detailsHtml = require('text!components/doc_table/components/table_row/details.html');
-    var cellTemplate = _.template(require('text!components/doc_table/components/table_row/cell.html'));
-    var truncateByHeightTemplate = _.template(require('text!partials/truncate_by_height.html'));
+    var openRowHtml = require('doc_table/components/table_row/open.html');
+    var detailsHtml = require('doc_table/components/table_row/details.html');
+    var cellTemplate = _.template(require('doc_table/components/table_row/cell.html'));
+    var truncateByHeightTemplate = _.template(require('partials/truncate_by_height.html'));
 
     return {
       restrict: 'A',

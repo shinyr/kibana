@@ -5,12 +5,12 @@ define(function (require) {
     var IndexedArray = require('utils/indexed_array/index');
 
     var paramTypeMap = {
-      field: Private(require('components/agg_types/param_types/field')),
-      optioned: Private(require('components/agg_types/param_types/optioned')),
-      regex: Private(require('components/agg_types/param_types/regex')),
-      string: Private(require('components/agg_types/param_types/string')),
-      json: Private(require('components/agg_types/param_types/raw_json')),
-      _default: Private(require('components/agg_types/param_types/base'))
+      field: Private(require('agg_types/param_types/field')),
+      optioned: Private(require('agg_types/param_types/optioned')),
+      regex: Private(require('agg_types/param_types/regex')),
+      string: Private(require('agg_types/param_types/string')),
+      json: Private(require('agg_types/param_types/raw_json')),
+      _default: Private(require('agg_types/param_types/base'))
     };
 
     /**

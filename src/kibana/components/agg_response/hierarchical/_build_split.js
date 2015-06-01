@@ -1,7 +1,7 @@
 define(function (require) {
   return function biuldSplitProvider(Private) {
-    var transformer = Private(require('components/agg_response/hierarchical/_transform_aggregation'));
-    var collectKeys = require('components/agg_response/hierarchical/_collect_keys');
+    var transformer = Private(require('agg_response/hierarchical/_transform_aggregation'));
+    var collectKeys = require('agg_response/hierarchical/_collect_keys');
     return function (agg, metric, aggData) {
       // Ceate the split structure
       var split = { label: '', slices: { children: [] } };

@@ -1,6 +1,7 @@
 {
   // for files at project root
   "node": true,
+  "esnext": true,
 
   // shared with .jshintrc files for browser and node
   "unused": false,
@@ -27,5 +28,6 @@
   "strict": false,
   "globalstrict": true,
   "proto" : true,
-  "newcap": false
+  "newcap": false,
+  "quotmark": false
 }

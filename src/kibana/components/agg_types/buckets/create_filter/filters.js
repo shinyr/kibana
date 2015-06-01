@@ -1,5 +1,5 @@
 define(function (require) {
-  var buildQueryFilter = require('components/filter_manager/lib/query');
+  var buildQueryFilter = require('filter_manager/lib/query');
   var _ = require('lodash');
   return function CreateFilterFiltersProvider(Private) {
     return function (aggConfig, key) {

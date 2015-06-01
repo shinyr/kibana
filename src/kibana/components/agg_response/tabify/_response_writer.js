@@ -1,11 +1,11 @@
 define(function (require) {
   return function TabbedAggResponseWriterProvider(Private) {
     var _ = require('lodash');
-    var Table = Private(require('components/agg_response/tabify/_table'));
-    var TableGroup = Private(require('components/agg_response/tabify/_table_group'));
-    var getColumns = Private(require('components/agg_response/tabify/_get_columns'));
+    var Table = Private(require('agg_response/tabify/_table'));
+    var TableGroup = Private(require('agg_response/tabify/_table_group'));
+    var getColumns = Private(require('agg_response/tabify/_get_columns'));
 
-    var AggConfigResult = require('components/vis/_agg_config_result');
+    var AggConfigResult = require('vis/_agg_config_result');
 
     _(SplitAcr).inherits(AggConfigResult);
     function SplitAcr(agg, parent, key) {

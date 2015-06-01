@@ -1,6 +1,6 @@
 define(function (require) {
   var decodeGeoHash = require('utils/decode_geo_hash');
-  var AggConfigResult = require('components/vis/_agg_config_result');
+  var AggConfigResult = require('vis/_agg_config_result');
   var _ = require('lodash');
 
   function getAcr(val) {

@@ -1,12 +1,12 @@
 define(function (require) {
-  require('components/field_format_editor/samples/samples');
+  require('field_format_editor/samples/samples');
 
   require('modules')
   .get('kibana')
   .directive('fieldFormatEditorPattern', function () {
     return {
       restrict: 'E',
-      template: require('text!components/field_format_editor/pattern/pattern.html'),
+      template: require('field_format_editor/pattern/pattern.html'),
       require: ['ngModel', '^fieldEditor'],
       scope: true,
       link: function ($scope, $el, attrs, cntrls) {

@@ -4,8 +4,8 @@ define(function (require) {
   require('directives/validate_cidr_mask');
 
   return function RangeAggDefinition(Private) {
-    var BucketAggType = Private(require('components/agg_types/buckets/_bucket_agg_type'));
-    var createFilter = Private(require('components/agg_types/buckets/create_filter/ip_range'));
+    var BucketAggType = Private(require('agg_types/buckets/_bucket_agg_type'));
+    var createFilter = Private(require('agg_types/buckets/create_filter/ip_range'));
 
     return new BucketAggType({
       name: 'ip_range',
@@ -34,7 +34,7 @@ define(function (require) {
               {mask: '128.0.0.0/2'}
             ]
           },
-          editor: require('text!components/agg_types/controls/ip_ranges.html'),
+          editor: require('agg_types/controls/ip_ranges.html'),
           write: function (aggConfig, output) {
             var ipRangeType = aggConfig.params.ipRangeType;
             output.params.ranges = aggConfig.params.ranges[ipRangeType];

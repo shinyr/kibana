@@ -2,7 +2,7 @@ define(function (require) {
   return function GeoHashAggDefinition(Private, config) {
     var _ = require('lodash');
     var moment = require('moment');
-    var BucketAggType = Private(require('components/agg_types/buckets/_bucket_agg_type'));
+    var BucketAggType = Private(require('agg_types/buckets/_bucket_agg_type'));
     var defaultPrecision = 2;
 
     function getPrecision(precision) {
@@ -37,7 +37,7 @@ define(function (require) {
         {
           name: 'precision',
           default: defaultPrecision,
-          editor: require('text!components/agg_types/controls/precision.html'),
+          editor: require('agg_types/controls/precision.html'),
           controller: function ($scope) {
             $scope.$watchMulti([
               'agg.params.autoPrecision',

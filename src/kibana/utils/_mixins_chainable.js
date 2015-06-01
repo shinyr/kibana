@@ -9,7 +9,7 @@ define(function (require) {
    * this module, which provides a modified version
    * of lodash.
    */
-  var _ = require('lodash_src');
+  var _ = require('lodash');
 
   return {
     /**

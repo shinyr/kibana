@@ -8,7 +8,7 @@ define(function (require) {
 
   require('routes')
   .when('/settings/indices/', {
-    template: require('text!plugins/settings/sections/indices/_create.html')
+    template: require('plugins/settings/sections/indices/_create.html')
   });
 
   require('modules').get('apps/settings')

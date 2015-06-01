@@ -36,9 +36,9 @@ define(function (require) {
 
       beforeEach(function () {
         inject(function (d3, Private) {
-          Layout = Private(require('components/vislib/lib/layout/layout'));
+          Layout = Private(require('vislib/lib/layout/layout'));
           vis = Private(require('vislib_fixtures/_vis_fixture'))();
-          require('css!components/vislib/styles/main');
+          require('vislib/styles/main.css');
 
           vis.render(data);
           numberOfCharts = vis.handler.charts.length;

@@ -1,5 +1,5 @@
 define(function (require) {
-  var html = require('text!components/tooltip/tooltip.html');
+  var html = require('tooltip/tooltip.html');
 
   require('modules').get('kibana')
   .config(function ($tooltipProvider) {

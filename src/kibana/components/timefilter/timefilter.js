@@ -10,7 +10,7 @@
     var Events = Private(require('factories/events'));
     var diff = Private(require('utils/diff_time_picker_vals'));
 
-    require('components/state_management/global_state');
+    require('state_management/global_state');
 
     function convertISO8601(stringTime) {
       var obj = moment(stringTime, 'YYYY-MM-DDTHH:mm:ss.SSSZ', true);
@@ -22,8 +22,8 @@
       Timefilter.Super.call(this);
 
       var self = this;
-      var diffTime = Private(require('components/timefilter/lib/diff_time'))(self);
-      var diffInterval = Private(require('components/timefilter/lib/diff_interval'))(self);
+      var diffTime = Private(require('timefilter/lib/diff_time'))(self);
+      var diffInterval = Private(require('timefilter/lib/diff_interval'))(self);
 
       self.enabled = false;
 

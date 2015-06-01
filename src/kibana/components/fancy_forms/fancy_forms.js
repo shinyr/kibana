@@ -2,8 +2,8 @@ define(function (require) {
   var _ = require('lodash');
   var $ = require('jquery');
 
-  var KbnFormController = require('components/fancy_forms/kbn_form');
-  var KbnModelController = require('components/fancy_forms/kbn_model');
+  var KbnFormController = require('fancy_forms/kbn_form');
+  var KbnModelController = require('fancy_forms/kbn_model');
 
   require('modules')
   .get('kibana')

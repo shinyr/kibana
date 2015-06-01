@@ -8,10 +8,10 @@ define(function (require) {
 
       beforeEach(module('kibana'));
       beforeEach(inject(function (Private) {
-        Vis = Private(require('components/vis/vis'));
-        AggConfig = Private(require('components/vis/_agg_config'));
+        Vis = Private(require('vis/vis'));
+        AggConfig = Private(require('vis/_agg_config'));
         indexPattern = Private(require('fixtures/stubbed_logstash_index_pattern'));
-        createFilter = Private(require('components/agg_types/buckets/create_filter/range'));
+        createFilter = Private(require('agg_types/buckets/create_filter/range'));
       }));
 
       it('should return a range filter for range agg', function () {

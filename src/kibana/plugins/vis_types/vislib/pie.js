@@ -16,7 +16,7 @@ define(function (require) {
           addLegend: true,
           isDonut: false
         },
-        editor: require('text!plugins/vis_types/vislib/editors/pie.html')
+        editor: require('plugins/vis_types/vislib/editors/pie.html')
       },
       responseConverter: false,
       hierarchicalData: true,

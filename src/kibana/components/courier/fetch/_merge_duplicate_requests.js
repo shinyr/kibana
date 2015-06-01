@@ -1,7 +1,7 @@
 define(function (require) {
   return function FetchMergeDuplicateRequests(Private) {
-    var isRequest = Private(require('components/courier/fetch/_is_request'));
-    var DUPLICATE = Private(require('components/courier/fetch/_req_status')).DUPLICATE;
+    var isRequest = Private(require('courier/fetch/_is_request'));
+    var DUPLICATE = Private(require('courier/fetch/_req_status')).DUPLICATE;
 
     function mergeDuplicateRequests(requests) {
       // dedupe requests

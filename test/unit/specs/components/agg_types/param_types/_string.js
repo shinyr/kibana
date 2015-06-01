@@ -23,8 +23,8 @@ define(function (require) {
 
     // fetch our deps
     beforeEach(inject(function (Private) {
-      BaseAggParam = Private(require('components/agg_types/param_types/base'));
-      StringAggParam = Private(require('components/agg_types/param_types/string'));
+      BaseAggParam = Private(require('agg_types/param_types/base'));
+      StringAggParam = Private(require('agg_types/param_types/string'));
 
       aggConfig = { params: {} };
       output = { params: {} };

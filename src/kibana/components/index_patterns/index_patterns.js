@@ -7,8 +7,8 @@ define(function (require) {
     var _ = require('lodash');
     var errors = require('errors');
 
-    var IndexPattern = Private(require('components/index_patterns/_index_pattern'));
-    var patternCache = Private(require('components/index_patterns/_pattern_cache'));
+    var IndexPattern = Private(require('index_patterns/_index_pattern'));
+    var patternCache = Private(require('index_patterns/_pattern_cache'));
 
     var notify = new Notifier({ location: 'IndexPatterns Service'});
 
@@ -38,10 +38,10 @@ define(function (require) {
     };
 
     self.cache = patternCache;
-    self.getIds = Private(require('components/index_patterns/_get_ids'));
-    self.intervals = Private(require('components/index_patterns/_intervals'));
-    self.mapper = Private(require('components/index_patterns/_mapper'));
-    self.patternToWildcard = Private(require('components/index_patterns/_pattern_to_wildcard'));
+    self.getIds = Private(require('index_patterns/_get_ids'));
+    self.intervals = Private(require('index_patterns/_intervals'));
+    self.mapper = Private(require('index_patterns/_mapper'));
+    self.patternToWildcard = Private(require('index_patterns/_pattern_to_wildcard'));
     self.fieldFormats = Private(require('registry/field_formats'));
     self.IndexPattern = IndexPattern;
   });

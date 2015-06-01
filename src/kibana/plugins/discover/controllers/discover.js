@@ -3,22 +3,21 @@ define(function (require) {
   var angular = require('angular');
   var moment = require('moment');
   var ConfigTemplate = require('utils/config_template');
-  var getSort = require('components/doc_table/lib/get_sort');
+  var getSort = require('doc_table/lib/get_sort');
   var rison = require('utils/rison');
 
   var datemath = require('utils/datemath');
 
-  require('components/notify/notify');
-  require('components/timepicker/timepicker');
+  require('notify/notify');
+  require('timepicker/timepicker');
   require('directives/fixed_scroll');
   require('directives/validate_json');
-  require('components/validate_query/validate_query');
+  require('validate_query/validate_query');
   require('filters/moment');
-  require('components/courier/courier');
-  require('components/index_patterns/index_patterns');
-  require('components/state_management/app_state');
-  require('components/timefilter/timefilter');
-  require('components/highlight/highlight_tags');
+  require('courier/courier');
+  require('index_patterns/index_patterns');
+  require('state_management/app_state');
+  require('timefilter/timefilter');
 
   var app = require('modules').get('apps/discover', [
     'kibana/notify',
@@ -28,7 +27,7 @@ define(function (require) {
 
   require('routes')
   .when('/discover/:id?', {
-    template: require('text!plugins/discover/index.html'),
+    template: require('plugins/discover/index.html'),
     reloadOnSearch: false,
     resolve: {
       ip: function (Promise, courier, config, $location) {
@@ -62,20 +61,21 @@ define(function (require) {
   });
 
   app.controller('discover', function ($scope, config, courier, $route, $window, Notifier,
-    AppState, timefilter, Promise, Private, kbnUrl, highlightTags) {
+    AppState, timefilter, Promise, Private, kbnUrl) {
 
-    var Vis = Private(require('components/vis/vis'));
-    var docTitle = Private(require('components/doc_title/doc_title'));
+    var Vis = Private(require('vis/vis'));
+    var docTitle = Private(require('doc_title/doc_title'));
     var brushEvent = Private(require('utils/brush_event'));
     var HitSortFn = Private(require('plugins/discover/_hit_sort_fn'));
-    var queryFilter = Private(require('components/filter_bar/query_filter'));
-    var filterManager = Private(require('components/filter_manager/filter_manager'));
+    var queryFilter = Private(require('filter_bar/query_filter'));
+    var filterManager = Private(require('filter_manager/filter_manager'));
+    var highlightTags = Private(require('highlight/highlight_tags'));
 
     var notify = new Notifier({
       location: 'Discover'
     });
 
-    $scope.intervalOptions = Private(require('components/agg_types/buckets/_interval_options'));
+    $scope.intervalOptions = Private(require('agg_types/buckets/_interval_options'));
     $scope.showInterval = false;
 
     $scope.intervalEnabled = function (interval) {
@@ -88,8 +88,8 @@ define(function (require) {
 
     // config panel templates
     $scope.configTemplate = new ConfigTemplate({
-      load: require('text!plugins/discover/partials/load_search.html'),
-      save: require('text!plugins/discover/partials/save_search.html')
+      load: require('plugins/discover/partials/load_search.html'),
+      save: require('plugins/discover/partials/save_search.html')
     });
 
     $scope.timefilter = timefilter;

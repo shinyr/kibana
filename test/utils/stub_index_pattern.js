@@ -3,13 +3,13 @@ define(function (require) {
     var _ = require('lodash');
     var sinon = require('sinon/sinon');
     var IndexedArray = require('utils/indexed_array/index');
-    var IndexPattern = require('components/index_patterns/_index_pattern');
+    var IndexPattern = require('index_patterns/_index_pattern');
     var fieldFormats = Private(require('registry/field_formats'));
-    var flattenHit = Private(require('components/index_patterns/_flatten_hit'));
-    var formatHit = require('components/index_patterns/_format_hit');
-    var getComputedFields = require('components/index_patterns/_get_computed_fields');
+    var flattenHit = Private(require('index_patterns/_flatten_hit'));
+    var formatHit = require('index_patterns/_format_hit');
+    var getComputedFields = require('index_patterns/_get_computed_fields');
 
-    var Field = Private(require('components/index_patterns/_field'));
+    var Field = Private(require('index_patterns/_field'));
 
     function StubIndexPattern(pattern, timeField, fields) {
       this.id = pattern;

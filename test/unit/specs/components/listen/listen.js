@@ -5,7 +5,7 @@ define(function (require) {
     var $rootScope;
     var Events;
 
-    require('components/listen');
+    require('listen');
 
     beforeEach(module('kibana'));
     beforeEach(inject(function ($injector, Private) {

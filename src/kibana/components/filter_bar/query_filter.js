@@ -3,11 +3,11 @@ define(function (require) {
 
   return function (Private, $rootScope, getAppState, globalState) {
     var EventEmitter = Private(require('factories/events'));
-    var onlyDisabled = require('components/filter_bar/lib/onlyDisabled');
-    var onlyStateChanged = require('components/filter_bar/lib/onlyStateChanged');
-    var uniqFilters = require('components/filter_bar/lib/uniqFilters');
-    var compareFilters = require('components/filter_bar/lib/compareFilters');
-    var mapAndFlattenFilters = Private(require('components/filter_bar/lib/mapAndFlattenFilters'));
+    var onlyDisabled = require('filter_bar/lib/onlyDisabled');
+    var onlyStateChanged = require('filter_bar/lib/onlyStateChanged');
+    var uniqFilters = require('filter_bar/lib/uniqFilters');
+    var compareFilters = require('filter_bar/lib/compareFilters');
+    var mapAndFlattenFilters = Private(require('filter_bar/lib/mapAndFlattenFilters'));
 
     var queryFilter = new EventEmitter();
 

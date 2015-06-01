@@ -1,24 +1,14 @@
 define(function (require) {
-
   return function SearchSourceFactory(Promise, Private) {
     var _ = require('lodash');
-    var SourceAbstract = Private(require('components/courier/data_source/_abstract'));
-    var SearchRequest = Private(require('components/courier/fetch/request/search'));
-    var SegmentedRequest = Private(require('components/courier/fetch/request/segmented'));
+    var SourceAbstract = Private(require('courier/data_source/_abstract'));
+    var SearchRequest = Private(require('courier/fetch/request/search'));
+    var SegmentedRequest = Private(require('courier/fetch/request/segmented'));
 
     _(SearchSource).inherits(SourceAbstract);
     function SearchSource(initialState) {
       SearchSource.Super.call(this, initialState);
     }
-
-    // expose a ready state for the route setup to read
-    var rootSearchSource;
-    SearchSource.ready = new Promise(function (resolve) {
-      require(['components/courier/data_source/_root_search_source'], function (PromiseModule) {
-        rootSearchSource = Private(PromiseModule);
-        resolve();
-      });
-    });
 
     /*****
      * PUBLIC API
@@ -75,7 +65,7 @@ define(function (require) {
       var self = this;
       if (self._parent === false) return;
       if (self._parent) return self._parent;
-      return onlyHardLinked ? undefined : rootSearchSource.get();
+      return onlyHardLinked ? undefined : SearchSource.root.get();
     };
 
     /**
@@ -218,6 +208,8 @@ define(function (require) {
         }
       }
     };
+
+    Private(require('courier/data_source/_root_search_source'))(SearchSource);
 
     return SearchSource;
   };

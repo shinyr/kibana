@@ -3,6 +3,7 @@ define(function (require) {
   var $ = require('jquery');
 
   require('gridster');
+  require('gridster/dist/jquery.gridster.css');
 
   var app = require('modules').get('app/dashboard');
 

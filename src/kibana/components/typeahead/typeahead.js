@@ -2,9 +2,9 @@ define(function (require) {
   var _ = require('lodash');
   var typeahead = require('modules').get('kibana/typeahead');
 
-  require('css!components/typeahead/typeahead.css');
-  require('components/typeahead/_input');
-  require('components/typeahead/_items');
+  require('typeahead/typeahead.css');
+  require('typeahead/_input');
+  require('typeahead/_items');
 
   typeahead.directive('kbnTypeahead', function () {
     var keyMap = {

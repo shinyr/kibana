@@ -2,9 +2,9 @@ define(function (require) {
   var _ = require('lodash');
 
   return function DocSourceFactory(Private, Promise, es, sessionStorage) {
-    var sendToEs = Private(require('components/courier/data_source/_doc_send_to_es'));
-    var SourceAbstract = Private(require('components/courier/data_source/_abstract'));
-    var DocRequest = Private(require('components/courier/fetch/request/doc'));
+    var sendToEs = Private(require('courier/data_source/_doc_send_to_es'));
+    var SourceAbstract = Private(require('courier/data_source/_abstract'));
+    var DocRequest = Private(require('courier/fetch/request/doc'));
 
     _(DocSource).inherits(SourceAbstract);
     function DocSource(initialState) {

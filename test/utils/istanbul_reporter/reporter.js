@@ -1,33 +1,17 @@
-/**
- * TODO: move this into it's own module, with it's own dependencies
- */
-
-require.config({
-  paths: {
-    // jade runtime is required by the AMD wrapped jade templates as "jade"
-    jade: '/amd-wrap/node_modules/grunt-contrib-jade/node_modules/jade/runtime'
-  }
-});
-
-// fake fs module to make jade/runtime.js happy
-define('fs', function () {});
-
-// fake process obejct to make browserify-path happy
-window.process = window.process || { cwd: function () { return '.'; }};
-
 // the actual reporter module
+// jscs:disable
 define(function (require) {
 
   var _ = require('lodash');
   var $ = require('jquery');
 
-  var InsertionText = require('/amd-wrap/node_modules/istanbul/lib/util/insertion-text.js');
-  var objUtils = require('/amd-wrap/node_modules/istanbul/lib/object-utils.js');
+  var InsertionText = require('istanbul/lib/util/insertion-text.js');
+  var objUtils = require('istanbul/lib/object-utils.js');
   // var annotate = require('/amd-wrap/node_modules/istanbul/lib/annotate.js');
-  var Progress = require('/amd-wrap/node_modules/mocha/lib/browser/progress.js');
-  var path = require('/amd-wrap/node_modules/path-browserify/index.js');
+  var Progress = require('mocha/lib/browser/progress.js');
+  var path = require('path');
 
-  var template = require('./report.jade');
+  var template = require('jade!./report.clientside.jade');
 
   var Base = window.Mocha.reporters.Base;
 

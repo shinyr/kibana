@@ -1,14 +1,14 @@
 define(function (require) {
   var _ = require('lodash');
 
-  var html = require('text!components/doc_table/doc_table.html');
-  var getSort = require('components/doc_table/lib/get_sort');
+  var html = require('doc_table/doc_table.html');
+  var getSort = require('doc_table/lib/get_sort');
 
-  require('css!components/doc_table/doc_table.css');
+  require('doc_table/doc_table.css');
   require('directives/truncated');
   require('directives/infinite_scroll');
-  require('components/doc_table/components/table_header');
-  require('components/doc_table/components/table_row');
+  require('doc_table/components/table_header');
+  require('doc_table/components/table_row');
 
   require('modules').get('kibana')
   .directive('docTable', function (config, Notifier, getAppState) {

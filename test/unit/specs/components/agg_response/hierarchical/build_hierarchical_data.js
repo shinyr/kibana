@@ -17,10 +17,10 @@ define(function (require) {
       Notifier = $injector.get('Notifier');
       sinon.stub(Notifier.prototype, 'error');
 
-      Vis = Private(require('components/vis/vis'));
-      AggConfigs = Private(require('components/vis/_agg_configs'));
+      Vis = Private(require('vis/vis'));
+      AggConfigs = Private(require('vis/_agg_configs'));
       indexPattern = Private(require('fixtures/stubbed_logstash_index_pattern'));
-      buildHierarchicalData = Private(require('components/agg_response/hierarchical/build_hierarchical_data'));
+      buildHierarchicalData = Private(require('agg_response/hierarchical/build_hierarchical_data'));
     }));
 
 

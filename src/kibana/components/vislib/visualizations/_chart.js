@@ -3,9 +3,9 @@ define(function (require) {
     var _ = require('lodash');
     var errors = require('errors');
 
-    var Dispatch = Private(require('components/vislib/lib/dispatch'));
-    var Tooltip = Private(require('components/vislib/components/tooltip/tooltip'));
-    var dataLabel = require('components/vislib/lib/_data_label');
+    var Dispatch = Private(require('vislib/lib/dispatch'));
+    var Tooltip = Private(require('vislib/components/tooltip/tooltip'));
+    var dataLabel = require('vislib/lib/_data_label');
 
     /**
      * The Base Class for all visualizations.

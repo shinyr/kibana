@@ -9,7 +9,7 @@ define(function (require) {
 
     return {
       restrict: 'E',
-      template: require('text!plugins/visualize/editor/sidebar.html'),
+      template: require('plugins/visualize/editor/sidebar.html'),
       scope: true,
       controllerAs: 'sidebar',
       controller: function ($scope) {

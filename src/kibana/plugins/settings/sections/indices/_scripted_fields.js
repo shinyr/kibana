@@ -1,17 +1,17 @@
 define(function (require) {
   var _ = require('lodash');
-  require('components/paginated_table/paginated_table');
+  require('paginated_table/paginated_table');
 
   require('modules').get('apps/settings')
   .directive('scriptedFields', function (kbnUrl, Notifier) {
     var rowScopes = []; // track row scopes, so they can be destroyed as needed
-    var controlsHtml = require('text!plugins/settings/sections/indices/_field_controls.html');
+    var controlsHtml = require('plugins/settings/sections/indices/_field_controls.html');
 
     var notify = new Notifier();
 
     return {
       restrict: 'E',
-      template: require('text!plugins/settings/sections/indices/_scripted_fields.html'),
+      template: require('plugins/settings/sections/indices/_scripted_fields.html'),
       scope: true,
       link: function ($scope) {
         var dateScripts = require('plugins/settings/sections/indices/_date_scripts');

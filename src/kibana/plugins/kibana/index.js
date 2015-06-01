@@ -2,22 +2,23 @@ define(function (require) {
   // base angular components/directives we expect to be loaded
   require('angular-bootstrap');
   require('services/private');
-  require('components/config/config');
-  require('components/courier/courier');
-  require('components/filter_bar/filter_bar');
-  require('components/notify/notify');
-  require('components/persisted_log/persisted_log');
-  require('components/state_management/app_state');
-  require('components/storage/storage');
-  require('components/url/url');
-  require('components/doc_title/doc_title');
-  require('components/tooltip/tooltip');
-  require('components/style_compile/style_compile');
-  require('components/watch_multi');
-  require('components/bind');
-  require('components/listen');
-  require('components/fancy_forms/fancy_forms');
-  require('components/stringify/register');
+  require('config/config');
+  require('courier/courier');
+  require('filter_bar/filter_bar');
+  require('notify/notify');
+  require('persisted_log/persisted_log');
+  require('state_management/app_state');
+  require('state_management/global_state');
+  require('storage/storage');
+  require('url/url');
+  require('doc_title/doc_title');
+  require('tooltip/tooltip');
+  require('style_compile/style_compile');
+  require('watch_multi');
+  require('bind');
+  require('listen');
+  require('fancy_forms/fancy_forms');
+  require('stringify/register');
   require('directives/click_focus');
   require('directives/info');
   require('directives/spinner');
@@ -25,7 +26,7 @@ define(function (require) {
   require('directives/pretty_duration');
   require('directives/rows');
 
-  var Notifier = require('components/notify/_notifier');
+  var Notifier = require('notify/_notifier');
 
   // ensure that the kibana module requires ui.bootstrap
   require('modules')
@@ -35,7 +36,7 @@ define(function (require) {
   })
   .directive('kibana', function (Private, $rootScope, $injector, Promise, config, kbnSetup) {
     return {
-      template: require('text!plugins/kibana/kibana.html'),
+      template: require('plugins/kibana/kibana.html'),
       controllerAs: 'kibana',
       controller: function ($scope) {
         var _ = require('lodash');

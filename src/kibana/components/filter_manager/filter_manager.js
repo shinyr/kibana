@@ -2,7 +2,7 @@
 define(function (require) {
   return function (Private) {
     var _ = require('lodash');
-    var queryFilter = Private(require('components/filter_bar/query_filter'));
+    var queryFilter = Private(require('filter_bar/query_filter'));
     var filterManager = {};
 
     filterManager.add = function (field, values, operation, index) {

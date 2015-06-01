@@ -11,8 +11,8 @@ define(function (require) {
 
     beforeEach(module('kibana'));
     beforeEach(inject(function (Private, Promise, $injector) {
-      var DocSource = Private(require('components/courier/data_source/doc_source'));
-      var DocFetchRequest = Private(require('components/courier/fetch/request/doc'));
+      var DocSource = Private(require('courier/data_source/doc_source'));
+      var DocFetchRequest = Private(require('courier/fetch/request/doc'));
 
       storage =
       $injector.get('localStorage').store =

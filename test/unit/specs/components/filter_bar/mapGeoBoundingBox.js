@@ -12,7 +12,7 @@ define(function (require) {
       });
 
       beforeEach(inject(function (Private, _$rootScope_) {
-        mapGeoBoundingBox = Private(require('components/filter_bar/lib/mapGeoBoundingBox'));
+        mapGeoBoundingBox = Private(require('filter_bar/lib/mapGeoBoundingBox'));
         $rootScope = _$rootScope_;
       }));
 

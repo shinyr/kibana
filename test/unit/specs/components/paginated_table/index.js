@@ -1,5 +1,5 @@
 define(function (require) {
-  require('components/paginated_table/paginated_table');
+  require('paginated_table/paginated_table');
   var _ = require('lodash');
   var sinon = require('sinon/sinon');
 

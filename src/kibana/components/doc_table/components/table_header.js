@@ -5,7 +5,7 @@ define(function (require) {
 
     var _ = require('lodash');
     var React = require('react');
-    var TableHeader = Private(require('jsx!components/DocTable/DocTableHeader'));
+    var TableHeader = Private(require('DocTable/DocTableHeader'));
 
     return {
       restrict: 'A',

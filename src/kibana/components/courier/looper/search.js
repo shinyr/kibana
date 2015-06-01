@@ -1,10 +1,10 @@
 define(function (require) {
   return function SearchLooperService(Private, Promise, Notifier) {
-    var fetch = Private(require('components/courier/fetch/fetch'));
-    var searchStrategy = Private(require('components/courier/fetch/strategy/search'));
-    var requestQueue = Private(require('components/courier/_request_queue'));
+    var fetch = Private(require('courier/fetch/fetch'));
+    var searchStrategy = Private(require('courier/fetch/strategy/search'));
+    var requestQueue = Private(require('courier/_request_queue'));
 
-    var Looper = Private(require('components/courier/looper/_looper'));
+    var Looper = Private(require('courier/looper/_looper'));
     var notif = new Notifier({ location: 'Search Looper' });
 
     /**

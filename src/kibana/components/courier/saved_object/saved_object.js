@@ -5,8 +5,8 @@ define(function (require) {
     var _ = require('lodash');
     var slugifyId = require('utils/slugify_id');
 
-    var DocSource = Private(require('components/courier/data_source/doc_source'));
-    var SearchSource = Private(require('components/courier/data_source/search_source'));
+    var DocSource = Private(require('courier/data_source/doc_source'));
+    var SearchSource = Private(require('courier/data_source/search_source'));
     var mappingSetup = Private(require('utils/mapping_setup'));
 
     function SavedObject(config) {

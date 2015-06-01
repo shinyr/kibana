@@ -2,8 +2,8 @@ define(function (require) {
   return function RawJSONAggParamFactory(Private) {
     var _ = require('lodash');
 
-    var BaseAggParam = Private(require('components/agg_types/param_types/base'));
-    var editorHtml = require('text!components/agg_types/controls/raw_json.html');
+    var BaseAggParam = Private(require('agg_types/param_types/base'));
+    var editorHtml = require('agg_types/controls/raw_json.html');
 
     _(RawJSONAggParam).inherits(BaseAggParam);
     function RawJSONAggParam(config) {

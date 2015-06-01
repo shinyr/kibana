@@ -1,10 +1,10 @@
 define(function (require) {
   return function AbstractNumeralFormatProvider(Private) {
     var _ = require('lodash');
-    var FieldFormat = Private(require('components/index_patterns/_field_format/FieldFormat'));
-    var BoundToConfigObj = Private(require('components/bound_to_config_obj'));
+    var FieldFormat = Private(require('index_patterns/_field_format/FieldFormat'));
+    var BoundToConfigObj = Private(require('bound_to_config_obj'));
     var numeral = require('numeral')();
-    require('components/field_format_editor/numeral/numeral');
+    require('field_format_editor/numeral/numeral');
 
     _(Numeral).inherits(FieldFormat);
     function Numeral(params) {
@@ -37,7 +37,7 @@ define(function (require) {
       });
 
       Class.editor = {
-        template: opts.editorTemplate || require('text!components/field_format_editor/numeral/numeral.html'),
+        template: opts.editorTemplate || require('field_format_editor/numeral/numeral.html'),
         controllerAs: 'cntrl',
         controller: opts.controller || function () {
           this.sampleInputs = opts.sampleInputs;

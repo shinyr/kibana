@@ -1,12 +1,10 @@
 define(function (require) {
-  require('components/highlight/highlight_tags');
+  return function highlightProvider(Private) {
+    var _ = require('lodash');
+    var angular = require('angular');
+    var highlightTags = Private(require('highlight/highlight_tags'));
 
-  var _ = require('lodash');
-  var angular = require('angular');
-  var module = require('modules').get('kibana');
-
-  module.filter('highlight', function (highlightTags) {
-    return function (formatted, highlight) {
+    return function highlightFilter(formatted, highlight) {
       if (typeof formatted === 'object') formatted = angular.toJson(formatted);
 
       _.each(highlight, function (section) {
@@ -28,5 +26,5 @@ define(function (require) {
 
       return formatted;
     };
-  });
+  };
 });

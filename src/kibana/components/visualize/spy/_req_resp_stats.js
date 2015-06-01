@@ -1,8 +1,8 @@
 define(function (require) {
 
   var _ = require('lodash');
-  var reqRespStatsHTML = require('text!components/visualize/spy/_req_resp_stats.html');
-  require('components/clipboard/clipboard');
+  var reqRespStatsHTML = require('visualize/spy/_req_resp_stats.html');
+  require('clipboard/clipboard');
 
   var linkReqRespStats = function ($scope, config) {
     $scope.$bind('req', 'searchSource.history[searchSource.history.length - 1]');
