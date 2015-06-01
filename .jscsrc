@@ -1,4 +1,7 @@
 {
+  "fileExtensions": [".js", ".jsx"],
+  "esprima": "esprima-fb",
+
   "maximumLineLength": {
     "value": 140,
     "allowComments": true

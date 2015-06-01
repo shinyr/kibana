@@ -64,6 +64,7 @@
   },
   "devDependencies": {
     "connect": "~2.19.5",
+    "esprima-fb": "^15001.1.0-dev-harmony-fb",
     "event-stream": "~3.1.5",
     "expect.js": "~0.3.1",
     "glob": "~4.1.3",

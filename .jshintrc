@@ -23,5 +23,9 @@
   "sub": true,
   "-W084": true,
   "scripturl": true,
-  "evil": true
+  "evil": true,
+  "strict": false,
+  "globalstrict": true,
+  "proto" : true,
+  "newcap": false
 }

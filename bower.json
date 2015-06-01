@@ -51,7 +51,9 @@
     "lodash-deep": "spenceralger/lodash-deep#compat",
     "marked": "~0.3.2",
     "numeral": "~1.5.3",
-    "leaflet-draw": "~0.2.4"
+    "leaflet-draw": "~0.2.4",
+    "react": "~0.13.3",
+    "jsx-requirejs-plugin": "~0.6.2"
   },
   "devDependencies": {},
   "resolutions": {

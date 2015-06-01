@@ -37,8 +37,17 @@ require.config({
     text: 'bower_components/requirejs-text/text',
     zeroclipboard: 'bower_components/zeroclipboard/dist/ZeroClipboard',
     marked: 'bower_components/marked/lib/marked',
-    numeral: 'bower_components/numeral/numeral'
+    numeral: 'bower_components/numeral/numeral',
+    react: 'bower_components/react/react-with-addons',
+    JSXTransformer: 'bower_components/react/JSXTransformer',
+    jsx: 'bower_components/jsx-requirejs-plugin/js/jsx'
   },
+
+  jsx: {
+    harmony: true,
+    fileExtension: '.jsx'
+  },
+
   shim: {
     angular: {
       deps: ['jquery'],
