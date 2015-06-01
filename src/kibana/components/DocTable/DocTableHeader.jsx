@@ -133,7 +133,7 @@ define(function (require) {
         var {indexPattern, colNames} = this.props;
         return (
           <tr>
-            <th></th>
+            <th style={{width: '1%'}}></th>
             { this.makeColHeading(indexPattern.timeFieldName, null) }
             { colNames.map(this.makeColHeading, this) }
           </tr>
