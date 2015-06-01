@@ -4,6 +4,7 @@
 node_modules
 bower_components
 **/*.css
+**/*.css.map
 trash
 build
 target

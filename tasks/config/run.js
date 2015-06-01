@@ -28,6 +28,14 @@ module.exports = function (grunt) {
       },
       cmd: './target/<%= pkg.name + "-" + pkg.version %>-' + platform + '-' + arch + '/bin/kibana',
       args: args
+    },
+    babel_watcher: {
+      options: {
+        wait: true,
+        quiet: false
+      },
+      cmd: 'node',
+      args: ['babel']
     }
   };
 
