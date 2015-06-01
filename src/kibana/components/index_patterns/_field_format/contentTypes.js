@@ -1,6 +1,5 @@
 define(function (require) {
-  return function contentTypesProvider(Private) {
-    var highlightFilter = Private(require('highlight/highlight'));
+  return function contentTypesProvider(highlightFilter) {
     var _ = require('lodash');
     var angular = require('angular');
 

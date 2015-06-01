@@ -2,11 +2,11 @@ define(function (require) {
   return function CourierFetchCallClient(Private, Promise, es, configFile, sessionId) {
     var _ = require('lodash');
 
-    var isRequest = Private(require('courier/fetch/_is_request'));
-    var mergeDuplicateRequests = Private(require('courier/fetch/_merge_duplicate_requests'));
+    var isRequest = Private(require('components/courier/fetch/_is_request'));
+    var mergeDuplicateRequests = Private(require('components/courier/fetch/_merge_duplicate_requests'));
 
-    var ABORTED = Private(require('courier/fetch/_req_status')).ABORTED;
-    var DUPLICATE = Private(require('courier/fetch/_req_status')).DUPLICATE;
+    var ABORTED = Private(require('components/courier/fetch/_req_status')).ABORTED;
+    var DUPLICATE = Private(require('components/courier/fetch/_req_status')).DUPLICATE;
 
     function callClient(strategy, requests) {
       // merging docs can change status to DUPLICATE, capture new statuses

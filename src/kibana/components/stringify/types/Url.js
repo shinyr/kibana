@@ -1,10 +1,9 @@
 define(function (require) {
-  return function UrlFormatProvider(Private) {
+  return function UrlFormatProvider(Private, highlightFilter) {
     var _ = require('lodash');
 
-    var highlightFilter = Private(require('highlight/highlight'));
-    var FieldFormat = Private(require('index_patterns/_field_format/FieldFormat'));
-    require('field_format_editor/pattern/pattern');
+    var FieldFormat = Private(require('components/index_patterns/_field_format/FieldFormat'));
+    require('components/field_format_editor/pattern/pattern');
 
     _(Url).inherits(FieldFormat);
     function Url(params) {
@@ -26,7 +25,7 @@ define(function (require) {
     ];
 
     Url.editor = {
-      template: require('stringify/editors/url.html'),
+      template: require('text!components/stringify/editors/url.html'),
       controllerAs: 'url',
       controller: function ($scope) {
         var iconPattern = 'components/stringify/icons/{{value}}.png';

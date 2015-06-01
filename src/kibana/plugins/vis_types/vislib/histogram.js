@@ -24,7 +24,7 @@ define(function (require) {
         },
         scales: ['linear', 'log', 'square root'],
         modes: ['stacked', 'percentage', 'grouped'],
-        editor: require('plugins/vis_types/vislib/editors/histogram.html')
+        editor: require('text!plugins/vis_types/vislib/editors/histogram.html')
       },
       schemas: new Schemas([
         {

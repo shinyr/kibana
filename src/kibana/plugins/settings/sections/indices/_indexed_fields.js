@@ -1,18 +1,18 @@
 define(function (require) {
   var _ = require('lodash');
-  require('paginated_table/paginated_table');
+  require('components/paginated_table/paginated_table');
 
   require('modules').get('apps/settings')
   .directive('indexedFields', function () {
     var yesTemplate = '<i class="fa fa-check" aria-label="yes"></i>';
     var noTemplate = '';
-    var nameHtml = require('plugins/settings/sections/indices/_field_name.html');
-    var typeHtml = require('plugins/settings/sections/indices/_field_type.html');
-    var controlsHtml = require('plugins/settings/sections/indices/_field_controls.html');
+    var nameHtml = require('text!plugins/settings/sections/indices/_field_name.html');
+    var typeHtml = require('text!plugins/settings/sections/indices/_field_type.html');
+    var controlsHtml = require('text!plugins/settings/sections/indices/_field_controls.html');
 
     return {
       restrict: 'E',
-      template: require('plugins/settings/sections/indices/_indexed_fields.html'),
+      template: require('text!plugins/settings/sections/indices/_indexed_fields.html'),
       scope: true,
       link: function ($scope) {
         var rowScopes = []; // track row scopes, so they can be destroyed as needed

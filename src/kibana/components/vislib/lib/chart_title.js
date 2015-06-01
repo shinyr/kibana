@@ -3,8 +3,8 @@ define(function (require) {
     var $ = require('jquery');
     var _ = require('lodash');
 
-    var ErrorHandler = Private(require('vislib/lib/_error_handler'));
-    var Tooltip = Private(require('vislib/components/tooltip/tooltip'));
+    var ErrorHandler = Private(require('components/vislib/lib/_error_handler'));
+    var Tooltip = Private(require('components/vislib/components/tooltip/tooltip'));
 
     /**
      * Appends chart titles to the visualization

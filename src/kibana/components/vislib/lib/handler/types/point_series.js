@@ -1,14 +1,14 @@
 define(function (require) {
   return function ColumnHandler(d3, Private) {
-    var injectZeros = Private(require('vislib/components/zero_injection/inject_zeros'));
-    var Handler = Private(require('vislib/lib/handler/handler'));
-    var Data = Private(require('vislib/lib/data'));
-    var Legend = Private(require('vislib/lib/legend'));
-    var XAxis = Private(require('vislib/lib/x_axis'));
-    var YAxis = Private(require('vislib/lib/y_axis'));
-    var AxisTitle = Private(require('vislib/lib/axis_title'));
-    var ChartTitle = Private(require('vislib/lib/chart_title'));
-    var Alerts = Private(require('vislib/lib/alerts'));
+    var injectZeros = Private(require('components/vislib/components/zero_injection/inject_zeros'));
+    var Handler = Private(require('components/vislib/lib/handler/handler'));
+    var Data = Private(require('components/vislib/lib/data'));
+    var Legend = Private(require('components/vislib/lib/legend'));
+    var XAxis = Private(require('components/vislib/lib/x_axis'));
+    var YAxis = Private(require('components/vislib/lib/y_axis'));
+    var AxisTitle = Private(require('components/vislib/lib/axis_title'));
+    var ChartTitle = Private(require('components/vislib/lib/chart_title'));
+    var Alerts = Private(require('components/vislib/lib/alerts'));
 
     /*
      * Create handlers for Area, Column, and Line charts which

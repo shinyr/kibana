@@ -2,15 +2,15 @@ define(function (require) {
   var _ = require('lodash');
   var $ = require('jquery');
 
-  require('notify/notify');
+  require('components/notify/notify');
 
   require('modules').get('components/setup', ['kibana', 'kibana/notify', 'kibana/config'])
   .service('kbnSetup', function (Private, Promise, Notifier, es, configFile) {
     // setup steps
-    var checkForEs = Private(require('setup/steps/check_for_es'));
-    var checkEsVersion = Private(require('setup/steps/check_es_version'));
-    var checkForKibanaIndex = Private(require('setup/steps/check_for_kibana_index'));
-    var createKibanaIndex = Private(require('setup/steps/create_kibana_index'));
+    var checkForEs = Private(require('components/setup/steps/check_for_es'));
+    var checkEsVersion = Private(require('components/setup/steps/check_es_version'));
+    var checkForKibanaIndex = Private(require('components/setup/steps/check_for_kibana_index'));
+    var createKibanaIndex = Private(require('components/setup/steps/create_kibana_index'));
 
     var notify = new Notifier({ location: 'Setup' });
 

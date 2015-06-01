@@ -1,5 +1,5 @@
 define(function (require) {
-  require('plugins/visualize/styles/main.css');
+  require('css!plugins/visualize/styles/main.css');
 
   require('plugins/visualize/editor/editor');
   require('plugins/visualize/wizard/wizard');

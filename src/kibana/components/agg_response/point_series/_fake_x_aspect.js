@@ -1,7 +1,7 @@
 define(function (require) {
   return function PointSeriesFakeXAxis(Private) {
-    var AggConfig = Private(require('vis/_agg_config'));
-    var AggType = Private(require('agg_types/_agg_type'));
+    var AggConfig = Private(require('components/vis/_agg_config'));
+    var AggType = Private(require('components/agg_types/_agg_type'));
 
     var allAgg = new AggType({
       name: 'all',

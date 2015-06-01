@@ -5,16 +5,16 @@ define(function (require) {
     var angular = require('angular');
 
     var fieldformats = Private(require('registry/field_formats'));
-    var getIds = Private(require('index_patterns/_get_ids'));
-    var mapper = Private(require('index_patterns/_mapper'));
-    var intervals = Private(require('index_patterns/_intervals'));
-    var getComputedFields = require('index_patterns/_get_computed_fields');
-    var DocSource = Private(require('courier/data_source/doc_source'));
+    var getIds = Private(require('components/index_patterns/_get_ids'));
+    var mapper = Private(require('components/index_patterns/_mapper'));
+    var intervals = Private(require('components/index_patterns/_intervals'));
+    var getComputedFields = require('components/index_patterns/_get_computed_fields');
+    var DocSource = Private(require('components/courier/data_source/doc_source'));
     var mappingSetup = Private(require('utils/mapping_setup'));
-    var FieldList = Private(require('index_patterns/_field_list'));
+    var FieldList = Private(require('components/index_patterns/_field_list'));
 
-    var flattenHit = Private(require('index_patterns/_flatten_hit'));
-    var formatHit = require('index_patterns/_format_hit');
+    var flattenHit = Private(require('components/index_patterns/_flatten_hit'));
+    var formatHit = require('components/index_patterns/_format_hit');
 
     var type = 'index-pattern';
 

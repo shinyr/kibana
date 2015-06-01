@@ -1,7 +1,7 @@
 define(function (require) {
-  require('paginated_table/paginated_table');
+  require('components/paginated_table/paginated_table');
   require('services/compile_recursive_directive');
-  require('agg_table/agg_table.css');
+  require('css!components/agg_table/agg_table.css');
 
   require('modules')
   .get('kibana')
@@ -10,7 +10,7 @@ define(function (require) {
 
     return {
       restrict: 'E',
-      template: require('agg_table/agg_table.html'),
+      template: require('text!components/agg_table/agg_table.html'),
       scope: {
         table: '=',
         perPage: '=?'

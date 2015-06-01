@@ -5,7 +5,7 @@ define(function (require) {
 
 
   function AppStateProvider(Private, $rootScope, getAppState) {
-    var State = Private(require('state_management/state'));
+    var State = Private(require('components/state_management/state'));
 
 
     _(AppState).inherits(State);

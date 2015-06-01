@@ -1,8 +1,8 @@
 define(function (require) {
   var _ = require('lodash');
-  var extractBuckets = require('agg_response/hierarchical/_extract_buckets');
+  var extractBuckets = require('components/agg_response/hierarchical/_extract_buckets');
   return function transformAggregationProvider(Private) {
-    var AggConfigResult = require('vis/_agg_config_result');
+    var AggConfigResult = require('components/vis/_agg_config_result');
     return function transformAggregation(agg, metric, aggData, parent) {
       return _.map(extractBuckets(aggData), function (bucket) {
         var aggConfigResult = new AggConfigResult(

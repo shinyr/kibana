@@ -4,9 +4,9 @@ define(function (require) {
     var $ = require('jquery');
     var errors = require('errors');
 
-    var PointSeriesChart = Private(require('vislib/visualizations/_point_series_chart'));
-    var TimeMarker = Private(require('vislib/visualizations/time_marker'));
-    require('vislib/styles/main.css');
+    var PointSeriesChart = Private(require('components/vislib/visualizations/_point_series_chart'));
+    var TimeMarker = Private(require('components/vislib/visualizations/time_marker'));
+    require('css!components/vislib/styles/main');
 
     /**
      * Line Chart Visualization

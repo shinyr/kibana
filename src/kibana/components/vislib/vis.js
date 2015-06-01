@@ -2,12 +2,12 @@ define(function (require) {
   return function VisFactory(d3, Private) {
     var _ = require('lodash');
 
-    var ResizeChecker = Private(require('vislib/lib/resize_checker'));
+    var ResizeChecker = Private(require('components/vislib/lib/resize_checker'));
     var Events = Private(require('factories/events'));
-    var handlerTypes = Private(require('vislib/lib/handler/handler_types'));
-    var chartTypes = Private(require('vislib/visualizations/vis_types'));
+    var handlerTypes = Private(require('components/vislib/lib/handler/handler_types'));
+    var chartTypes = Private(require('components/vislib/visualizations/vis_types'));
     var errors = require('errors');
-    require('vislib/styles/main.css');
+    require('css!components/vislib/styles/main.css');
 
     /**
      * Creates the visualizations.

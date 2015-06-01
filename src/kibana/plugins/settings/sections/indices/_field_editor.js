@@ -1,12 +1,12 @@
 define(function (require) {
-  require('field_editor/field_editor');
+  require('components/field_editor/field_editor');
   require('plugins/settings/sections/indices/_index_header');
 
   require('routes')
   .when('/settings/indices/:indexPatternId/field/:fieldName', { mode: 'edit' })
   .when('/settings/indices/:indexPatternId/create-field/', { mode: 'create' })
   .defaults(/settings\/indices\/[^\/]+\/(field|create-field)(\/|$)/, {
-    template: require('plugins/settings/sections/indices/_field_editor.html'),
+    template: require('text!plugins/settings/sections/indices/_field_editor.html'),
     resolve: {
       indexPattern: function ($route, courier) {
         return courier.indexPatterns.get($route.current.params.indexPatternId)
@@ -15,9 +15,9 @@ define(function (require) {
     },
     controllerAs: 'fieldSettings',
     controller: function FieldEditorPageController($route, Private, Notifier, docTitle) {
-      var Field = Private(require('index_patterns/_field'));
+      var Field = Private(require('components/index_patterns/_field'));
       var notify = new Notifier({ location: 'Field Editor' });
-      var kbnUrl = Private(require('url/url'));
+      var kbnUrl = Private(require('components/url/url'));
 
 
       this.mode = $route.current.mode;

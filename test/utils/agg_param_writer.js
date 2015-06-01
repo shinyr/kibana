@@ -1,8 +1,8 @@
 define(function (require) {
   return function AggParamWriterHelper(Private) {
     var _ = require('lodash');
-    var Vis = Private(require('vis/vis'));
-    var aggTypes = Private(require('agg_types/index'));
+    var Vis = Private(require('components/vis/vis'));
+    var aggTypes = Private(require('components/agg_types/index'));
     var visTypes = Private(require('registry/vis_types'));
     var stubbedLogstashIndexPattern = Private(require('fixtures/stubbed_logstash_index_pattern'));
 

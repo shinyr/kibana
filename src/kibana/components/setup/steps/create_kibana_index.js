@@ -3,7 +3,7 @@ define(function (require) {
     return function createKibanaIndex() {
       var notify = new Notifier({ location: 'Setup: Kibana Index Creation' });
       var complete = notify.lifecycle('kibana index creation');
-      var SetupError = Private(require('setup/_setup_error'));
+      var SetupError = Private(require('components/setup/_setup_error'));
 
       return es.indices.create({
         index: configFile.kibana_index,

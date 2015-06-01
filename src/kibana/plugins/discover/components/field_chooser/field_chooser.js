@@ -10,7 +10,7 @@ define(function (require) {
     var _ = require('lodash');
     var rison = require('utils/rison');
     var fieldCalculator = require('plugins/discover/components/field_chooser/lib/field_calculator');
-    var FieldList = Private(require('index_patterns/_field_list'));
+    var FieldList = Private(require('components/index_patterns/_field_list'));
 
     return {
       restrict: 'E',
@@ -23,7 +23,7 @@ define(function (require) {
         indexPatternList: '=',
         updateFilterInQuery: '=filter'
       },
-      template: require('plugins/discover/components/field_chooser/field_chooser.html'),
+      template: require('text!plugins/discover/components/field_chooser/field_chooser.html'),
       link: function ($scope) {
         $scope.setIndexPattern = function (indexPattern) {
           $scope.state.index = indexPattern;

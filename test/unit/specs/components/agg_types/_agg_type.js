@@ -13,14 +13,14 @@ define(function (require) {
 
     beforeEach(module('kibana'));
     beforeEach(inject(function (Private) {
-      var AggParamsPM = require('agg_types/_agg_params');
+      var AggParamsPM = require('components/agg_types/_agg_params');
       AggParams = sinon.spy(Private(AggParamsPM));
       Private.stub(AggParamsPM, AggParams);
 
-      Vis = Private(require('vis/vis'));
+      Vis = Private(require('components/vis/vis'));
       fieldFormat = Private(require('registry/field_formats'));
-      AggType = Private(require('agg_types/_agg_type'));
-      AggConfig = Private(require('vis/_agg_config'));
+      AggType = Private(require('components/agg_types/_agg_type'));
+      AggConfig = Private(require('components/vis/_agg_config'));
       indexPattern = Private(require('fixtures/stubbed_logstash_index_pattern'));
     }));
 

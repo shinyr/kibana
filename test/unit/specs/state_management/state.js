@@ -12,7 +12,7 @@ define(function (require) {
       inject(function (_$rootScope_, _$location_, Private) {
         $location = _$location_;
         $rootScope = _$rootScope_;
-        State = Private(require('state_management/state'));
+        State = Private(require('components/state_management/state'));
         Events = Private(require('factories/events'));
       });
     });

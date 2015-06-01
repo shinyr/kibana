@@ -50,7 +50,7 @@ define(function (require) {
       beforeEach(module('AreaChartFactory'));
       beforeEach(inject(function (Private) {
         vis = Private(require('vislib_fixtures/_vis_fixture'))();
-        require('vislib/styles/main.css');
+        require('css!components/vislib/styles/main');
 
         vis.on('brush', _.noop);
 

@@ -7,7 +7,7 @@ define(function (require) {
   var module = require('modules').get('kibana/global_state');
 
   module.service('globalState', function (Private, $rootScope, $location) {
-    var State = Private(require('state_management/state'));
+    var State = Private(require('components/state_management/state'));
 
     _(GlobalState).inherits(State);
     function GlobalState(defaults) {

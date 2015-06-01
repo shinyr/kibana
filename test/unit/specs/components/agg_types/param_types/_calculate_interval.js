@@ -9,10 +9,10 @@ define(function (require) {
 
     beforeEach(module('kibana'));
     beforeEach(inject(function (Private) {
-      Vis = Private(require('vis/vis'));
-      AggConfig = Private(require('vis/_agg_config'));
+      Vis = Private(require('components/vis/vis'));
+      AggConfig = Private(require('components/vis/_agg_config'));
       indexPattern = Private(require('fixtures/stubbed_logstash_index_pattern'));
-      calculateInterval = Private(require('agg_types/param_types/_calculate_interval'));
+      calculateInterval = Private(require('components/agg_types/param_types/_calculate_interval'));
     }));
 
     var testInterval = function (option, expected) {

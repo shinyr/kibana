@@ -7,7 +7,7 @@ define(function (require) {
 
   require('routes')
   .when('/settings/advanced', {
-    template: require('plugins/settings/sections/advanced/index.html')
+    template: require('text!plugins/settings/sections/advanced/index.html')
   });
 
   require('modules').get('apps/settings')
@@ -15,7 +15,7 @@ define(function (require) {
     return {
       restrict: 'E',
       link: function ($scope) {
-        var configDefaults = Private(require('config/defaults'));
+        var configDefaults = Private(require('components/config/defaults'));
         var keyCodes = {
           ESC: 27
         };

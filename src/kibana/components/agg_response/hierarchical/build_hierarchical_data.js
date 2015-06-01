@@ -1,13 +1,13 @@
 define(function (require) {
   return function buildHierarchicalDataProvider(Private, Notifier) {
     var _ = require('lodash');
-    var buildSplit = Private(require('agg_response/hierarchical/_build_split'));
-    var extractBuckets = require('agg_response/hierarchical/_extract_buckets');
-    var createRawData = require('agg_response/hierarchical/_create_raw_data');
-    var arrayToLinkedList = require('agg_response/hierarchical/_array_to_linked_list');
-    var tooltipFormatter = Private(require('agg_response/hierarchical/_hierarchical_tooltip_formatter'));
+    var buildSplit = Private(require('components/agg_response/hierarchical/_build_split'));
+    var extractBuckets = require('components/agg_response/hierarchical/_extract_buckets');
+    var createRawData = require('components/agg_response/hierarchical/_create_raw_data');
+    var arrayToLinkedList = require('components/agg_response/hierarchical/_array_to_linked_list');
+    var tooltipFormatter = Private(require('components/agg_response/hierarchical/_hierarchical_tooltip_formatter'));
 
-    var AggConfigResult = require('vis/_agg_config_result');
+    var AggConfigResult = require('components/vis/_agg_config_result');
 
     var notify = new Notifier({
       location: 'Pie chart response converter'

@@ -2,11 +2,11 @@ define(function (require) {
   return function TooltipFactory(d3, Private) {
     var _ = require('lodash');
     var $ = require('jquery');
-    var positionTooltip = require('vislib/components/tooltip/_position_tooltip');
+    var positionTooltip = require('components/vislib/components/tooltip/_position_tooltip');
 
     var allContents = [];
 
-    require('vislib/styles/main.css');
+    require('css!components/vislib/styles/main');
 
     /**
      * Add tooltip and listeners to visualization elements

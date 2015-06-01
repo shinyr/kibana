@@ -4,7 +4,7 @@ define(function (require) {
     var _ = require('lodash');
     var angular = require('angular');
 
-    var vals = Private(require('config/_vals'));
+    var vals = Private(require('components/config/_vals'));
 
     return function DelayedUpdater(doc) {
       var updater = this;

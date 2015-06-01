@@ -5,15 +5,15 @@ define(function (require) {
       var $ = require('jquery');
       var _ = require('lodash');
 
-      require('visualize/spy/_table');
-      require('visualize/spy/_req_resp_stats');
+      require('components/visualize/spy/_table');
+      require('components/visualize/spy/_req_resp_stats');
 
       var modes = Private(require('registry/spy_modes'));
       var defaultMode = modes.inOrder[0];
 
       return {
         restrict: 'E',
-        template: require('visualize/spy/_spy.html'),
+        template: require('text!components/visualize/spy/_spy.html'),
         link: function ($scope, $el) {
           var $container = $el.find('.visualize-spy-container');
           var fullPageSpy = false;

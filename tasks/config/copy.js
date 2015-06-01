@@ -74,7 +74,7 @@ module.exports = function (grunt) {
         },
         {
           expand: true,
-          cwd: '<%= nodeModules %>/ace-builds/src-noconflict/',
+          cwd: '<%= bowerComponentsDir %>/ace-builds/src-noconflict/',
           src: 'worker-json.js',
           dest: '<%= build %>/dist/kibana/src/public/'
         }

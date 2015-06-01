@@ -22,6 +22,7 @@ app.set('x-powered-by', false);
 app.use(requestLogger());
 app.use(auth());
 app.use(appHeaders());
+app.use(favicon(path.join(config.public_folder, 'styles', 'theme', 'elk.ico')));
 
 if (app.get('env') === 'development') {
   require('./dev')(app);
@@ -36,9 +37,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(compression());
-
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, '..', 'kibana')));
+app.use(express.static(config.public_folder));
+if (config.external_plugins_folder) app.use('/plugins', express.static(config.external_plugins_folder));
 
 app.use('/', routes);
 

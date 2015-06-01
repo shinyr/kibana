@@ -2,7 +2,7 @@ define(function (require) {
   return function DispatchClass(d3, Private) {
     var _ = require('lodash');
     var $ = require('jquery');
-    var Tooltip = Private(require('vislib/components/tooltip/tooltip'));
+    var Tooltip = Private(require('components/vislib/components/tooltip/tooltip'));
     var SimpleEmitter = require('utils/SimpleEmitter');
 
     /**

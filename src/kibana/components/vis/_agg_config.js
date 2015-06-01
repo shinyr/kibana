@@ -1,7 +1,5 @@
 define(function (require) {
-  require('filters/field_type');
-
-  return function AggConfigFactory(Private, $filter) {
+  return function AggConfigFactory(Private, fieldTypeFilter) {
     var _ = require('lodash');
     var fieldFormats = Private(require('registry/field_formats'));
 
@@ -147,7 +145,7 @@ define(function (require) {
 
       if (fieldParam) {
         var prevField = this.params.field;
-        var fieldOpts = $filter('fieldType')(this.vis.indexPattern.fields, fieldParam.filterFieldTypes);
+        var fieldOpts = fieldTypeFilter(this.vis.indexPattern.fields, fieldParam.filterFieldTypes);
         field = _.contains(fieldOpts, prevField) ? prevField : null;
       }
 

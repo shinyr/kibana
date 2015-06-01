@@ -20,10 +20,10 @@ define(function (require) {
 
       inject(function ($injector, Private, _vislib_) {
         vislib = _vislib_;
-        Vis = Private(require('vislib/vis'));
+        Vis = Private(require('components/vislib/vis'));
         Renderbot = Private(require('plugins/vis_types/_renderbot'));
         VislibRenderbot = Private(require('plugins/vis_types/vislib/_vislib_renderbot'));
-        normalizeChartData = Private(require('agg_response/index'));
+        normalizeChartData = Private(require('components/agg_response/index'));
       });
     }
 

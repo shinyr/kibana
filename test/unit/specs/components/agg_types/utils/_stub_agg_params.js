@@ -26,19 +26,19 @@ define(function (require) {
    */
   return function stubParamClasses(Private) {
     var BaseAggParam = Private.stub(
-      require('agg_types/param_types/base'),
+      require('components/agg_types/param_types/base'),
       ParamClassStub(null, function (config) {
         _.assign(this, config);
       })
     );
 
     Private.stub(
-      require('agg_types/param_types/field'),
+      require('components/agg_types/param_types/field'),
       ParamClassStub(BaseAggParam)
     );
 
     Private.stub(
-      require('agg_types/param_types/optioned'),
+      require('components/agg_types/param_types/optioned'),
       ParamClassStub(BaseAggParam)
     );
   };

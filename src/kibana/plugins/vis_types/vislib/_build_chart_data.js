@@ -1,7 +1,7 @@
 define(function (require) {
   return function VislibVisBuildChartData(Private) {
-    var aggResponse = Private(require('agg_response/index'));
-    var Table = Private(require('agg_response/tabify/_table'));
+    var aggResponse = Private(require('components/agg_response/index'));
+    var Table = Private(require('components/agg_response/tabify/_table'));
 
     return function (esResponse) {
       var vis = this.vis;

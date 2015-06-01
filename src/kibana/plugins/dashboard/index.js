@@ -5,17 +5,17 @@ define(function (require) {
   var ConfigTemplate = require('utils/config_template');
 
   require('directives/config');
-  require('courier/courier');
-  require('config/config');
-  require('notify/notify');
-  require('typeahead/typeahead');
-  require('clipboard/clipboard');
+  require('components/courier/courier');
+  require('components/config/config');
+  require('components/notify/notify');
+  require('components/typeahead/typeahead');
+  require('components/clipboard/clipboard');
 
 
   require('plugins/dashboard/directives/grid');
   require('plugins/dashboard/components/panel/panel');
   require('plugins/dashboard/services/saved_dashboards');
-  require('plugins/dashboard/styles/main.css');
+  require('css!plugins/dashboard/styles/main.css');
 
   var app = require('modules').get('app/dashboard', [
     'elasticsearch',
@@ -28,7 +28,7 @@ define(function (require) {
 
   require('routes')
   .when('/dashboard', {
-    template: require('plugins/dashboard/index.html'),
+    template: require('text!plugins/dashboard/index.html'),
     resolve: {
       dash: function (savedDashboards) {
         return savedDashboards.get();
@@ -36,7 +36,7 @@ define(function (require) {
     }
   })
   .when('/dashboard/:id', {
-    template: require('plugins/dashboard/index.html'),
+    template: require('text!plugins/dashboard/index.html'),
     resolve: {
       dash: function (savedDashboards, Notifier, $route, $location, courier) {
         return savedDashboards.get($route.current.params.id)
@@ -50,7 +50,7 @@ define(function (require) {
   app.directive('dashboardApp', function (Notifier, courier, AppState, timefilter, kbnUrl) {
     return {
       controller: function ($scope, $route, $routeParams, $location, configFile, Private, getAppState) {
-        var queryFilter = Private(require('filter_bar/query_filter'));
+        var queryFilter = Private(require('components/filter_bar/query_filter'));
 
         var notify = new Notifier({
           location: 'Dashboard'
@@ -84,10 +84,10 @@ define(function (require) {
         var $state = $scope.state = new AppState(stateDefaults);
 
         $scope.configTemplate = new ConfigTemplate({
-          save: require('plugins/dashboard/partials/save_dashboard.html'),
-          load: require('plugins/dashboard/partials/load_dashboard.html'),
-          share: require('plugins/dashboard/partials/share.html'),
-          pickVis: require('plugins/dashboard/partials/pick_visualization.html')
+          save: require('text!plugins/dashboard/partials/save_dashboard.html'),
+          load: require('text!plugins/dashboard/partials/load_dashboard.html'),
+          share: require('text!plugins/dashboard/partials/share.html'),
+          pickVis: require('text!plugins/dashboard/partials/pick_visualization.html')
         });
 
         $scope.refresh = _.bindKey(courier, 'fetch');
@@ -101,7 +101,7 @@ define(function (require) {
         function init() {
           updateQueryOnRootSource();
 
-          var docTitle = Private(require('doc_title/doc_title'));
+          var docTitle = Private(require('components/doc_title/doc_title'));
           if (dash.id) {
             docTitle.change(dash.title);
           }

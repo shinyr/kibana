@@ -4,7 +4,7 @@ define(function (require) {
     var $ = require('jquery');
     var errors = require('errors');
 
-    var ErrorHandler = Private(require('vislib/lib/_error_handler'));
+    var ErrorHandler = Private(require('components/vislib/lib/_error_handler'));
 
     /**
      * Appends y axis to the visualization

@@ -1,7 +1,7 @@
 define(function (require) {
   var $ = require('jquery');
   var app = require('modules').get('apps/discover');
-  var html = require('plugins/discover/components/field_chooser/discover_field.html');
+  var html = require('text!plugins/discover/components/field_chooser/discover_field.html');
   var _ = require('lodash');
 
   require('directives/css_truncate');
@@ -17,7 +17,7 @@ define(function (require) {
         var detailsElem;
         var detailScope = $scope.$new();
 
-        var detailsHtml = require('plugins/discover/components/field_chooser/lib/detail_views/string.html');
+        var detailsHtml = require('text!plugins/discover/components/field_chooser/lib/detail_views/string.html');
 
         var init = function () {
           if ($scope.field.details) {

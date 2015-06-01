@@ -1,6 +1,6 @@
 define(function (require) {
   // we need to load the css ourselves
-  require('plugins/table_vis/table_vis.css');
+  require('css!plugins/table_vis/table_vis.css');
 
   // we also need to load the controller and used by the template
   require('plugins/table_vis/table_vis_controller');
@@ -9,8 +9,8 @@ define(function (require) {
   require('plugins/table_vis/table_vis_params');
 
   // require the directives that we use as well
-  require('agg_table/agg_table');
-  require('agg_table/agg_table_group');
+  require('components/agg_table/agg_table');
+  require('components/agg_table/agg_table_group');
 
   // define the TableVisType
   return function TableVisTypeProvider(Private) {
@@ -28,7 +28,7 @@ define(function (require) {
       icon: 'fa-table',
       description: 'The data table provides a detailed breakdown, in tabular format, of the results of a composed ' +
         'aggregation. Tip, a data table is available from many other charts by clicking grey bar at the bottom of the chart.',
-      template: require('plugins/table_vis/table_vis.html'),
+      template: require('text!plugins/table_vis/table_vis.html'),
       params: {
         defaults: {
           perPage: 10,

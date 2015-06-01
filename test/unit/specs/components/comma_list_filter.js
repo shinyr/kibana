@@ -1,5 +1,5 @@
 define(function (require) {
-  require('comma_list_filter');
+  require('components/comma_list_filter');
 
   describe('Comma-List filter', function () {
 

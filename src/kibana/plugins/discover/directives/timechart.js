@@ -1,7 +1,7 @@
 define(function (require) {
   var _ = require('lodash');
   var $ = require('jquery');
-  var vislib = require('vislib/index');
+  var vislib = require('components/vislib/index');
 
   var app = require('modules').get('apps/discover');
 

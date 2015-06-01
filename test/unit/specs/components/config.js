@@ -10,7 +10,7 @@ define(function (require) {
       config = $injector.get('config');
       $scope = $injector.get('$rootScope');
       configFile = $injector.get('configFile');
-      defaults = Private(require('config/defaults'));
+      defaults = Private(require('components/config/defaults'));
     }));
 
     it('exposes the configFile', function () {

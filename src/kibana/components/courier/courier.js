@@ -4,29 +4,29 @@ define(function (require) {
 
   require('services/es');
   require('services/promises');
-  require('index_patterns/index_patterns');
+  require('components/index_patterns/index_patterns');
 
   require('modules').get('kibana/courier')
   .service('courier', function ($rootScope, Private, Promise, indexPatterns, Notifier) {
     function Courier() {
       var self = this;
 
-      var DocSource = Private(require('courier/data_source/doc_source'));
-      var SearchSource = Private(require('courier/data_source/search_source'));
+      var DocSource = Private(require('components/courier/data_source/doc_source'));
+      var SearchSource = Private(require('components/courier/data_source/search_source'));
 
-      var requestQueue = Private(require('courier/_request_queue'));
-      var errorHandlers = Private(require('courier/_error_handlers'));
+      var requestQueue = Private(require('components/courier/_request_queue'));
+      var errorHandlers = Private(require('components/courier/_error_handlers'));
 
-      var fetch = Private(require('courier/fetch/fetch'));
-      var docLooper = self.docLooper = Private(require('courier/looper/doc'));
-      var searchLooper = self.searchLooper = Private(require('courier/looper/search'));
+      var fetch = Private(require('components/courier/fetch/fetch'));
+      var docLooper = self.docLooper = Private(require('components/courier/looper/doc'));
+      var searchLooper = self.searchLooper = Private(require('components/courier/looper/search'));
 
       // expose some internal modules
-      self.setRootSearchSource = Private(require('courier/data_source/search_source')).root.set;
+      self.setRootSearchSource = Private(require('components/courier/data_source/_root_search_source')).set;
 
-      self.SavedObject = Private(require('courier/saved_object/saved_object'));
+      self.SavedObject = Private(require('components/courier/saved_object/saved_object'));
       self.indexPatterns = indexPatterns;
-      self.redirectWhenMissing = Private(require('courier/_redirect_when_missing'));
+      self.redirectWhenMissing = Private(require('components/courier/_redirect_when_missing'));
 
       self.DocSource = DocSource;
       self.SearchSource = SearchSource;

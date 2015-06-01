@@ -6,9 +6,9 @@ define(function (require) {
   .directive('visEditorAggParams', function ($compile, $parse, Private, Notifier, $filter) {
     var _ = require('lodash');
     var $ = require('jquery');
-    var aggTypes = Private(require('agg_types/index'));
-    var aggSelectHtml = require('plugins/visualize/editor/agg_select.html');
-    var advancedToggleHtml = require('plugins/visualize/editor/advanced_toggle.html');
+    var aggTypes = Private(require('components/agg_types/index'));
+    var aggSelectHtml = require('text!plugins/visualize/editor/agg_select.html');
+    var advancedToggleHtml = require('text!plugins/visualize/editor/advanced_toggle.html');
     require('filters/match_any');
     require('plugins/visualize/editor/agg_param');
 
@@ -18,7 +18,7 @@ define(function (require) {
 
     return {
       restrict: 'E',
-      template: require('plugins/visualize/editor/agg_params.html'),
+      template: require('text!plugins/visualize/editor/agg_params.html'),
       scope: true,
       link: function ($scope, $el, attr) {
         $scope.$bind('agg', attr.agg);

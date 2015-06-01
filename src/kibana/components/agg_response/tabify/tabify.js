@@ -2,9 +2,9 @@ define(function (require) {
   return function tabifyAggResponseProvider(Private, Notifier) {
     var _ = require('lodash');
 
-    var AggConfig = Private(require('vis/_agg_config'));
-    var TabbedAggResponseWriter = Private(require('agg_response/tabify/_response_writer'));
-    var Buckets = Private(require('agg_response/tabify/_buckets'));
+    var AggConfig = Private(require('components/vis/_agg_config'));
+    var TabbedAggResponseWriter = Private(require('components/agg_response/tabify/_response_writer'));
+    var Buckets = Private(require('components/agg_response/tabify/_buckets'));
     var notify = new Notifier({ location: 'agg_response/tabify'});
 
     function tabifyAggResponse(vis, esResponse, respOpts) {

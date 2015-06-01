@@ -1,6 +1,4 @@
 module.exports = function (grunt) {
-  require('babel/register');
-
   // set the config once before calling load-grunt-config
   // and once durring so that we have access to it via
   // grunt.config.get() within the config files
@@ -15,7 +13,6 @@ module.exports = function (grunt) {
     target: __dirname + '/target',  // location of the compressed build targets
     buildApp: __dirname + '/build/kibana', // build directory for the app
     configFile: __dirname + '/src/server/config/kibana.yml',
-    nodeModules: __dirname + '/node_modules',
 
     nodeVersion: '0.10.35',
     platforms: ['darwin-x64', 'linux-x64', 'linux-x86', 'windows'],
@@ -23,6 +20,7 @@ module.exports = function (grunt) {
 
     unitTestDir: __dirname + '/test/unit',
     testUtilsDir: __dirname + '/test/utils',
+    bowerComponentsDir: __dirname + '/src/kibana/bower_components',
 
     devPlugins: 'vis_debug_spy',
 

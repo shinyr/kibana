@@ -4,7 +4,7 @@ define(function (require) {
   var inflection = require('inflection');
   var rison = require('utils/rison');
   var registry = require('plugins/settings/saved_object_registry');
-  var objectViewHTML = require('plugins/settings/sections/objects/_view.html');
+  var objectViewHTML = require('text!plugins/settings/sections/objects/_view.html');
 
   require('routes')
   .when('/settings/objects/:service/:id', {
@@ -17,7 +17,7 @@ define(function (require) {
       restrict: 'E',
       controller: function ($scope, $injector, $routeParams, $location, $window, $rootScope, es, Private) {
         var notify = new Notifier({ location: 'SavedObject view' });
-        var castMappingType = Private(require('index_patterns/_cast_mapping_type'));
+        var castMappingType = Private(require('components/index_patterns/_cast_mapping_type'));
         var serviceObj = registry.get($routeParams.service);
         var service = $injector.get(serviceObj.service);
 

@@ -2,9 +2,9 @@ define(function (require) {
   return function DateHistogramAggType(timefilter, config, Private) {
     var _ = require('lodash');
     var moment = require('moment');
-    var BucketAggType = Private(require('agg_types/buckets/_bucket_agg_type'));
-    var TimeBuckets = Private(require('time_buckets/time_buckets'));
-    var createFilter = Private(require('agg_types/buckets/create_filter/date_histogram'));
+    var BucketAggType = Private(require('components/agg_types/buckets/_bucket_agg_type'));
+    var TimeBuckets = Private(require('components/time_buckets/time_buckets'));
+    var createFilter = Private(require('components/agg_types/buckets/create_filter/date_histogram'));
 
     var tzOffset = moment().format('Z');
 
@@ -21,7 +21,7 @@ define(function (require) {
     }
 
     require('filters/field_type');
-    require('validateDateInterval');
+    require('components/validateDateInterval');
 
     return new BucketAggType({
       name: 'date_histogram',
@@ -72,8 +72,8 @@ define(function (require) {
           name: 'interval',
           type: 'optioned',
           default: 'auto',
-          options: Private(require('agg_types/buckets/_interval_options')),
-          editor: require('agg_types/controls/interval.html'),
+          options: Private(require('components/agg_types/buckets/_interval_options')),
+          editor: require('text!components/agg_types/controls/interval.html'),
           onRequest: function (agg) {
             setBounds(agg, true);
           },

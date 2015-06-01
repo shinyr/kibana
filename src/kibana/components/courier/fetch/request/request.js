@@ -3,8 +3,8 @@ define(function (require) {
     var _ = require('lodash');
     var moment = require('moment');
     var errors = require('errors');
-    var requestQueue = Private(require('courier/_request_queue'));
-    var requestErrorHandler = Private(require('courier/fetch/request/_error_handler'));
+    var requestQueue = Private(require('components/courier/_request_queue'));
+    var requestErrorHandler = Private(require('components/courier/fetch/request/_error_handler'));
 
     function AbstractReq(source, defer) {
       if (!(this instanceof AbstractReq) || !this.constructor || this.constructor === AbstractReq) {

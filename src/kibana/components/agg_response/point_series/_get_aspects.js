@@ -1,7 +1,7 @@
 define(function (require) {
   return function PointSeriesGetAspects(Private) {
     var _ = require('lodash');
-    var fakeXAspect = Private(require('agg_response/point_series/_fake_x_aspect'));
+    var fakeXAspect = Private(require('components/agg_response/point_series/_fake_x_aspect'));
 
     var map = {
       segment: 'x',

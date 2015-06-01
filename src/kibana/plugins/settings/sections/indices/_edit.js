@@ -6,7 +6,7 @@ define(function (require) {
 
   require('routes')
   .when('/settings/indices/:indexPatternId', {
-    template: require('plugins/settings/sections/indices/_edit.html'),
+    template: require('text!plugins/settings/sections/indices/_edit.html'),
     resolve: {
       indexPattern: function ($route, courier) {
         return courier.indexPatterns.get($route.current.params.indexPatternId)
@@ -22,7 +22,7 @@ define(function (require) {
     var $state = $scope.state = new AppState();
     var refreshKibanaIndex = Private(require('plugins/settings/sections/indices/_refresh_kibana_index'));
 
-    $scope.kbnUrl = Private(require('url/url'));
+    $scope.kbnUrl = Private(require('components/url/url'));
     $scope.indexPattern = $route.current.locals.indexPattern;
     docTitle.change($scope.indexPattern.id);
     var otherIds = _.without($route.current.locals.indexPatternIds, $scope.indexPattern.id);

@@ -1,5 +1,5 @@
 define(function (require) {
-  var getSort = require('doc_table/lib/get_sort');
+  var getSort = require('components/doc_table/lib/get_sort');
   var indexPattern =
   describe('docTable', function () {
     describe('getSort function', function () {

@@ -2,9 +2,9 @@ define(function (require) {
   return function ZeroInjectionUtilService(Private) {
     var _ = require('lodash');
 
-    var orderXValues = Private(require('vislib/components/zero_injection/ordered_x_keys'));
-    var createZeroFilledArray = Private(require('vislib/components/zero_injection/zero_filled_array'));
-    var zeroFillDataArray = Private(require('vislib/components/zero_injection/zero_fill_data_array'));
+    var orderXValues = Private(require('components/vislib/components/zero_injection/ordered_x_keys'));
+    var createZeroFilledArray = Private(require('components/vislib/components/zero_injection/zero_filled_array'));
+    var zeroFillDataArray = Private(require('components/vislib/components/zero_injection/zero_fill_data_array'));
 
     /*
      * A Kibana data object may have multiple series with different array lengths.

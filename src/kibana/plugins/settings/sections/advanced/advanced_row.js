@@ -1,19 +1,19 @@
 define(function (require) {
   var _ = require('lodash');
-  require('elastic_textarea');
+  require('components/elastic_textarea');
 
   require('modules').get('apps/settings')
   .directive('advancedRow', function (config, Notifier, Private) {
     return {
       restrict: 'A',
       replace: true,
-      template: require('plugins/settings/sections/advanced/advanced_row.html'),
+      template: require('text!plugins/settings/sections/advanced/advanced_row.html'),
       scope: {
         conf: '=advancedRow',
         configs: '='
       },
       link: function ($scope) {
-        var configDefaults = Private(require('config/defaults'));
+        var configDefaults = Private(require('components/config/defaults'));
         var notify = new Notifier();
         var keyCodes = {
           ESC: 27

@@ -17,7 +17,7 @@ define(function (require) {
   module.service('vislib', function (Private) {
     return {
       version: '0.0.0',
-      Vis: Private(require('vislib/vis'))
+      Vis: Private(require('components/vislib/vis'))
     };
   });
 });

@@ -2,11 +2,11 @@ define(function (require) {
   require('modules')
   .get('kibana')
   .directive('visEditorAggAdd', function (Private) {
-    var AggConfig = Private(require('vis/_agg_config'));
+    var AggConfig = Private(require('components/vis/_agg_config'));
 
     return {
       restrict: 'E',
-      template: require('plugins/visualize/editor/agg_add.html'),
+      template: require('text!plugins/visualize/editor/agg_add.html'),
       controllerAs: 'add',
       controller: function ($scope) {
         var self = this;

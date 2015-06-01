@@ -10,11 +10,11 @@ define(function (require) {
      * @return {Function} Returns an Object of Visualization classes
      */
     return {
-      histogram: Private(require('vislib/visualizations/column_chart')),
-      pie: Private(require('vislib/visualizations/pie_chart')),
-      line: Private(require('vislib/visualizations/line_chart')),
-      area: Private(require('vislib/visualizations/area_chart')),
-      tile_map: Private(require('vislib/visualizations/tile_map'))
+      histogram: Private(require('components/vislib/visualizations/column_chart')),
+      pie: Private(require('components/vislib/visualizations/pie_chart')),
+      line: Private(require('components/vislib/visualizations/line_chart')),
+      area: Private(require('components/vislib/visualizations/area_chart')),
+      tile_map: Private(require('components/vislib/visualizations/tile_map'))
     };
   };
 

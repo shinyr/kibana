@@ -28,7 +28,8 @@ module.exports = function (grunt) {
       'jshint:source',
       'jscs:source',
       'maybe_start_kibana',
-      'webpack:dev:keepalive'
+      'jade',
+      'less:build'
     ];
     addTestTask(tasks);
     if (process.env.TRAVIS) tasks.unshift('esvm:dev');

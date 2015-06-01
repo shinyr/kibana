@@ -86,10 +86,10 @@ define(function (require) {
 
     beforeEach(function () {
       inject(function (d3, Private) {
-        Vis = Private(require('vislib/vis'));
-        Data = Private(require('vislib/lib/data'));
-        ColumnChart = Private(require('vislib/visualizations/column_chart'));
-        Chart = Private(require('vislib/visualizations/_chart'));
+        Vis = Private(require('components/vislib/vis'));
+        Data = Private(require('components/vislib/lib/data'));
+        ColumnChart = Private(require('components/vislib/visualizations/column_chart'));
+        Chart = Private(require('components/vislib/visualizations/_chart'));
 
         el = d3.select('body').append('div').attr('class', 'column-chart');
 

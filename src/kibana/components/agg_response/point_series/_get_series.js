@@ -1,8 +1,8 @@
 define(function (require) {
   return function PointSeriesGetSeries(Private) {
     var _ = require('lodash');
-    var getPoint = Private(require('agg_response/point_series/_get_point'));
-    var addToSiri = Private(require('agg_response/point_series/_add_to_siri'));
+    var getPoint = Private(require('components/agg_response/point_series/_get_point'));
+    var addToSiri = Private(require('components/agg_response/point_series/_add_to_siri'));
 
     return function getSeries(rows, chart) {
       var aspects = chart.aspects;

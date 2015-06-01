@@ -3,9 +3,9 @@ define(function (require) {
     var _ = require('lodash');
     var $ = require('jquery');
 
-    var Chart = Private(require('vislib/visualizations/_chart'));
+    var Chart = Private(require('components/vislib/visualizations/_chart'));
     var errors = require('errors');
-    require('vislib/styles/main.css');
+    require('css!components/vislib/styles/main');
 
     /**
      * Pie Chart Visualization

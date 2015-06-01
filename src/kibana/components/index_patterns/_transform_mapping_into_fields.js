@@ -1,7 +1,7 @@
 define(function (require) {
   return function transformMappingIntoFields(Private, configFile, config) {
     var _ = require('lodash');
-    var mapField = Private(require('index_patterns/_map_field'));
+    var mapField = Private(require('components/index_patterns/_map_field'));
 
 
     /**

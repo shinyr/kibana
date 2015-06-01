@@ -1,8 +1,8 @@
 define(function (require) {
   return function SignificantTermsAggDefinition(Private) {
     var _ = require('lodash');
-    var BucketAggType = Private(require('agg_types/buckets/_bucket_agg_type'));
-    var createFilter = Private(require('agg_types/buckets/create_filter/terms'));
+    var BucketAggType = Private(require('components/agg_types/buckets/_bucket_agg_type'));
+    var createFilter = Private(require('components/agg_types/buckets/create_filter/terms'));
 
     return new BucketAggType({
       name: 'significant_terms',
@@ -18,7 +18,7 @@ define(function (require) {
         },
         {
           name: 'size',
-          editor: require('agg_types/controls/order_and_size.html'),
+          editor: require('text!components/agg_types/controls/order_and_size.html'),
         },
         {
           name: 'exclude',

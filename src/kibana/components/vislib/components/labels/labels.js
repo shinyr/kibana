@@ -2,8 +2,8 @@ define(function (require) {
   return function LabelUtilService(Private) {
     var _ = require('lodash');
 
-    var createArr = Private(require('vislib/components/labels/data_array'));
-    var getArrOfUniqLabels = Private(require('vislib/components/labels/uniq_labels'));
+    var createArr = Private(require('components/vislib/components/labels/data_array'));
+    var getArrOfUniqLabels = Private(require('components/vislib/components/labels/uniq_labels'));
 
     /*
      * Accepts a Kibana data object and returns an array of unique labels (strings).

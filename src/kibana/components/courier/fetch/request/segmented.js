@@ -1,9 +1,9 @@
 define(function (require) {
   return function CourierSegmentedReqProvider(es, Private, Promise, Notifier, timefilter) {
     var _ = require('lodash');
-    var SearchReq = Private(require('courier/fetch/request/search'));
-    var requestQueue = Private(require('courier/_request_queue'));
-    var SegmentedHandle = Private(require('courier/fetch/request/_segmented_handle'));
+    var SearchReq = Private(require('components/courier/fetch/request/search'));
+    var requestQueue = Private(require('components/courier/_request_queue'));
+    var SegmentedHandle = Private(require('components/courier/fetch/request/_segmented_handle'));
 
     var notify = new Notifier({
       location: 'Segmented Fetch'

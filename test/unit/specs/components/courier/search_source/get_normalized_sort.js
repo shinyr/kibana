@@ -7,7 +7,7 @@ define(function (require) {
 
     beforeEach(module('kibana'));
     beforeEach(inject(function (Private) {
-      var SearchSource = Private(require('courier/data_source/search_source'));
+      var SearchSource = Private(require('components/courier/data_source/search_source'));
       source = new SearchSource();
     }));
 

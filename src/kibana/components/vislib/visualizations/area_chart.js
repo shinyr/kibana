@@ -3,10 +3,10 @@ define(function (require) {
     var _ = require('lodash');
     var $ = require('jquery');
 
-    var PointSeriesChart = Private(require('vislib/visualizations/_point_series_chart'));
-    var TimeMarker = Private(require('vislib/visualizations/time_marker'));
+    var PointSeriesChart = Private(require('components/vislib/visualizations/_point_series_chart'));
+    var TimeMarker = Private(require('components/vislib/visualizations/time_marker'));
     var errors = require('errors');
-    require('vislib/styles/main.css');
+    require('css!components/vislib/styles/main');
 
     /**
      * Area chart visualization

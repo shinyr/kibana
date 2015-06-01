@@ -1,9 +1,9 @@
 define(function (require) {
   return function _StringProvider(Private) {
     var _ = require('lodash');
-    var FieldFormat = Private(require('index_patterns/_field_format/FieldFormat'));
+    var FieldFormat = Private(require('components/index_patterns/_field_format/FieldFormat'));
 
-    require('field_format_editor/samples/samples');
+    require('components/field_format_editor/samples/samples');
 
     _(_String).inherits(FieldFormat);
     function _String(params) {
@@ -30,7 +30,7 @@ define(function (require) {
       transform: false
     };
 
-    _String.editor = require('stringify/editors/string.html');
+    _String.editor = require('text!components/stringify/editors/string.html');
 
     _String.transformOpts = [
       { id: false, name: '- none -' },

@@ -1,8 +1,8 @@
 define(function (require) {
   return function AggTypeMetricStandardDeviationProvider(Private) {
     var _ = require('lodash');
-    var MetricAggType = Private(require('agg_types/metrics/_metric_agg_type'));
-    var getResponseAggConfig = Private(require('agg_types/metrics/_get_response_agg_config'));
+    var MetricAggType = Private(require('components/agg_types/metrics/_metric_agg_type'));
+    var getResponseAggConfig = Private(require('components/agg_types/metrics/_get_response_agg_config'));
 
     var responseAggConfigProps = {
       valProp: function () {

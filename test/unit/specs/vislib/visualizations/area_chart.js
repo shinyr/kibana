@@ -48,7 +48,7 @@ define(function (require) {
       beforeEach(function () {
         inject(function (Private) {
           vis = Private(require('vislib_fixtures/_vis_fixture'))(visLibParams);
-          require('vislib/styles/main.css');
+          require('css!components/vislib/styles/main');
 
           vis.on('brush', _.noop);
 
@@ -67,7 +67,7 @@ define(function (require) {
         beforeEach(function () {
           inject(function () {
             notEnoughData = require('vislib_fixtures/mock_data/not_enough_data/_one_point');
-            require('vislib/styles/main.css');
+            require('css!components/vislib/styles/main');
 
             vis.render(notEnoughData);
           });
@@ -90,7 +90,7 @@ define(function (require) {
         beforeEach(function () {
           inject(function () {
             enoughData = require('vislib_fixtures/mock_data/date_histogram/_series');
-            require('vislib/styles/main.css');
+            require('css!components/vislib/styles/main');
 
             vis.render(enoughData);
           });

@@ -1,8 +1,8 @@
 define(function (require) {
   return function CourierFetchCallResponseHandlers(Private, Promise) {
-    var ABORTED = Private(require('courier/fetch/_req_status')).ABORTED;
-    var INCOMPLETE = Private(require('courier/fetch/_req_status')).INCOMPLETE;
-    var notify = Private(require('courier/fetch/_notifier'));
+    var ABORTED = Private(require('components/courier/fetch/_req_status')).ABORTED;
+    var INCOMPLETE = Private(require('components/courier/fetch/_req_status')).INCOMPLETE;
+    var notify = Private(require('components/courier/fetch/_notifier'));
 
     var SearchTimeout = require('errors').SearchTimeout;
     var RequestFailure = require('errors').RequestFailure;

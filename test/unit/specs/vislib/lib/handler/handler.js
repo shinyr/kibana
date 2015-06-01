@@ -34,9 +34,9 @@ define(function (require) {
 
       beforeEach(function () {
         inject(function (Private) {
-          Handler = Private(require('vislib/lib/handler/handler'));
+          Handler = Private(require('components/vislib/lib/handler/handler'));
           vis = Private(require('vislib_fixtures/_vis_fixture'))();
-          require('vislib/styles/main.css');
+          require('css!components/vislib/styles/main');
 
           events = [
             'click',

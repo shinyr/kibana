@@ -1,8 +1,8 @@
 define(function (require) {
   var _ = require('lodash');
   var fixtures = require('fixtures/fake_hierarchical_data');
-  var createRawData = require('agg_response/hierarchical/_create_raw_data');
-  var arrayToLinkedList = require('agg_response/hierarchical/_array_to_linked_list');
+  var createRawData = require('components/agg_response/hierarchical/_create_raw_data');
+  var arrayToLinkedList = require('components/agg_response/hierarchical/_array_to_linked_list');
 
   var AggConfigs;
   var Vis;
@@ -15,8 +15,8 @@ define(function (require) {
       beforeEach(module('kibana'));
 
       beforeEach(inject(function (Private) {
-        Vis = Private(require('vis/vis'));
-        AggConfigs = Private(require('vis/_agg_configs'));
+        Vis = Private(require('components/vis/vis'));
+        AggConfigs = Private(require('components/vis/_agg_configs'));
         indexPattern = Private(require('fixtures/stubbed_logstash_index_pattern'));
       }));
 

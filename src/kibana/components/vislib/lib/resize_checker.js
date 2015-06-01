@@ -4,7 +4,7 @@ define(function (require) {
     var _ = require('lodash');
 
     var EventEmitter = Private(require('factories/events'));
-    var reflowWatcher = Private(require('reflow_watcher'));
+    var reflowWatcher = Private(require('components/reflow_watcher'));
     var sequencer = require('utils/sequencer');
 
     var SCHEDULE = ResizeChecker.SCHEDULE = sequencer.createEaseIn(

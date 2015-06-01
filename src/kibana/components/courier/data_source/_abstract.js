@@ -3,9 +3,9 @@ define(function (require) {
   var angular = require('angular');
 
   return function SourceAbstractFactory(Private, Promise, PromiseEmitter) {
-    var requestQueue = Private(require('courier/_request_queue'));
-    var errorHandlers = Private(require('courier/_error_handlers'));
-    var courierFetch = Private(require('courier/fetch/fetch'));
+    var requestQueue = Private(require('components/courier/_request_queue'));
+    var errorHandlers = Private(require('components/courier/_error_handlers'));
+    var courierFetch = Private(require('components/courier/fetch/fetch'));
 
     function SourceAbstract(initialState) {
       var self = this;
@@ -255,7 +255,7 @@ define(function (require) {
       .then(function () {
         if (type === 'search') {
           // This is down here to prevent the circular dependency
-          var decorateQuery = Private(require('courier/data_source/_decorate_query'));
+          var decorateQuery = Private(require('components/courier/data_source/_decorate_query'));
 
           flatState.body = flatState.body || {};
 

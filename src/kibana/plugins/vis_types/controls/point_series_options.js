@@ -7,7 +7,7 @@ define(function (require) {
   module.directive('pointSeriesOptions', function ($parse, $compile) {
     return {
       restrict: 'E',
-      template: require('plugins/vis_types/controls/point_series_options.html'),
+      template: require('text!plugins/vis_types/controls/point_series_options.html'),
       replace: true
     };
   });

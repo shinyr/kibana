@@ -1,17 +1,17 @@
 define(function (require) {
   var _ = require('lodash');
   var module = require('modules').get('kibana');
-  var template = require('filter_bar/filter_bar.html');
+  var template = require('text!components/filter_bar/filter_bar.html');
   var moment = require('moment');
 
   module.directive('filterBar', function (Private, Promise, getAppState) {
-    var mapAndFlattenFilters = Private(require('filter_bar/lib/mapAndFlattenFilters'));
-    var mapFlattenAndWrapFilters = Private(require('filter_bar/lib/mapFlattenAndWrapFilters'));
-    var extractTimeFilter = Private(require('filter_bar/lib/extractTimeFilter'));
-    var filterOutTimeBasedFilter = Private(require('filter_bar/lib/filterOutTimeBasedFilter'));
-    var filterAppliedAndUnwrap = require('filter_bar/lib/filterAppliedAndUnwrap');
-    var changeTimeFilter = Private(require('filter_bar/lib/changeTimeFilter'));
-    var queryFilter = Private(require('filter_bar/query_filter'));
+    var mapAndFlattenFilters = Private(require('components/filter_bar/lib/mapAndFlattenFilters'));
+    var mapFlattenAndWrapFilters = Private(require('components/filter_bar/lib/mapFlattenAndWrapFilters'));
+    var extractTimeFilter = Private(require('components/filter_bar/lib/extractTimeFilter'));
+    var filterOutTimeBasedFilter = Private(require('components/filter_bar/lib/filterOutTimeBasedFilter'));
+    var filterAppliedAndUnwrap = require('components/filter_bar/lib/filterAppliedAndUnwrap');
+    var changeTimeFilter = Private(require('components/filter_bar/lib/changeTimeFilter'));
+    var queryFilter = Private(require('components/filter_bar/query_filter'));
 
     return {
       restrict: 'E',

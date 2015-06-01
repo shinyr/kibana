@@ -3,8 +3,8 @@ define(function (require) {
     var _ = require('lodash');
     var moment = require('moment');
     var angular = require('angular');
-    var BucketAggType = Private(require('agg_types/buckets/_bucket_agg_type'));
-    var createFilter = Private(require('agg_types/buckets/create_filter/range'));
+    var BucketAggType = Private(require('components/agg_types/buckets/_bucket_agg_type'));
+    var createFilter = Private(require('components/agg_types/buckets/create_filter/range'));
 
     return new BucketAggType({
       name: 'range',
@@ -24,7 +24,7 @@ define(function (require) {
             { from: 0, to: 1000 },
             { from: 1000, to: 2000 }
           ],
-          editor: require('agg_types/controls/ranges.html'),
+          editor: require('text!components/agg_types/controls/ranges.html'),
           write: function (aggConfig, output) {
             output.params.ranges = aggConfig.params.ranges;
             output.params.keyed = true;

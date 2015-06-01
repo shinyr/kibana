@@ -29,7 +29,7 @@ define(function (require) {
     module('TileMapFactory');
     inject(function (Private) {
       vis = Private(require('vislib_fixtures/_vis_fixture'))(visLibParams);
-      require('vislib/styles/main.css');
+      require('css!components/vislib/styles/main');
       vis.render(data);
     });
 

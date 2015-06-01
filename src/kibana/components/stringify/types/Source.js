@@ -1,9 +1,9 @@
 define(function (require) {
   return function _SourceProvider(Private, shortDotsFilter) {
     var _ = require('lodash');
-    var FieldFormat = Private(require('index_patterns/_field_format/FieldFormat'));
+    var FieldFormat = Private(require('components/index_patterns/_field_format/FieldFormat'));
     var noWhiteSpace = require('utils/no_white_space');
-    var template = _.template(noWhiteSpace(require('stringify/types/_source.html')));
+    var template = _.template(noWhiteSpace(require('text!components/stringify/types/_source.html')));
     var angular = require('angular');
 
     _(Source).inherits(FieldFormat);

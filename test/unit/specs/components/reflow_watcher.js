@@ -26,7 +26,7 @@ define(function (require) {
 
       // stub jQuery's $.on method while creating the reflowWatcher
       $onStub = sinon.stub($.fn, 'on');
-      reflowWatcher = Private(require('reflow_watcher'));
+      reflowWatcher = Private(require('components/reflow_watcher'));
       $onStub.restore();
 
       // setup the reflowWatchers $http watcher

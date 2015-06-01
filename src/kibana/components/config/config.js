@@ -3,7 +3,7 @@ define(function (require) {
     'kibana/notify'
   ]);
 
-  var configFile = window.KIBANA_CONFIG;
+  var configFile = JSON.parse(require('text!config'));
   configFile.elasticsearch = (function () {
     var a = document.createElement('a');
     a.href = 'elasticsearch';
@@ -19,9 +19,9 @@ define(function (require) {
 
     var angular = require('angular');
     var _ = require('lodash');
-    var defaults = Private(require('config/defaults'));
-    var DelayedUpdater = Private(require('config/_delayed_updater'));
-    var vals = Private(require('config/_vals'));
+    var defaults = Private(require('components/config/defaults'));
+    var DelayedUpdater = Private(require('components/config/_delayed_updater'));
+    var vals = Private(require('components/config/_vals'));
 
     var notify = new Notifier({
       location: 'Config'
@@ -31,7 +31,7 @@ define(function (require) {
     // update once it is requested by calling #set() or #clear().
     var updater;
 
-    var DocSource = Private(require('courier/data_source/doc_source'));
+    var DocSource = Private(require('components/courier/data_source/doc_source'));
     var doc = (new DocSource())
       .index(configFile.kibana_index)
       .type('config')

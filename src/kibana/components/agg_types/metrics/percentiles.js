@@ -2,14 +2,14 @@ define(function (require) {
   return function AggTypeMetricPercentilesProvider(Private) {
     var _ = require('lodash');
 
-    var MetricAggType = Private(require('agg_types/metrics/_metric_agg_type'));
-    var getResponseAggConfig = Private(require('agg_types/metrics/_get_response_agg_config'));
+    var MetricAggType = Private(require('components/agg_types/metrics/_metric_agg_type'));
+    var getResponseAggConfig = Private(require('components/agg_types/metrics/_get_response_agg_config'));
     var ordinalSuffix = require('utils/ordinal_suffix');
     var fieldFormats = Private(require('registry/field_formats'));
 
-    var percentsEditor = require('agg_types/controls/percentiles.html');
+    var percentsEditor = require('text!components/agg_types/controls/percentiles.html');
     // required by the percentiles editor
-    require('number_list/number_list');
+    require('components/number_list/number_list');
 
     var valueProps = {
       makeLabel: function () {

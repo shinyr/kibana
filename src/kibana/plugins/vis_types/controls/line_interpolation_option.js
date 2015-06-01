@@ -6,7 +6,7 @@ define(function (require) {
   module.directive('lineInterpolationOption', function ($parse, $compile) {
     return {
       restrict: 'E',
-      template: require('plugins/vis_types/controls/line_interpolation_option.html'),
+      template: require('text!plugins/vis_types/controls/line_interpolation_option.html'),
       replace: true
     };
   });

@@ -1,5 +1,5 @@
 define(function (require) {
-  var html = require('timepicker/timepicker.html');
+  var html = require('text!components/timepicker/timepicker.html');
   var module = require('modules').get('components/timepicker');
   var _ = require('lodash');
   var datemath = require('utils/datemath');
@@ -7,9 +7,9 @@ define(function (require) {
 
   require('directives/input_datetime');
   require('directives/inequality');
-  require('timepicker/quick_ranges');
-  require('timepicker/refresh_intervals');
-  require('timepicker/time_units');
+  require('components/timepicker/quick_ranges');
+  require('components/timepicker/refresh_intervals');
+  require('components/timepicker/time_units');
 
   module.directive('kbnTimepicker', function (quickRanges, timeUnits, refreshIntervals) {
     return {

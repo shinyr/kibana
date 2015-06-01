@@ -11,7 +11,7 @@ define(function (require) {
       globalState.save();
     });
 
-    var timepickerHtml = require('plugins/kibana/_timepicker.html');
+    var timepickerHtml = require('text!plugins/kibana/_timepicker.html');
     $scope.toggleTimepicker = function (tab) {
       tab = tab || timefilter.timepickerActiveTab || 'filter';
 

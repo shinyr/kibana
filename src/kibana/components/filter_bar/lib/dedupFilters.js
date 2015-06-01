@@ -1,7 +1,7 @@
 define(function (require) {
   var _ = require('lodash');
   var angular = require('angular');
-  var compareFilters = require('filter_bar/lib/compareFilters');
+  var compareFilters = require('components/filter_bar/lib/compareFilters');
 
   /**
    * Combine 2 filter collections, removing duplicates

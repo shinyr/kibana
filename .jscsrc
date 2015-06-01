@@ -1,5 +1,5 @@
 {
-  "fileExtensions": [".js"],
+  "fileExtensions": [".js", ".jsx"],
   "esprima": "esprima-fb",
 
   "maximumLineLength": {

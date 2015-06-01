@@ -1,10 +1,10 @@
 define(function (require) {
   return function LegendFactory(d3) {
     var _ = require('lodash');
-    var legendHeaderTemplate = _.template(require('vislib/partials/legend_header.html'));
-    var dataLabel = require('vislib/lib/_data_label');
+    var legendHeaderTemplate = _.template(require('text!components/vislib/partials/legend_header.html'));
+    var dataLabel = require('components/vislib/lib/_data_label');
 
-    require('vislib/styles/main.css');
+    require('css!components/vislib/styles/main');
 
     /**
      * Appends legend to the visualization

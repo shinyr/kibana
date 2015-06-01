@@ -3,7 +3,7 @@ define(function (require) {
   var _ = require('lodash');
   var $ = require('jquery');
 
-  require('filter_bar/filter_bar');
+  require('components/filter_bar/filter_bar');
   var MockState = require('fixtures/mock_state');
 
   describe('Filter Bar Directive', function () {
@@ -36,9 +36,9 @@ define(function (require) {
         $compile = _$compile_;
         $timeout = _$timeout_;
         Promise = $injector.get('Promise');
-        mapFilter = Private(require('filter_bar/lib/mapFilter'));
+        mapFilter = Private(require('components/filter_bar/lib/mapFilter'));
 
-        var queryFilter = Private(require('filter_bar/query_filter'));
+        var queryFilter = Private(require('components/filter_bar/query_filter'));
         queryFilter.getFilters = function () {
           return appState.filters;
         };

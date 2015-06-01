@@ -3,8 +3,8 @@ define(function (require) {
   .get('kibana/directive')
   .directive('visualize', function (Notifier, SavedVis, indexPatterns, Private) {
 
-    require('visualize/spy/spy');
-    require('visualize/visualize.css');
+    require('components/visualize/spy/spy');
+    require('css!components/visualize/visualize.css');
     var $ = require('jquery');
     var _ = require('lodash');
     var visTypes = Private(require('registry/vis_types'));
@@ -21,7 +21,7 @@ define(function (require) {
         esResp: '=?',
         searchSource: '=?'
       },
-      template: require('visualize/visualize.html'),
+      template: require('text!components/visualize/visualize.html'),
       link: function ($scope, $el, attr) {
         var chart; // set in "vis" watcher
         var minVisChartHeight = 180;

@@ -12,7 +12,7 @@ define(function (require) {
       });
 
       beforeEach(inject(function (Private, _$rootScope_) {
-        mapRange = Private(require('filter_bar/lib/mapRange'));
+        mapRange = Private(require('components/filter_bar/lib/mapRange'));
         $rootScope = _$rootScope_;
       }));
 

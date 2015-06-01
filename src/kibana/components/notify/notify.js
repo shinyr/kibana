@@ -3,11 +3,11 @@ define(function (require) {
   var $ = require('jquery');
   var modules = require('modules');
   var module = modules.get('kibana/notify');
-  var errors = require('notify/_errors');
-  var Notifier = require('notify/_notifier');
+  var errors = require('components/notify/_errors');
+  var Notifier = require('components/notify/_notifier');
   var rootNotifier = new Notifier();
 
-  require('notify/directives');
+  require('components/notify/directives');
 
   module.factory('createNotifier', function () {
     return function (opts) {
@@ -34,6 +34,13 @@ define(function (require) {
   //       rootNotifier.fatal(exception, cause);
   //     };
   //   });
+
+  /**
+   * Global Require.js exception handler
+   */
+  window.requirejs.onError = function (err) {
+    rootNotifier.fatal(new errors.ScriptLoadFailure(err));
+  };
 
   window.onerror = function (err, url, line) {
     rootNotifier.fatal(new Error(err + ' (' + url + ':' + line + ')'));

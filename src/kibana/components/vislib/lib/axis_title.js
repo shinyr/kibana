@@ -3,7 +3,7 @@ define(function (require) {
     var $ = require('jquery');
     var _ = require('lodash');
 
-    var ErrorHandler = Private(require('vislib/lib/_error_handler'));
+    var ErrorHandler = Private(require('components/vislib/lib/_error_handler'));
 
     /**
      * Appends axis title(s) to the visualization

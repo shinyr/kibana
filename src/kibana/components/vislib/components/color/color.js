@@ -2,7 +2,7 @@ define(function (require) {
   return function ColorUtilService(Private) {
     var _ = require('lodash');
 
-    var createColorPalette = Private(require('vislib/components/color/color_palette'));
+    var createColorPalette = Private(require('components/vislib/components/color/color_palette'));
 
     /*
      * Accepts an array of strings or numbers that are used to create a

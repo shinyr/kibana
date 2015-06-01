@@ -4,7 +4,7 @@ define(function (require) {
     var _ = require('lodash');
     var simulateKeys = require('test_utils/simulate_keys');
 
-    require('number_list/number_list');
+    require('components/number_list/number_list');
 
     var $el;
     var $scope;

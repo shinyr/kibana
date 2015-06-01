@@ -3,14 +3,12 @@ define(function (require) {
     var _ = require('lodash');
     var $ = require('jquery');
     var L = require('leaflet');
-    var Chart = Private(require('vislib/visualizations/_chart'));
-
-    require('leaflet.heat');
+    require('leaflet-heat');
     require('leaflet-draw');
-    require('leaflet/dist/leaflet.css');
-    require('leaflet-draw/dist/leaflet.draw.css');
-    require('vislib/styles/main.css');
 
+    var Chart = Private(require('components/vislib/visualizations/_chart'));
+
+    require('css!components/vislib/styles/main');
 
     var defaultMapCenter = [15, 5];
     var defaultMapZoom = 2;

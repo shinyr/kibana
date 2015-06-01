@@ -1,7 +1,7 @@
 define(function (require) {
   return function FieldFormatClassProvider(config, $rootScope, Private) {
     var _ = require('lodash');
-    var contentTypes = Private(require('index_patterns/_field_format/contentTypes'));
+    var contentTypes = Private(require('components/index_patterns/_field_format/contentTypes'));
 
     function FieldFormat(params) {
       var self = this;

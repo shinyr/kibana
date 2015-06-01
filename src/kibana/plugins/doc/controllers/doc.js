@@ -2,10 +2,10 @@ define(function (require) {
   var _ = require('lodash');
   var angular = require('angular');
 
-  require('notify/notify');
-  require('courier/courier');
-  require('doc_viewer/doc_viewer');
-  require('index_patterns/index_patterns');
+  require('components/notify/notify');
+  require('components/courier/courier');
+  require('components/doc_viewer/doc_viewer');
+  require('components/index_patterns/index_patterns');
 
   var app = require('modules').get('apps/doc', [
     'kibana/notify',
@@ -13,7 +13,7 @@ define(function (require) {
     'kibana/index_patterns'
   ]);
 
-  var html = require('plugins/doc/index.html');
+  var html = require('text!plugins/doc/index.html');
 
   var resolveIndexPattern = {
     indexPattern: function (courier, savedSearches, $route) {

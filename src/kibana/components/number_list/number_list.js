@@ -2,13 +2,13 @@ define(function (require) {
   var _ = require('lodash');
   var parseRange = require('utils/range');
 
-  require('number_list/number_list_input');
+  require('components/number_list/number_list_input');
   require('modules')
   .get('kibana')
   .directive('kbnNumberList', function () {
     return {
       restrict: 'E',
-      template: require('number_list/number_list.html'),
+      template: require('text!components/number_list/number_list.html'),
       controllerAs: 'numberListCntr',
       require: 'ngModel',
       controller: function ($scope, $attrs, $parse) {

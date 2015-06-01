@@ -2,13 +2,13 @@ define(function (require) {
   return function AggTypeMetricPercentileRanksProvider(Private) {
     var _ = require('lodash');
 
-    var MetricAggType = Private(require('agg_types/metrics/_metric_agg_type'));
-    var getResponseAggConfig = Private(require('agg_types/metrics/_get_response_agg_config'));
+    var MetricAggType = Private(require('components/agg_types/metrics/_metric_agg_type'));
+    var getResponseAggConfig = Private(require('components/agg_types/metrics/_get_response_agg_config'));
     var fieldFormats = Private(require('registry/field_formats'));
 
-    var valuesEditor = require('agg_types/controls/percentile_ranks.html');
+    var valuesEditor = require('text!components/agg_types/controls/percentile_ranks.html');
     // required by the values editor
-    require('number_list/number_list');
+    require('components/number_list/number_list');
 
     var valueProps = {
       makeLabel: function () {

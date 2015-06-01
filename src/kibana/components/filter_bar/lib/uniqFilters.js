@@ -1,6 +1,6 @@
 define(function (require) {
   var _ = require('lodash');
-  var dedupFilters = require('filter_bar/lib/dedupFilters');
+  var dedupFilters = require('components/filter_bar/lib/dedupFilters');
 
   /**
    * Remove duplicate filters from an array of filters

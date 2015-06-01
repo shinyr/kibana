@@ -13,7 +13,7 @@ define(function (require) {
       });
 
       beforeEach(inject(function (Private, _$rootScope_) {
-        mapFlattenAndWrapFilters = Private(require('filter_bar/lib/mapFlattenAndWrapFilters'));
+        mapFlattenAndWrapFilters = Private(require('components/filter_bar/lib/mapFlattenAndWrapFilters'));
         $rootScope = _$rootScope_;
       }));
 

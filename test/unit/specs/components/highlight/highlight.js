@@ -1,14 +1,14 @@
 define(function (require) {
   describe('Highlight', function () {
     var angular = require('angular');
-    require('highlight/highlight');
+    require('components/highlight/highlight');
 
     var filter, tags;
 
     beforeEach(module('kibana'));
-    beforeEach(inject(function (Private) {
-      filter = Private(require('highlight/highlight'));
-      tags = Private(require('highlight/highlight_tags'));
+    beforeEach(inject(function (highlightFilter, highlightTags) {
+      filter = highlightFilter;
+      tags = highlightTags;
     }));
 
     var text = '' +

@@ -1,19 +1,19 @@
 define(function (require) {
 
-  require('field_format_editor/field_format_editor');
+  require('components/field_format_editor/field_format_editor');
 
   require('modules')
   .get('kibana')
   .directive('fieldEditor', function (Private, $sce) {
     var _ = require('lodash');
     var fieldFormats = Private(require('registry/field_formats'));
-    var Field = Private(require('index_patterns/_field'));
-    var scriptingInfo = $sce.trustAsHtml(require('field_editor/scripting_info.html'));
-    var scriptingWarning = $sce.trustAsHtml(require('field_editor/scripting_warning.html'));
+    var Field = Private(require('components/index_patterns/_field'));
+    var scriptingInfo = $sce.trustAsHtml(require('text!components/field_editor/scripting_info.html'));
+    var scriptingWarning = $sce.trustAsHtml(require('text!components/field_editor/scripting_warning.html'));
 
     return {
       restrict: 'E',
-      template: require('field_editor/field_editor.html'),
+      template: require('text!components/field_editor/field_editor.html'),
       scope: {
         getIndexPattern: '&indexPattern',
         getField: '&field'
