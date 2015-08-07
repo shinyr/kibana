@@ -6,8 +6,6 @@ define(function (require) {
   // Provides a tiny subset of the excelent API from
   // bluebird, reimplemented using the $q service
   module.service('Promise', function ($q, $timeout) {
-    'use strict';
-
     function Promise(fn) {
       if (typeof this === 'undefined') throw new Error('Promise constructor must be called with "new"');
 
@@ -51,6 +49,14 @@ define(function (require) {
       return Promise.all(arr.map(function (i, el, list) {
         return Promise.try(fn, [i, el, list]);
       }));
+    };
+    Promise.each = function (arr, fn) {
+      let queue = arr.slice(0);
+      let i = 0;
+      return (function next() {
+        if (!queue.length) return arr;
+        return Promise.try(fn, [arr.shift(), i++]).then(next);
+      }());
     };
     Promise.is = function (obj) {
       // $q doesn't create instances of any constructor, promises are just objects with a then function

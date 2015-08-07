@@ -1,4 +1,10 @@
-  define(function (require) {
+define(function (require) {
+
+  require('ui/routes')
+  .addSetupWork(function (timefilter) {
+    return timefilter.init();
+  });
+
   require('ui/modules')
   .get('kibana')
   .service('timefilter', function (Private, globalState, $rootScope, config) {
