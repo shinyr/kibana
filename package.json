@@ -36,7 +36,8 @@
     "test": "grunt test",
     "start": "node ./src/server/cli/index.js --dev",
     "precommit": "grunt lintStagedFiles",
-    "karma": "karma start"
+    "karma": "karma start",
+    "esvm": "grunt esvm:dev:keepalive"
   },
   "repository": {
     "type": "git",
