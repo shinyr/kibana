@@ -54,7 +54,9 @@ define(function (require) {
           });
         });
       },
-      savedSearch: function (courier, savedSearches, $route) {
+      savedSearch: function (Private, courier, $route) {
+        let { searches: savedSearches } = Private(require('ui/registry/saved_object_types')).byId;
+
         return savedSearches.get($route.current.params.id)
         .catch(courier.redirectWhenMissing({
           'search': '/discover',

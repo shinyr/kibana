@@ -1,47 +1,38 @@
 define(function (require) {
-  var module = require('ui/modules').get('app/dashboard');
-  var _ = require('lodash');
-  // bring in the factory
-  require('plugins/kibana/dashboard/services/_saved_dashboard');
+  return function SavedSearchesProvider(Private, Promise, kbnIndex, es, kbnUrl) {
+    var _ = require('lodash');
 
+    var Notifier = require('ui/notify/Notifier');
+    var SavedSearch = Private(require('./SavedSearch'));
 
-  // Register this service with the saved object registry so it can be
-  // edited by the object editor.
-  require('plugins/kibana/settings/saved_object_registry').register({
-    service: 'savedDashboards',
-    title: 'dashboards'
-  });
+    var notify = new Notifier({
+      location: 'Saved Searches'
+    });
 
-  // This is the only thing that gets injected into controllers
-  module.service('savedDashboards', function (Promise, SavedDashboard, kbnIndex, es, kbnUrl) {
-    this.type = SavedDashboard.type;
-    this.Class = SavedDashboard;
-
+    this.id = 'searches';
+    this.type = SavedSearch.type;
+    this.Class = SavedSearch;
 
     this.loaderProperties = {
-      name: 'dashboards',
-      noun: 'Dashboard',
-      nouns: 'dashboards'
+      name: this.id,
+      noun: 'Saved Search',
+      nouns: 'saved searches'
     };
 
-    // Returns a single dashboard by ID, should be the name of the dashboard
     this.get = function (id) {
-
-      // Returns a promise that contains a dashboard which is a subclass of docSource
-      return (new SavedDashboard(id)).init();
+      return (new SavedSearch(id)).init();
     };
 
     this.urlFor = function (id) {
-      return kbnUrl.eval('#/dashboard/{{id}}', {id: id});
+      return kbnUrl.eval('#/discover/{{id}}', {id: id});
     };
 
     this.delete = function (ids) {
       ids = !_.isArray(ids) ? [ids] : ids;
       return Promise.map(ids, function (id) {
-        return (new SavedDashboard(id)).delete();
+        return (new SavedSearch(id)).delete();
       });
     };
-
 
     this.find = function (searchString) {
       var self = this;
@@ -62,7 +53,7 @@ define(function (require) {
 
       return es.search({
         index: kbnIndex,
-        type: 'dashboard',
+        type: 'search',
         body: body,
         size: 100
       })
@@ -78,5 +69,5 @@ define(function (require) {
         };
       });
     };
-  });
+  };
 });

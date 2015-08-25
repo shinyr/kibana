@@ -1,8 +1,8 @@
 define(function (require) {
-  require('ui/modules')
-  .get('app/visualize')
-  .factory('SavedVis', function (config, $injector, courier, Promise, savedSearches, Private, Notifier) {
+  return function SavedVisProvider(courier, Promise, Private) {
     var _ = require('lodash');
+
+    var Notifier = require('ui/notify/Notifier');
     var Vis = Private(require('ui/Vis'));
 
     var notify = new Notifier({
@@ -86,6 +86,8 @@ define(function (require) {
       }
 
       if (linkedSearch) {
+        let { searches: savedSearches } = Private(require('ui/registry/saved_object_types')).byId;
+
         return savedSearches.get(self.savedSearchId)
         .then(function (savedSearch) {
           self.savedSearch = savedSearch;
@@ -117,5 +119,5 @@ define(function (require) {
     };
 
     return SavedVis;
-  });
+  };
 });

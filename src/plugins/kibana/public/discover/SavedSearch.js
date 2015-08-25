@@ -1,14 +1,7 @@
 define(function (require) {
-  var _ = require('lodash');
+  return function SavedSearchProvider(courier) {
+    var _ = require('lodash');
 
-  require('ui/notify');
-
-  var module = require('ui/modules').get('discover/saved_searches', [
-    'kibana/notify',
-    'kibana/courier'
-  ]);
-
-  module.factory('SavedSearch', function (courier) {
     _.class(SavedSearch).inherits(courier.SavedObject);
     function SavedSearch(id) {
       courier.SavedObject.call(this, {
@@ -42,5 +35,5 @@ define(function (require) {
     SavedSearch.searchSource = true;
 
     return SavedSearch;
-  });
+  };
 });

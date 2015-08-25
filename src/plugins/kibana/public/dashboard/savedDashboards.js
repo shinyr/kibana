@@ -1,50 +1,37 @@
 define(function (require) {
-  var _ = require('lodash');
+  return function SavedDashboardsProvider(Private, Promise, kbnIndex, es, kbnUrl) {
+    var _ = require('lodash');
 
-  require('plugins/kibana/discover/saved_searches/_saved_search');
-  require('ui/notify');
+    var SavedDashboard = Private(require('./SavedDashboard'));
 
-  var module = require('ui/modules').get('discover/saved_searches', [
-    'kibana/notify'
-  ]);
-
-  // Register this service with the saved object registry so it can be
-  // edited by the object editor.
-  require('plugins/kibana/settings/saved_object_registry').register({
-    service: 'savedSearches',
-    title: 'searches'
-  });
-
-  module.service('savedSearches', function (Promise, config, kbnIndex, es, createNotifier, SavedSearch, kbnUrl) {
-
-
-    var notify = createNotifier({
-      location: 'Saved Searches'
-    });
-
-    this.type = SavedSearch.type;
-    this.Class = SavedSearch;
+    this.id = 'dashboards';
+    this.type = SavedDashboard.type;
+    this.Class = SavedDashboard;
 
     this.loaderProperties = {
-      name: 'searches',
-      noun: 'Saved Search',
-      nouns: 'saved searches'
+      name: this.id,
+      noun: 'Dashboard',
+      nouns: 'dashboards'
     };
 
+    // Returns a single dashboard by ID, should be the name of the dashboard
     this.get = function (id) {
-      return (new SavedSearch(id)).init();
+
+      // Returns a promise that contains a dashboard which is a subclass of docSource
+      return (new SavedDashboard(id)).init();
     };
 
     this.urlFor = function (id) {
-      return kbnUrl.eval('#/discover/{{id}}', {id: id});
+      return kbnUrl.eval('#/dashboard/{{id}}', {id: id});
     };
 
     this.delete = function (ids) {
       ids = !_.isArray(ids) ? [ids] : ids;
       return Promise.map(ids, function (id) {
-        return (new SavedSearch(id)).delete();
+        return (new SavedDashboard(id)).delete();
       });
     };
+
 
     this.find = function (searchString) {
       var self = this;
@@ -65,7 +52,7 @@ define(function (require) {
 
       return es.search({
         index: kbnIndex,
-        type: 'search',
+        type: 'dashboard',
         body: body,
         size: 100
       })
@@ -81,5 +68,5 @@ define(function (require) {
         };
       });
     };
-  });
+  };
 });

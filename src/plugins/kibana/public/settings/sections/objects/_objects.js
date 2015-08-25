@@ -2,7 +2,6 @@ define(function (require) {
   var _ = require('lodash');
   var angular = require('angular');
   var saveAs = require('@spalger/filesaver').saveAs;
-  var registry = require('plugins/kibana/settings/saved_object_registry');
   var objectIndexHTML = require('plugins/kibana/settings/sections/objects/_objects.html');
 
   require('ui/directives/file_upload');
@@ -16,39 +15,44 @@ define(function (require) {
   .directive('kbnSettingsObjects', function (kbnIndex, Notifier, Private, kbnUrl, Promise) {
     return {
       restrict: 'E',
-      controller: function ($scope, $injector, $q, AppState, es) {
+      controller: function ($scope, $injector, AppState, es) {
+        var savedObjectTypes = Private(require('ui/registry/saved_object_types'));
         var notify = new Notifier({ location: 'Saved Objects' });
 
         var $state = $scope.state = new AppState();
         $scope.currentTab = null;
         $scope.selectedItems = [];
 
+        var watchForTabChange = _.once(function () {
+          $scope.$watch('state.tab', function (tab) {
+            if (!tab) $scope.changeTab($scope.services[0]);
+          });
+        });
+
         var getData = function (filter) {
-          var services = registry.all().map(function (obj) {
-            var service = $injector.get(obj.service);
+          return Promise.map(savedObjectTypes.inIdOrder, function (service) {
             return service.find(filter).then(function (data) {
               return {
                 service: service,
-                serviceName: obj.service,
-                title: obj.title,
+                serviceName: service.id,
+                title: service.id,
                 type: service.type,
                 data: data.hits,
                 total: data.total
               };
             });
-          });
-
-          $q.all(services).then(function (data) {
-            $scope.services = _.sortBy(data, 'title');
+          })
+          .then(function (responses) {
+            $scope.services = _.sortBy(responses, 'title');
             var tab = $scope.services[0];
-            if ($state.tab) $scope.currentTab = tab = _.find($scope.services, {title: $state.tab});
 
-            $scope.$watch('state.tab', function (tab) {
-              if (!tab) $scope.changeTab($scope.services[0]);
-            });
+            if ($state.tab) {
+              $scope.currentTab = tab = _.find($scope.services, {title: $state.tab});
+            }
+
+            watchForTabChange();
           });
         };
-
 
         $scope.toggleAll = function () {
           if ($scope.selectedItems.length === $scope.currentTab.data.length) {
@@ -156,9 +160,7 @@ define(function (require) {
           $state.save();
         };
 
-        $scope.$watch('advancedFilter', function (filter) {
-          getData(filter);
-        });
+        $scope.$watch('advancedFilter', filter => getData(filter));
       }
     };
   });

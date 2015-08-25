@@ -2,7 +2,6 @@ define(function (require) {
   var _ = require('lodash');
   var angular = require('angular');
   var rison = require('ui/utils/rison');
-  var registry = require('plugins/kibana/settings/saved_object_registry');
   var objectViewHTML = require('plugins/kibana/settings/sections/objects/_view.html');
 
   require('ui/routes')
@@ -17,8 +16,7 @@ define(function (require) {
       controller: function ($scope, $injector, $routeParams, $location, $window, $rootScope, es, Private) {
         var notify = new Notifier({ location: 'SavedObject view' });
         var castMappingType = Private(require('ui/index_patterns/_cast_mapping_type'));
-        var serviceObj = registry.get($routeParams.service);
-        var service = $injector.get(serviceObj.service);
+        var service = Private(require('ui/registry/saved_object_types')).byId[$routeParams.service];
 
         /**
          * Creates a field definition and pushes it to the memo stack. This function
@@ -208,7 +206,7 @@ define(function (require) {
 
             $location.path('/settings/objects').search({
               _a: rison.encode({
-                tab: serviceObj.title
+                tab: service.id
               })
             });
             notify.info(msg);

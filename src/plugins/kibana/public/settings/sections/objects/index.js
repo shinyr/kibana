@@ -5,9 +5,6 @@ define(function (require) {
   require('ace');
   require('ui/directives/confirm_click');
 
-  // add the module deps to this module
-  require('ui/modules').get('apps/settings');
-
   return {
     name: 'objects',
     display: 'Objects',

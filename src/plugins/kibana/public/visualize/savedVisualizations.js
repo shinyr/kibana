@@ -1,27 +1,19 @@
 define(function (require) {
-  var app = require('ui/modules').get('app/visualize');
-  var _ = require('lodash');
+  return function SavedVisualizationsProvider(Promise, es, kbnIndex, Private, Notifier, kbnUrl) {
+    var _ = require('lodash');
 
-  require('plugins/kibana/visualize/saved_visualizations/_saved_vis');
-
-  // Register this service with the saved object registry so it can be
-  // edited by the object editor.
-  require('plugins/kibana/settings/saved_object_registry').register({
-    service: 'savedVisualizations',
-    title: 'visualizations'
-  });
-
-  app.service('savedVisualizations', function (Promise, es, kbnIndex, SavedVis, Private, Notifier, kbnUrl) {
+    var SavedVis = Private(require('./SavedVis'));
     var visTypes = Private(require('ui/registry/vis_types'));
     var notify = new Notifier({
       location: 'Saved Visualization Service'
     });
 
+    this.id = 'visualizations';
     this.type = SavedVis.type;
     this.Class = SavedVis;
 
     this.loaderProperties = {
-      name: 'visualizations',
+      name: this.id,
       noun: 'Visualization',
       nouns: 'visualizations'
     };
@@ -91,5 +83,5 @@ define(function (require) {
         };
       });
     };
-  });
+  };
 });

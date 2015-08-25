@@ -1,26 +1,23 @@
 define(function (require) {
-  var moment = require('moment');
-  var $ = require('jquery');
+  require('ui/visualize');
+  require('ui/doc_table');
+
   require('ui/modules')
   .get('app/dashboard')
-  .directive('dashboardPanel', function (savedVisualizations, savedSearches, Notifier, Private, $injector) {
+  .directive('dashboardPanel', function (Private, $injector) {
     var _ = require('lodash');
+    var moment = require('moment');
+    var $ = require('jquery');
+
+    let savedObjectTypes = Private(require('ui/registry/saved_object_types'));
+    let { searches: savedSearches, visualizations: savedVisualizations } = savedObjectTypes.byId;
+
     var loadPanel = Private(require('plugins/kibana/dashboard/components/panel/lib/load_panel'));
     var filterManager = Private(require('ui/filter_manager'));
-    var notify = new Notifier();
-
-    var services = require('plugins/kibana/settings/saved_object_registry').all().map(function (serviceObj) {
-      var service = $injector.get(serviceObj.service);
-      return {
-        type: service.type,
-        name: serviceObj.service
-      };
-    });
-
-    require('ui/visualize');
-    require('ui/doc_table');
-
     var brushEvent = Private(require('ui/utils/brush_event'));
+
+    var Notifier = require('ui/notify/Notifier');
+    var notify = new Notifier();
 
     return {
       restrict: 'E',
@@ -57,7 +54,7 @@ define(function (require) {
 
             var type = $scope.panel.type;
             var id = $scope.panel.id;
-            var service = _.find(services, { type: type });
+            var service = savedObjectTypes.byPanelType[type];
             if (!service) return;
 
             $scope.editUrl = '#settings/objects/' + service.name + '/' + id + '?notFound=' + e.savedObjectType;

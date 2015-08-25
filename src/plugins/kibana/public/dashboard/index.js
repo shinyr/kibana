@@ -13,11 +13,10 @@ define(function (require) {
 
   require('plugins/kibana/dashboard/directives/grid');
   require('plugins/kibana/dashboard/components/panel/panel');
-  require('plugins/kibana/dashboard/services/saved_dashboards');
   require('plugins/kibana/dashboard/styles/main.less');
 
-  require('ui/saved_objects/saved_object_registry').register(require('plugins/kibana/dashboard/services/saved_dashboard_register'));
-
+  var savedObjectTypes = require('ui/registry/saved_object_types');
+  savedObjectTypes.register(require('./savedDashboards'));
 
   var app = require('ui/modules').get('app/dashboard', [
     'elasticsearch',
@@ -32,7 +31,8 @@ define(function (require) {
   .when('/dashboard', {
     template: require('plugins/kibana/dashboard/index.html'),
     resolve: {
-      dash: function (savedDashboards) {
+      dash: function (Private) {
+        let { dashboards: savedDashboards } = Private(savedObjectTypes).byId;
         return savedDashboards.get();
       }
     }
@@ -40,7 +40,9 @@ define(function (require) {
   .when('/dashboard/:id', {
     template: require('plugins/kibana/dashboard/index.html'),
     resolve: {
-      dash: function (savedDashboards, Notifier, $route, $location, courier) {
+      dash: function (Private, Notifier, $route, $location, courier) {
+        let { dashboards: savedDashboards } = Private(savedObjectTypes).byId;
+
         return savedDashboards.get($route.current.params.id)
         .catch(courier.redirectWhenMissing({
           'dashboard' : '/dashboard'
@@ -52,7 +54,6 @@ define(function (require) {
   app.directive('dashboardApp', function (Notifier, courier, AppState, timefilter, kbnUrl) {
     return {
       controller: function ($scope, $route, $routeParams, $location, Private, getAppState) {
-
         var queryFilter = Private(require('ui/filter_bar/query_filter'));
 
         var notify = new Notifier({

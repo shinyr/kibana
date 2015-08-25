@@ -6,7 +6,7 @@ define(function (require) {
 
   module.directive('savedObjectFinder', function ($location, $injector, kbnUrl, Private) {
 
-    var services = Private(require('ui/saved_objects/saved_object_registry')).byLoaderPropertiesName;
+    var services = Private(require('ui/registry/saved_object_types')).byId;
 
     return {
       restrict: 'E',

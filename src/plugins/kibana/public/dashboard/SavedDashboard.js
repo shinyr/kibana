@@ -1,10 +1,6 @@
 define(function (require) {
-  var module = require('ui/modules').get('app/dashboard');
-  var _ = require('lodash');
-  var moment = require('moment');
-
-  // Used only by the savedDashboards service, usually no reason to change this
-  module.factory('SavedDashboard', function (courier) {
+  return function SavedDashboardProvider(courier) {
+    var _ = require('lodash');
 
     // SavedDashboard constructor. Usually you'd interact with an instance of this.
     // ID is option, without it one will be generated on save.
@@ -55,5 +51,5 @@ define(function (require) {
     SavedDashboard.searchsource = true;
 
     return SavedDashboard;
-  });
+  };
 });

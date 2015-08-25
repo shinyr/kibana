@@ -16,7 +16,9 @@ define(function (require) {
   var html = require('plugins/kibana/doc/index.html');
 
   var resolveIndexPattern = {
-    indexPattern: function (courier, savedSearches, $route) {
+    indexPattern: function (courier, Private, $route) {
+      let { searches: savedSearches } = Private(require('ui/registry/saved_object_types')).byId;
+
       return courier.indexPatterns.get($route.current.params.indexPattern);
     }
   };

@@ -1,6 +1,5 @@
 define(function (require) {
   var _ = require('lodash');
-  require('plugins/kibana/visualize/saved_visualizations/saved_visualizations');
   require('plugins/kibana/visualize/editor/sidebar');
   require('plugins/kibana/visualize/editor/agg_filter');
 
@@ -11,7 +10,8 @@ define(function (require) {
   .when('/visualize/create', {
     template: require('plugins/kibana/visualize/editor/editor.html'),
     resolve: {
-      savedVis: function (savedVisualizations, courier, $route, Private) {
+      savedVis: function (Private, courier, $route) {
+        let { visualizations: savedVisualizations } = Private(require('ui/registry/saved_object_types')).byId;
         var visTypes = Private(require('ui/registry/vis_types'));
         var visType = _.find(visTypes, {name: $route.current.params.type});
         if (visType.requiresSearch && !$route.current.params.indexPattern && !$route.current.params.savedSearchId) {
@@ -28,7 +28,8 @@ define(function (require) {
   .when('/visualize/edit/:id', {
     template: require('plugins/kibana/visualize/editor/editor.html'),
     resolve: {
-      savedVis: function (savedVisualizations, courier, $route) {
+      savedVis: function (Private, courier, $route) {
+        let { visualizations: savedVisualizations } = Private(require('ui/registry/saved_object_types')).byId;
         return savedVisualizations.get($route.current.params.id)
         .catch(courier.redirectWhenMissing({
           'visualization': '/visualize',

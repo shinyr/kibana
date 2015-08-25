@@ -21,10 +21,7 @@ define(function (require) {
   require('plugins/kibana/visualize/editor/nesting_indicator');
   require('plugins/kibana/visualize/editor/sidebar');
   require('plugins/kibana/visualize/editor/vis_options');
-  require('plugins/kibana/visualize/saved_visualizations/_saved_vis');
-  require('plugins/kibana/visualize/saved_visualizations/saved_visualizations');
 
-  require('ui/saved_objects/saved_object_registry')
-  .register(require('plugins/kibana/visualize/saved_visualizations/saved_visualization_register'));
+  require('ui/registry/saved_object_types').register(require('./savedVisualizations'));
 
 });
