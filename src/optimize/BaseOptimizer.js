@@ -11,6 +11,7 @@ var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 let utils = require('requirefrom')('src/utils');
 let fromRoot = utils('fromRoot');
 let babelOptions = require('./babelOptions');
+let babelExclude = [/[\/\\](webpackShims|node_modules|bower_components)[\/\\]/];
 
 class BaseOptimizer {
   constructor(opts) {
@@ -108,29 +109,30 @@ class BaseOptimizer {
           { test: /\.(html|tmpl)$/, loader: 'raw' },
           { test: /\.png$/, loader: 'url?limit=10000&name=[path][name].[ext]' },
           { test: /\.(woff|woff2|ttf|eot|svg|ico)(\?|$)/, loader: 'file?name=[path][name].[ext]' },
-          { test: /[\/\\]src[\/\\](plugins|ui)[\/\\].+\.js$/, loader: `auto-preload-rjscommon-deps${mapQ}` },
+          { test: /[\/\\]src[\/\\](plugins|ui)[\/\\].+\.js$/, loader: `rjs-repack${mapQ}` },
           {
             test: /\.js$/,
-            exclude: /[\/\\](node_modules|bower_components)[\/\\]/,
+            exclude: babelExclude.concat(this.env.noParse),
             loader: 'babel',
-            query: babelOptions
+            query: babelOptions.webpack
           },
           {
             test: /\.jsx$/,
-            exclude: /[\/\\](node_modules|bower_components)[\/\\]/,
+            exclude: babelExclude.concat(this.env.noParse),
             loader: 'babel',
             query: defaults({
-              nonStandard: true
-            }, babelOptions)
+              nonStandard: true,
+            }, babelOptions.webpack)
           }
         ].concat(this.env.loaders),
+        postLoaders: this.env.postLoaders || [],
         noParse: this.env.noParse,
       },
 
       resolve: {
-        extensions: ['.babel.js', '.js', '.less', ''],
+        extensions: ['.js', '.jsx', '.less', ''],
         postfixes: [''],
-        modulesDirectories: ['node_modules'],
+        modulesDirectories: ['webpackShims', 'node_modules'],
         loaderPostfixes: ['-loader', ''],
         root: fromRoot('.'),
         alias: this.env.aliases,
