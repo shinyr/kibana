@@ -146,12 +146,17 @@ define(function (require) {
      * @return {Promise}
      */
     function PromiseEmitter(fn, handler) {
-      var prom = new Promise(fn);
+      if (!handler) return new Promise(fn);
 
-      if (!handler) return prom;
-
-      return prom.then(handler).then(function recurse() {
-        return new PromiseEmitter(fn, handler);
+      return new Promise(function recurse(resolve, reject) {
+        (new Promise(fn))
+        .then(function (result) {
+          return Promise.try(handler, [result]);
+        })
+        .then(function () {
+          // break the chain!
+          recurse(resolve, reject);
+        }, reject);
       });
     }
 
