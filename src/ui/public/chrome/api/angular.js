@@ -24,6 +24,9 @@ module.exports = function (chrome, internals) {
       a.href = '/elasticsearch';
       return a.href;
     }()))
+    .config(function ($httpProvider) {
+      $httpProvider.defaults.transformResponse.push(chrome.$csrfTokenTransform);
+    })
     .directive('kbnChrome', function ($rootScope) {
       return {
         template: function ($el) {

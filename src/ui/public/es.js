@@ -1,6 +1,7 @@
 define(function (require) {
   require('elasticsearch-browser/elasticsearch.angular.js');
   var _ = require('lodash');
+  var chrome = require('ui/chrome');
 
   var es; // share the client amoungst all apps
   require('ui/modules')
@@ -20,6 +21,11 @@ define(function (require) {
           _.class(CustomAngularConnector).inherits(config.connectionClass);
           function CustomAngularConnector(host, config) {
             CustomAngularConnector.Super.call(this, host, config);
+
+            this.$http = _.wrap(this.$http, function ($http, opts) {
+              chrome.$csrfTokenTransform(opts);
+              return $http(opts);
+            });
 
             this.request = _.wrap(this.request, function (request, params, cb) {
               if (String(params.method).toUpperCase() === 'GET') {
