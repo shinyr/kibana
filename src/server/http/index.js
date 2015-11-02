@@ -1,4 +1,4 @@
-module.exports = function (kbnServer, server, config) {
+module.exports = async function (kbnServer, server, config) {
   let _ = require('lodash');
   let fs = require('fs');
   let Boom = require('boom');
@@ -8,7 +8,14 @@ module.exports = function (kbnServer, server, config) {
 
   let getDefaultRoute = require('./getDefaultRoute');
 
-  server = kbnServer.server = new Hapi.Server();
+  server = kbnServer.server = new Hapi.Server({
+    cache: [
+      {
+        engine: require('catbox-memory'),
+        name: 'sessionCache'
+      }
+    ]
+  });
 
   // Create a new connection
   var connectionOptions = {
@@ -121,4 +128,9 @@ module.exports = function (kbnServer, server, config) {
       .permanent(true);
     }
   });
+
+  await kbnServer.mixin(
+    require('./sessions'),
+    require('./csrf')
+  );
 };
