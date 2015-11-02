@@ -1,4 +1,5 @@
 import { createHash } from 'crypto';
+import { forbidden } from 'Boom';
 
 export default function (kbnServer, server, config) {
   const csrfTokenSalt = config.get('server.csrf.tokenSalt');
@@ -21,5 +22,13 @@ export default function (kbnServer, server, config) {
   server.decorate('request', 'hasValidCsrfToken', function () {
     const submission = this.headers['x-csrf-token'];
     return this.getCsrfToken() === submission;
+  });
+
+  server.ext('onPostAuth', function (req, reply) {
+    if (req.method === 'get' || req.hasValidCsrfToken()) {
+      return reply.continue();
+    }
+
+    return reply(forbidden('Invalid or missing CSRF token.'));
   });
 }
