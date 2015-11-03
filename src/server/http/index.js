@@ -8,14 +8,7 @@ module.exports = async function (kbnServer, server, config) {
 
   let getDefaultRoute = require('./getDefaultRoute');
 
-  server = kbnServer.server = new Hapi.Server({
-    cache: [
-      {
-        engine: require('catbox-memory'),
-        name: 'sessionCache'
-      }
-    ]
-  });
+  server = kbnServer.server = new Hapi.Server();
 
   // Create a new connection
   var connectionOptions = {
@@ -130,7 +123,6 @@ module.exports = async function (kbnServer, server, config) {
   });
 
   await kbnServer.mixin(
-    require('./sessions'),
     require('./csrf')
   );
 };

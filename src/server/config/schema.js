@@ -4,7 +4,6 @@ let fs = require('fs');
 let path = require('path');
 
 const randomBytes = require('crypto').randomBytes;
-const rando = () => randomBytes(256).toString('utf8');
 
 let utils = require('requirefrom')('src/utils');
 let fromRoot = utils('fromRoot');
@@ -44,11 +43,6 @@ module.exports = Joi.object({
       otherwise: Joi.boolean().default(false)
     }),
     csrf: Joi.object({
-      tokenSalt: Joi.string().default(rando()),
-    }).default(),
-    sessions: Joi.object({
-      cookiePassword: Joi.string().default(rando()),
-      cookiePath: Joi.string().default('/'),
     }).default(),
   }).default(),
 

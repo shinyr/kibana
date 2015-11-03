@@ -82,7 +82,6 @@
     "bootstrap": "3.3.5",
     "brace": "0.5.1",
     "bunyan": "1.4.0",
-    "catbox-memory": "^1.1.2",
     "commander": "2.8.1",
     "css-loader": "0.17.0",
     "d3": "3.5.6",
@@ -128,8 +127,7 @@
     "url-loader": "0.5.6",
     "webpack": "1.12.1",
     "webpack-directory-name-as-main": "1.0.0",
-    "whatwg-fetch": "0.9.0",
-    "yar": "^4.2.0"
+    "whatwg-fetch": "0.9.0"
   },
   "devDependencies": {
     "Nonsense": "0.1.2",

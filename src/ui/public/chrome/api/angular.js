@@ -25,7 +25,6 @@ module.exports = function (chrome, internals) {
       return a.href;
     }()))
     .config(function ($httpProvider) {
-      $httpProvider.defaults.transformResponse.push(chrome.$csrfTokenTransform);
     })
     .directive('kbnChrome', function ($rootScope) {
       return {

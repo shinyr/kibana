@@ -67,7 +67,6 @@ module.exports = async (kbnServer, server, config) => {
 
   server.decorate('reply', 'renderApp', function (app) {
     let payload = {
-      csrfToken: this.request.generateCsrfToken(),
       app: app,
       nav: uiExports.apps,
       version: kbnServer.version,

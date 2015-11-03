@@ -22,11 +22,6 @@ define(function (require) {
           function CustomAngularConnector(host, config) {
             CustomAngularConnector.Super.call(this, host, config);
 
-            this.$http = _.wrap(this.$http, function ($http, opts) {
-              chrome.$csrfTokenTransform(opts);
-              return $http(opts);
-            });
-
             this.request = _.wrap(this.request, function (request, params, cb) {
               if (String(params.method).toUpperCase() === 'GET') {
                 params.query = _.defaults({ _: Date.now() }, params.query);
