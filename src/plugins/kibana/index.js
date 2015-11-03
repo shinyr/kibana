@@ -9,6 +9,13 @@ module.exports = function (kibana) {
       }).default();
     },
 
+    init(server) {
+      server.expose(
+        'requireIndexForRequest',
+        require('./server/requireIndexForRequest')(server)
+      );
+    },
+
     uiExports: {
       app: {
         title: 'Kibana',

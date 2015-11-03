@@ -48,7 +48,8 @@ module.exports = function (kbnServer, server, config) {
               // to have to explicitly set --logging.filter.authorization=none to
               // have it show up int he logs.
               filter: _.defaults(config.get('logging.filter'), {
-                authorization: 'remove'
+                authorization: 'remove',
+                [config.get('server.csrf.header')]: 'remove'
               })
             },
             events: _.transform(events, function (filtered, val, key) {

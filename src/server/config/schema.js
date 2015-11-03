@@ -43,6 +43,9 @@ module.exports = Joi.object({
       otherwise: Joi.boolean().default(false)
     }),
     csrf: Joi.object({
+      header: Joi.string().default('x-csrf-token'),
+      tokenTTLSec: Joi.number().default(60 * 60 * 3),
+      secret: Joi.binary().encoding('utf8').default(randomBytes(256)),
     }).default(),
   }).default(),
 
