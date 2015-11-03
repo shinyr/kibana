@@ -25,6 +25,7 @@ module.exports = function (chrome, internals) {
       return a.href;
     }()))
     .config(function ($httpProvider) {
+      $httpProvider.interceptors.push(chrome.$httpRequestInterceptorProvider);
     })
     .directive('kbnChrome', function ($rootScope) {
       return {

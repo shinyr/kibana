@@ -107,6 +107,7 @@
     "json-stringify-safe": "5.0.1",
     "jsonwebtoken": "^5.4.1",
     "jstimezonedetect": "1.0.5",
+    "jwt-decode": "^1.4.0",
     "leaflet": "0.7.5",
     "less": "2.5.1",
     "less-loader": "2.2.0",
