@@ -56,10 +56,14 @@ module.exports = async (kbnServer, server, config) => {
     }
   });
 
-  const defaultInjectedVars = {};
+  const defaultInjectedVars = {
+    csrfHeader: config.get('server.csrf.header')
+  };
+
   if (config.has('kibana')) {
     defaultInjectedVars.kbnIndex = config.get('kibana.index');
   }
+
   if (config.has('elasticsearch')) {
     defaultInjectedVars.esShardTimeout = config.get('elasticsearch.shardTimeout');
     defaultInjectedVars.esApiVersion = config.get('elasticsearch.apiVersion');
