@@ -39,7 +39,7 @@ export default function (kbnServer, server, config) {
       .then(() => {
         const payload = {
           org: req.headers.origin,
-          authz: req.headers.authorize
+          authz: req.headers.authorization
         };
         const token = jwt.sign(payload, jwtSecret, jwtOptions);
         reply({ ok: true }).header(jwtHeader, token);
