@@ -4,12 +4,11 @@ import decode from 'jwt-decode';
 import Notify from 'ui/notify/Notifier';
 
 const notify = new Notify();
-const csrfTokenKey = 'KibanaCSRFToken';
-const localStorage = window.localStorage;
 
 export default function (chrome, internals) {
   let token = null;
   let pendingCbs = null;
+  const csrfHeader = chrome.getInjected('csrfHeader');
 
   const fetchNewToken = notify.timed('fetching new CSRF token', function () {
     pendingCbs = [];
@@ -20,7 +19,7 @@ export default function (chrome, internals) {
     .done(function () {
       const cbs = pendingCbs;
       pendingCbs = null;
-      token = xhr.getResponseHeader('x-csrf-token');
+      token = xhr.getResponseHeader(csrfHeader);
 
       const { exp } = decode(token);
       const expiresIn = (new Date(exp * 1000)) - Date.now();
@@ -57,7 +56,7 @@ export default function (chrome, internals) {
         return Promise
         .fromNode(cb => chrome.getCsrfToken(cb))
         .then((token) => {
-          set(config, ['headers', 'x-csrf-token'], token);
+          set(config, ['headers', csrfHeader], token);
           return config;
         });
       }

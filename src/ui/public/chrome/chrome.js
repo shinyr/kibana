@@ -29,8 +29,8 @@ $('<link>').attr({
   rel: 'shortcut icon'
 }).appendTo('head');
 
-require('./api/csrf')(chrome, internals);
 require('./api/apps')(chrome, internals);
+require('./api/csrf')(chrome, internals);
 require('./api/nav')(chrome, internals);
 require('./api/angular')(chrome, internals);
 require('./api/controls')(chrome, internals);
