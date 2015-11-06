@@ -31,6 +31,7 @@ $('<link>').attr({
 
 require('./api/apps')(chrome, internals);
 require('./api/nav')(chrome, internals);
+require('./api/jquery')(chrome, internals);
 require('./api/angular')(chrome, internals);
 require('./api/controls')(chrome, internals);
 require('./api/tabs')(chrome, internals);

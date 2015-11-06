@@ -1,5 +1,5 @@
 var $ = require('jquery');
-var _ = require('lodash');
+var { forOwn, set } = require('lodash');
 
 require('../appSwitcher');
 var modules = require('ui/modules');
@@ -10,7 +10,7 @@ module.exports = function (chrome, internals) {
   chrome.setupAngular = function () {
     var kibana = modules.get('kibana');
 
-    _.forOwn(chrome.getInjected(), function (val, name) {
+    forOwn(chrome.getInjected(), function (val, name) {
       kibana.value(name, val);
     });
 
@@ -24,6 +24,16 @@ module.exports = function (chrome, internals) {
       a.href = '/elasticsearch';
       return a.href;
     }()))
+    .config(function ($httpProvider) {
+      $httpProvider.interceptors.push(function () {
+        return {
+          request(opts) {
+            set(opts, ['headers', 'kibana-csrf'], 'true');
+            return opts;
+          }
+        };
+      });
+    })
     .directive('kbnChrome', function ($rootScope) {
       return {
         template: function ($el) {
