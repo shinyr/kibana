@@ -32,8 +32,15 @@ module.exports = () => Joi.object({
     defaultRoute: Joi.string(),
     ssl: Joi.object({
       cert: Joi.string(),
-      key: Joi.string()
-    }).default(),
+      key: Joi.string(),
+      enabled: Joi.boolean().when('cert', {
+        is: Joi.string().required(),
+        then: Joi.valid(true).default(true),
+        otherwise: Joi.valid(false).default(false)
+      }),
+    })
+    .and('cert', 'key')
+    .default(),
     cors: Joi.when('$dev', {
       is: true,
       then: Joi.object().default({
