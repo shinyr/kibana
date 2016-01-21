@@ -19,7 +19,6 @@ define(function (require) {
       this.getNonScriptedFields = sinon.spy();
       this.getScriptedFields = sinon.spy();
       this.metaFields = ['_id', '_type', '_source'];
-      this.fieldFormatMap = {};
       this.routes = IndexPattern.prototype.routes;
 
       this.toIndexList = _.constant(Promise.resolve([pattern]));

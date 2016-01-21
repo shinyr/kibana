@@ -16,7 +16,11 @@ module.exports = Joi.object({
       analyzed: Joi.boolean(),
       indexed: Joi.boolean(),
       script: Joi.string(),
-      lang: Joi.string()
+      lang: Joi.string(),
+      format: Joi.object({
+        id: Joi.string().required(),
+        params: Joi.object()
+      })
     })
   ).required().min(1),
   field_format_map: Joi.object()

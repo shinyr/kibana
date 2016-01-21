@@ -51,7 +51,7 @@ define(function (require) {
                 scope: childScope,
                 value: field.type
               },
-              _.get($scope.indexPattern, ['fieldFormatMap', field.name, 'type', 'title']),
+              _.get(field, ['$$spec', 'format', 'id']),
               {
                 markup: field.analyzed ? yesTemplate : noTemplate,
                 value: field.analyzed

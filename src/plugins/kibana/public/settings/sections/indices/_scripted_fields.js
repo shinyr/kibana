@@ -46,7 +46,7 @@ define(function (require) {
             return [
               _.escape(field.name),
               _.escape(field.script),
-              _.get($scope.indexPattern, ['fieldFormatMap', field.name, 'type', 'title']),
+              _.get(field, ['$$spec', 'format', 'id']),
               {
                 markup: controlsHtml,
                 scope: rowScope

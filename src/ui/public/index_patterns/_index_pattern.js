@@ -28,28 +28,6 @@ define(function (require) {
       notExpandable: 'boolean',
       intervalName: 'string',
       fields: 'json',
-      fieldFormatMap: {
-        type: 'string',
-        _serialize: function (map) {
-          if (map == null) return;
-
-          var count = 0;
-          var serialized = _.transform(map, function (flat, format, field) {
-            if (!format) return;
-            count++;
-            flat[field] = format;
-          });
-
-          if (count) return angular.toJson(serialized);
-        },
-        _deserialize: function (map) {
-          if (map == null) return {};
-          return _.mapValues(angular.fromJson(map), function (mapping) {
-            var FieldFormat = fieldformats.byId[mapping.id];
-            return FieldFormat && new FieldFormat(mapping.params);
-          });
-        }
-      }
     });
 
     function IndexPattern(id) {
@@ -284,6 +262,18 @@ define(function (require) {
       self._fetchFields = function () {
         return mapper.getFieldsForIndexPattern(self, true)
         .then(function (fields) {
+
+          if (self.fields) {
+            var existingFields = self.fields.byName;
+            // copy kibana created values from existing fields
+            fields.forEach(function (field) {
+              var existingField = existingFields[field.name];
+              if (!existingField) return;
+
+              field.format = existingField.$$spec.format;
+            });
+          }
+
           // append existing scripted fields
           fields = fields.concat(self.getScriptedFields());
 

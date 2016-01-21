@@ -1,5 +1,6 @@
 define(function (require) {
   return function FieldObjectProvider(Private, shortDotsFilter, $rootScope, Notifier) {
+    var clone = require('lodash').clone;
     var notify = new Notifier({ location: 'IndexPattern Field' });
     var FieldFormat = Private(require('ui/index_patterns/_field_format/FieldFormat'));
     var fieldTypes = Private(require('ui/index_patterns/_field_types'));
@@ -31,11 +32,6 @@ define(function (require) {
 
       if (!type) type = fieldTypes.byName.unknown;
 
-      var format = spec.format;
-      if (!format || !(format instanceof FieldFormat)) {
-        format = indexPattern.fieldFormatMap[spec.name] || fieldFormats.getDefaultInstance(spec.type);
-      }
-
       var indexed = !!spec.indexed;
       var scripted = !!spec.scripted;
       var sortable = spec.name === '_score' || ((indexed || scripted) && type.sortable);
@@ -56,9 +52,21 @@ define(function (require) {
       obj.fact('doc_values', !!spec.doc_values);
 
       // usage flags, read-only and won't be saved
-      obj.comp('format', format);
       obj.comp('sortable', sortable);
       obj.comp('filterable', filterable);
+
+      // field format
+      if (spec.format) {
+        if (spec.format instanceof FieldFormat) {
+          obj.writ('format', spec.format);
+        } else {
+          const FieldsFormat = fieldFormats.byId[spec.format.id];
+          const format = new FieldsFormat(spec.format.params);
+          obj.writ('format', format);
+        }
+      } else {
+        obj.comp('format', fieldFormats.getDefaultInstance(spec.type));
+      }
 
       // computed values
       obj.comp('indexPattern', indexPattern);

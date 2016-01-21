@@ -27,7 +27,6 @@ module.exports = function registerPost(server) {
       indexPattern.fields = initDefaultFieldProps(indexPattern.fields);
 
       indexPattern.fields = JSON.stringify(indexPattern.fields);
-      indexPattern.fieldFormatMap = JSON.stringify(indexPattern.fieldFormatMap);
 
       return callWithRequest(req, 'indices.exists', {index: indexPatternId})
       .then((matchingIndices) => {

@@ -19,7 +19,12 @@ describe('FieldEditor directive', function () {
 
     $rootScope.indexPattern = Private(require('fixtures/stubbed_logstash_index_pattern'));
     // set the field format for this field
-    $rootScope.indexPattern.fieldFormatMap.time = new StringFormat({ foo: 1, bar: 2 });
+    var timeField = $rootScope.indexPattern.fields.byId.time;
+    timeField.$$spec.format = {
+      id: 'string',
+      params: { foo: 1, bar: 2 }
+    };
+
     $rootScope.indexPattern._indexFields();
     $rootScope.field = $rootScope.indexPattern.fields.byName.time;
 

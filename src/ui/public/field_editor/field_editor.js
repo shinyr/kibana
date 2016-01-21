@@ -34,7 +34,7 @@ define(function (require) {
 
         // only init on first create
         self.creating = !self.indexPattern.fields.byName[self.field.name];
-        self.selectedFormatId = _.get(self.indexPattern, ['fieldFormatMap', self.field.name, 'type', 'id']);
+        self.selectedFormatId = _.get(self.field, ['$$spec', 'format', 'id']);
         self.defFormatType = initDefaultFormat();
         self.fieldFormatTypes = [self.defFormatType].concat(fieldFormats.byFieldType[self.field.type] || []);
 
@@ -46,12 +46,6 @@ define(function (require) {
 
           fields.remove({ name: field.name });
           fields.push(field);
-
-          if (!self.selectedFormatId) {
-            delete indexPattern.fieldFormatMap[field.name];
-          } else {
-            indexPattern.fieldFormatMap[field.name] = self.field.format;
-          }
 
           return indexPattern.save()
           .then(function () {
@@ -72,21 +66,36 @@ define(function (require) {
           });
         };
 
-        $scope.$watch('editor.selectedFormatId', function (cur, prev) {
-          var format = self.field.format;
-          var changedFormat = cur !== prev;
-          var missingFormat = cur && (!format || format.type.id !== cur);
+        $scope.$watchMulti([
+          'editor.selectedFormatId',
+          '=editor.formatParams'
+        ], function (cur, prev) {
+          var formatIdChanged = cur[0] !== prev[0];
 
-          if (!changedFormat || !missingFormat) return;
-
-          // reset to the defaults, but make sure it's an object
-          self.formatParams = _.assign({}, _.cloneDeep(getFieldFormatType().paramDefaults));
-        });
-
-        $scope.$watch('editor.formatParams', function () {
+          var selectedFormatId = self.selectedFormatId;
+          var unknownFormat = !fieldFormats.byId[selectedFormatId];
+          var defaultIsSelected = !selectedFormatId;
           var FieldFormat = getFieldFormatType();
+
+          // when default is selected leave format empty
+          if (defaultIsSelected) {
+            self.field.format = null;
+            return;
+          }
+
+          // if we don't know what format this is, allow saving without multilating the format params
+          if (unknownFormat) return;
+
+          if (formatIdChanged) {
+            // the format was changed, clear out the formatParams and rebuild field format
+            self.formatParams = _.assign({}, _.cloneDeep(FieldFormat.paramDefaults));
+            self.field.format = new FieldFormat(self.formatParams);
+            return;
+          }
+
+          // params changed, or we are initializing, either way rebuild the field format
           self.field.format = new FieldFormat(self.formatParams);
-        }, true);
+        });
 
         // copy the defined properties of the field to a plain object
         // which is mutable, and capture the changed seperately.
@@ -96,7 +105,10 @@ define(function (require) {
             toActualField: {
               // bring the shadow copy out of the shadows
               value: function toActualField() {
-                return new Field(self.indexPattern, _.defaults({}, changes, field.$$spec));
+                var spec = _.mapValues(_.defaults({}, changes, field.$$spec), function (value) {
+                  return value == null ? undefined : value;
+                });
+                return new Field(self.indexPattern, spec);
               }
             }
           };

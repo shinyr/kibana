@@ -17,12 +17,11 @@ describe('Range Agg', function () {
     Vis = Private(require('ui/Vis'));
     indexPattern = Private(require('fixtures/stubbed_logstash_index_pattern'));
 
-    var BytesFormat = Private(require('ui/registry/field_formats')).byId.bytes;
-
-    indexPattern.fieldFormatMap.bytes = new BytesFormat({
-      pattern: '0,0.[000] b'
-    });
-
+    var bytesField = indexPattern.fields.byId.bytes;
+    bytesField.$$spec.format = {
+      id: 'bytes',
+      params: { pattern: '0,0.[000] b' }
+    };
     indexPattern._indexFields();
   }));
 
