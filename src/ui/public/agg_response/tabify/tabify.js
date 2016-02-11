@@ -45,7 +45,7 @@ export default function tabifyAggResponseProvider(Private, Notifier) {
           } else {
             buckets.forEach(function (subBucket, key) {
               write.cell(agg, agg.getKey(subBucket, key), function () {
-                collectBucket(write, subBucket, agg.getKey(subBucket, key));
+                collectBucket(write, subBucket, agg.getKey(subBucket), key);
               });
             });
           }

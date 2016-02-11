@@ -58,6 +58,18 @@ export default function GeoHashAggDefinition(Private, config) {
         deserialize: getPrecision,
         write: function (aggConfig, output) {
           output.params.precision = getPrecision(aggConfig.params.precision);
+          output.subAggs = [
+            {
+              id: 'geohashsubagg',
+              toDsl() {
+                return {
+                  geo_centroid: {
+                    field: aggConfig.params.field.name
+                  }
+                };
+              }
+            }
+          ];
         }
       }
     ]

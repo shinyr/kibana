@@ -13,14 +13,16 @@ function unwrap(val) {
 function convertRowsToFeatures(table, geoI, metricI) {
   return _.transform(table.rows, function (features, row) {
     var geohash = unwrap(row[geoI]);
+    var bucket = geohash.bucket;
+    geohash = geohash.toString();
     if (!geohash) return;
 
     // fetch latLn of northwest and southeast corners, and center point
     var location = decodeGeoHash(geohash);
 
     var centerLatLng = [
-      location.latitude[2],
-      location.longitude[2]
+      bucket.geohashsubagg.location.lat,
+      bucket.geohashsubagg.location.lon
     ];
 
     // order is nw, ne, se, sw

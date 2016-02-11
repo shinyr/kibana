@@ -13,7 +13,12 @@ export default function BucketAggTypeProvider(Private) {
   }
 
   BucketAggType.prototype.getKey = function (bucket, key) {
-    return key || bucket.key;
+    return {
+      bucket,
+      toString() {
+        return key || bucket.key;
+      }
+    };
   };
 
   return BucketAggType;
