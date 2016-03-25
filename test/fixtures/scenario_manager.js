@@ -2,6 +2,7 @@ var path = require('path');
 var elasticsearch = require('elasticsearch');
 var Promise = require('bluebird');
 var config = require('./config').scenarios;
+var makeDefer = require('../../src/utils').makeDefer;
 
 function ScenarioManager(server) {
   if (!server) throw new Error('No server defined');
@@ -10,9 +11,7 @@ function ScenarioManager(server) {
   this.client = new elasticsearch.Client({
     host: server,
     requestTimeout: 300000,
-    defer: function () {
-      return Promise.defer();
-    }
+    defer: makeDefer()
   });
 }
 
