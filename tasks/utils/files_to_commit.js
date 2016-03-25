@@ -1,10 +1,10 @@
 import SimpleGit from 'simple-git';
-import { promisify } from 'bluebird';
+import { fromNode as fn } from 'bluebird';
 import { includes } from 'lodash';
 
 export default function filesToCommit(path) {
   const simpleGit = new SimpleGit(path);
-  const gitDiff = promisify(simpleGit.diff, simpleGit);
+  const gitDiff = args => fn(cb => simpleGit.diff(args, cb));
   const pathsToIgnore = ['webpackShims'];
 
   return gitDiff(['--name-status', '--cached'])

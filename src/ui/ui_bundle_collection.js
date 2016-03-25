@@ -1,8 +1,3 @@
-let rimraf = promisify(require('rimraf'));
-let mkdirp = promisify(require('mkdirp'));
-let unlink = promisify(require('fs').unlink);
-let readdir = promisify(require('fs').readdir);
-
 import UiBundle from './ui_bundle';
 import appEntryTemplate from './app_entry_template';
 import { readFileSync as readSync } from 'fs';
@@ -10,6 +5,8 @@ import { pull, transform, pluck } from 'lodash';
 import { join } from 'path';
 import { resolve, promisify } from 'bluebird';
 import { makeRe } from 'minimatch';
+
+let mkdirp = promisify(require('mkdirp'));
 
 class UiBundleCollection {
   constructor(bundlerEnv, filter) {
