@@ -33,7 +33,7 @@ module.exports = function createPackages(grunt) {
         await archives(platform);
       })
     )
-    .nodeify(this.async());
+    .asCallback(this.async());
 
   });
 };
