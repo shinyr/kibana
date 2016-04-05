@@ -1,20 +1,20 @@
-var angular = require('angular');
-var sinon = require('sinon');
-var expect = require('expect.js');
-var ngMock = require('ngMock');
-require('ui/typeahead');
+import angular from 'angular';
+import sinon from 'sinon';
+import expect from 'expect.js';
+import ngMock from 'ng_mock';
+import 'ui/typeahead';
+import 'plugins/kibana/discover/index';
 
 // TODO: This should not be needed, timefilter is only included here, it should move
-require('plugins/kibana/discover/index');
 
 var typeaheadHistoryCount = 10;
 var typeaheadName = 'unittest';
-var $parentScope;
-var $typeaheadScope;
-var $elem;
-var $typeaheadInputScope;
-var typeaheadCtrl;
-var PersistedLog;
+let $parentScope;
+let $typeaheadScope;
+let $elem;
+let $typeaheadInputScope;
+let typeaheadCtrl;
+let PersistedLog;
 
 var markup = '<div class="typeahead" kbn-typeahead="' + typeaheadName + '">' +
   '<input type="text" placeholder="Filter..." class="form-control" ng-model="query" kbn-typeahead-input>' +

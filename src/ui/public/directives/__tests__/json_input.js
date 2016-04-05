@@ -1,14 +1,14 @@
-var angular = require('angular');
-var expect = require('expect.js');
-var ngMock = require('ngMock');
+import angular from 'angular';
+import expect from 'expect.js';
+import ngMock from 'ng_mock';
+import 'ui/directives/json_input';
 
-require('ui/directives/json_input');
 
 describe('JSON input validation', function () {
-  var $compile;
-  var $rootScope;
+  let $compile;
+  let $rootScope;
   var html = '<input ng-model="value" json-input require-keys=true />';
-  var element;
+  let element;
 
   beforeEach(ngMock.module('kibana'));
 

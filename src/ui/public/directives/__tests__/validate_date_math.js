@@ -1,12 +1,12 @@
-var angular = require('angular');
-var expect = require('expect.js');
-var ngMock = require('ngMock');
+import angular from 'angular';
+import expect from 'expect.js';
+import ngMock from 'ng_mock';
+import 'ui/directives/validate_date_math';
 
-require('ui/directives/validate_date_math');
 
 describe('Validate date math directive', function () {
-  var $compile;
-  var $rootScope;
+  let $compile;
+  let $rootScope;
   var html = '<input type="text" ng-model="value" validate-date-math />';
 
   beforeEach(ngMock.module('kibana'));

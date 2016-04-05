@@ -1,11 +1,11 @@
-const Boom = require('boom');
-const _ = require('lodash');
-const {templateToPattern, patternToTemplate} = require('../../../lib/convert_pattern_and_template_name');
-const indexPatternSchema = require('../../../lib/schemas/resources/index_pattern_schema');
-const handleESError = require('../../../lib/handle_es_error');
-const { keysToCamelCaseShallow } = require('../../../lib/case_conversion');
-const createMappingsFromPatternFields = require('../../../lib/create_mappings_from_pattern_fields');
-const initDefaultFieldProps = require('../../../lib/init_default_field_props');
+import Boom from 'boom';
+import _ from 'lodash';
+import indexPatternSchema from '../../../lib/schemas/resources/index_pattern_schema';
+import handleESError from '../../../lib/handle_es_error';
+import createMappingsFromPatternFields from '../../../lib/create_mappings_from_pattern_fields';
+import initDefaultFieldProps from '../../../lib/init_default_field_props';
+import {templateToPattern, patternToTemplate} from '../../../lib/convert_pattern_and_template_name';
+import { keysToCamelCaseShallow } from '../../../lib/case_conversion';
 
 module.exports = function registerPost(server) {
   server.route({
@@ -17,6 +17,7 @@ module.exports = function registerPost(server) {
       }
     },
     handler: function (req, reply) {
+      const kibanaIndex = server.config().get('kibana.index');
       const callWithRequest = server.plugins.elasticsearch.callWithRequest;
       const requestDocument = _.cloneDeep(req.payload);
       const indexPatternId = requestDocument.id;
@@ -36,7 +37,7 @@ module.exports = function registerPost(server) {
         }
 
         const patternCreateParams = {
-          index: '.kibana',
+          index: kibanaIndex,
           type: 'index-pattern',
           id: indexPatternId,
           body: indexPattern
@@ -57,12 +58,9 @@ module.exports = function registerPost(server) {
                       match: '*',
                       match_mapping_type: 'string',
                       mapping: {
-                        type: 'string',
-                        index: 'analyzed',
-                        omit_norms: true,
-                        fielddata: {format: 'disabled'},
+                        type: 'text',
                         fields: {
-                          raw: {type: 'string', index: 'not_analyzed', doc_values: true, ignore_above: 256}
+                          raw: {type: 'keyword', ignore_above: 256}
                         }
                       }
                     }
@@ -76,7 +74,7 @@ module.exports = function registerPost(server) {
           return callWithRequest(req, 'indices.putTemplate', templateParams)
           .catch((templateError) => {
             const deleteParams = {
-              index: '.kibana',
+              index: kibanaIndex,
               type: 'index-pattern',
               id: indexPatternId
             };

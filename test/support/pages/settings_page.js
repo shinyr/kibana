@@ -2,7 +2,7 @@
 define(function (require) {
   var config = require('intern').config;
   var Promise = require('bluebird');
-  var Common = require('./Common');
+  var Common = require('./common');
 
   var defaultTimeout = config.timeouts.default;
   var common;
@@ -18,20 +18,6 @@ define(function (require) {
     clickAdvancedTab: function () {
       common.debug('in clickAdvancedTab');
       return common.findTestSubject('settingsNav advanced').click();
-    },
-
-    setAdvancedSettings: function setAdvancedSettings(propertyName, propertyValue) {
-      var self = this;
-      return common.findTestSubject('advancedSetting&' + propertyName + ' editButton')
-      .click()
-      .then(function setAdvancedSettingsClickPropertyValue(selectList) {
-        return self.remote.findByCssSelector('option[label="' + propertyValue + '"]')
-        .click();
-      })
-      .then(function setAdvancedSettingsClickSaveButton() {
-        return common.findTestSubject('advancedSetting&' + propertyName + ' saveButton')
-        .click();
-      });
     },
 
     getAdvancedSettings: function getAdvancedSettings(propertyName) {
@@ -95,7 +81,7 @@ define(function (require) {
 
     getTimeFieldNameField: function () {
       return this.remote.setFindTimeout(defaultTimeout)
-      .findByCssSelector('select[ng-model="index.timeField"]');
+        .findDisplayedByCssSelector('select[ng-model="index.timeField"]');
     },
 
     selectTimeFieldOption: function (selection) {
@@ -122,12 +108,12 @@ define(function (require) {
 
     getTimeFieldOption: function (selection) {
       return this.remote.setFindTimeout(defaultTimeout)
-      .findByCssSelector('option[label="' + selection + '"]').click();
+        .findDisplayedByCssSelector('option[label="' + selection + '"]').click();
     },
 
     getCreateButton: function () {
       return this.remote.setFindTimeout(defaultTimeout)
-      .findByCssSelector('.btn');
+        .findDisplayedByCssSelector('.btn');
     },
 
     clickCreateButton: function () {

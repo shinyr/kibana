@@ -1,13 +1,13 @@
+import angular from 'angular';
+import expect from 'expect.js';
+import ngMock from 'ng_mock';
+import 'ui/highlight';
 
 describe('Highlight', function () {
-  var angular = require('angular');
-  var expect = require('expect.js');
-  var ngMock = require('ngMock');
-  require('ui/highlight');
 
-  var filter;
+  let filter;
 
-  var tags;
+  let tags;
 
   beforeEach(ngMock.module('kibana'));
   beforeEach(ngMock.inject(function (highlightFilter, highlightTags) {

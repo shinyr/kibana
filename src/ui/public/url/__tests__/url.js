@@ -1,20 +1,20 @@
 
-var sinon = require('auto-release-sinon');
-var expect = require('expect.js');
-var ngMock = require('ngMock');
-var faker = require('faker');
-var _ = require('lodash');
-var MockState = require('fixtures/mock_state');
+import sinon from 'auto-release-sinon';
+import expect from 'expect.js';
+import ngMock from 'ng_mock';
+import faker from 'faker';
+import _ from 'lodash';
+import MockState from 'fixtures/mock_state';
+import 'ui/url';
 
 // global vars, injected and mocked in init()
-var kbnUrl;
-var $route;
-var $location;
-var $rootScope;
-var globalStateMock;
-var appState;
+let kbnUrl;
+let $route;
+let $location;
+let $rootScope;
+let globalStateMock;
+let appState;
 
-require('ui/url');
 
 function init() {
   ngMock.module('kibana/url', 'kibana', function ($provide) {
@@ -374,8 +374,8 @@ describe('kbnUrl', function () {
   });
 
   describe('_shouldAutoReload', function () {
-    var next;
-    var prev;
+    let next;
+    let prev;
 
     beforeEach(function () {
       $route.current = {

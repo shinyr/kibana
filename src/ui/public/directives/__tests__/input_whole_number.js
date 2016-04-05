@@ -1,11 +1,11 @@
-var angular = require('angular');
-var expect = require('expect.js');
-var ngMock = require('ngMock');
-require('ui/directives/input_whole_number');
+import angular from 'angular';
+import expect from 'expect.js';
+import ngMock from 'ng_mock';
+import 'ui/directives/input_whole_number';
 
 describe('Whole number input directive', function () {
-  var $compile;
-  var $rootScope;
+  let $compile;
+  let $rootScope;
   var html = '<input type="text" ng-model="value" input-whole-number />';
 
   beforeEach(ngMock.module('kibana'));

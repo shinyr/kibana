@@ -1,17 +1,19 @@
-var d3 = require('d3');
-var angular = require('angular');
-var expect = require('expect.js');
-var ngMock = require('ngMock');
-var _ = require('lodash');
-var $ = require('jquery');
+import d3 from 'd3';
+import angular from 'angular';
+import expect from 'expect.js';
+import ngMock from 'ng_mock';
+import _ from 'lodash';
 
 // Data
-var seriesPos = require('fixtures/vislib/mock_data/date_histogram/_series');
-var seriesPosNeg = require('fixtures/vislib/mock_data/date_histogram/_series_pos_neg');
-var seriesNeg = require('fixtures/vislib/mock_data/date_histogram/_series_neg');
-var histogramColumns = require('fixtures/vislib/mock_data/histogram/_columns');
-var rangeRows = require('fixtures/vislib/mock_data/range/_rows');
-var termSeries = require('fixtures/vislib/mock_data/terms/_series');
+import seriesPos from 'fixtures/vislib/mock_data/date_histogram/_series';
+import seriesPosNeg from 'fixtures/vislib/mock_data/date_histogram/_series_pos_neg';
+import seriesNeg from 'fixtures/vislib/mock_data/date_histogram/_series_neg';
+import histogramColumns from 'fixtures/vislib/mock_data/histogram/_columns';
+import rangeRows from 'fixtures/vislib/mock_data/range/_rows';
+import termSeries from 'fixtures/vislib/mock_data/terms/_series';
+import $ from 'jquery';
+import FixturesVislibVisFixtureProvider from 'fixtures/vislib/_vis_fixture';
+import PersistedStatePersistedStateProvider from 'ui/persisted_state/persisted_state';
 
 var dataTypes = [
   ['series pos', seriesPos],
@@ -28,8 +30,8 @@ describe('Vislib Line Chart', function () {
     var data = type[1];
 
     describe(name + ' Data', function () {
-      var vis;
-      var persistedState;
+      let vis;
+      let persistedState;
 
       beforeEach(ngMock.module('kibana'));
       beforeEach(ngMock.inject(function (Private) {
@@ -40,8 +42,8 @@ describe('Vislib Line Chart', function () {
           drawLinesBetweenPoints: true
         };
 
-        vis = Private(require('fixtures/vislib/_vis_fixture'))(visLibParams);
-        persistedState = new (Private(require('ui/persisted_state/persisted_state')))();
+        vis = Private(FixturesVislibVisFixtureProvider)(visLibParams);
+        persistedState = new (Private(PersistedStatePersistedStateProvider))();
         vis.on('brush', _.noop);
         vis.render(data, persistedState);
       }));
@@ -52,12 +54,12 @@ describe('Vislib Line Chart', function () {
       });
 
       describe('addCircleEvents method', function () {
-        var circle;
-        var brush;
-        var d3selectedCircle;
-        var onBrush;
-        var onClick;
-        var onMouseOver;
+        let circle;
+        let brush;
+        let d3selectedCircle;
+        let onBrush;
+        let onClick;
+        let onMouseOver;
 
         beforeEach(ngMock.inject(function () {
           vis.handler.charts.forEach(function (chart) {

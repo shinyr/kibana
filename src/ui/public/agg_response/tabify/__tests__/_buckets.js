@@ -1,11 +1,12 @@
+import expect from 'expect.js';
+import ngMock from 'ng_mock';
+import AggResponseTabifyBucketsProvider from 'ui/agg_response/tabify/_buckets';
 describe('Buckets wrapper', function () {
-  var Buckets;
-  var expect = require('expect.js');
-  var ngMock = require('ngMock');
+  let Buckets;
 
   beforeEach(ngMock.module('kibana'));
   beforeEach(ngMock.inject(function (Private, $injector) {
-    Buckets = Private(require('ui/agg_response/tabify/_buckets'));
+    Buckets = Private(AggResponseTabifyBucketsProvider);
   }));
 
 

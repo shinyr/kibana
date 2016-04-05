@@ -1,13 +1,13 @@
-var angular = require('angular');
-var expect = require('expect.js');
-var _ = require('lodash');
-var ngMock = require('ngMock');
-require('plugins/kibana/discover/index');
-require('ui/filters/field_type');
+import angular from 'angular';
+import expect from 'expect.js';
+import _ from 'lodash';
+import ngMock from 'ng_mock';
+import 'plugins/kibana/discover/index';
+import 'ui/filters/field_type';
 
-var filter;
+let filter;
 
-var types;
+let types;
 
 var init = function (expandable) {
   // Load the application

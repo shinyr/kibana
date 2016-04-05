@@ -1,9 +1,9 @@
 define(function (require) {
-  var Common = require('../../../support/pages/Common');
-  var HeaderPage = require('../../../support/pages/HeaderPage');
+  var Common = require('../../../support/pages/common');
+  var HeaderPage = require('../../../support/pages/header_page');
   var SettingsPage = require('../../../support/pages/settings_page');
-  var DiscoverPage = require('../../../support/pages/DiscoverPage');
-  var VisualizePage = require('../../../support/pages/VisualizePage');
+  var DiscoverPage = require('../../../support/pages/discover_page');
+  var VisualizePage = require('../../../support/pages/visualize_page');
   var expect = require('intern/dojo/node!expect.js');
 
   return function (bdd, scenarioManager) {
@@ -69,7 +69,7 @@ define(function (require) {
         })
         .then(function selectField() {
           common.debug('Field = extension');
-          return visualizePage.selectField('extension');
+          return visualizePage.selectField('extension.raw');
         })
         .then(function setInterval() {
           common.debug('switch from Rows to Columns');
@@ -122,7 +122,7 @@ define(function (require) {
           // sleep a bit before trying to get the chart data
           return common.sleep(3000)
           .then(function () {
-            return visualizePage.getLineChartData()
+            return visualizePage.getLineChartData('fill="#57c17b"')
             .then(function showData(data) {
               var tolerance = 10; // the y-axis scale is 10000 so 10 is 0.1%
               for (var x = 0; x < data.length; x++) {

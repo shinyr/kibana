@@ -1,9 +1,9 @@
+import expect from 'expect.js';
+import ngMock from 'ng_mock';
 
 describe('Private module loader', function () {
 
-  var Private;
-  var expect = require('expect.js');
-  var ngMock = require('ngMock');
+  let Private;
 
   beforeEach(ngMock.module('kibana'));
   beforeEach(ngMock.inject(function ($injector) {

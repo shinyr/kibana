@@ -1,11 +1,11 @@
 
-var sinon = require('auto-release-sinon');
-var expect = require('expect.js');
-var ngMock = require('ngMock');
+import sinon from 'auto-release-sinon';
+import expect from 'expect.js';
+import ngMock from 'ng_mock';
 
-var debounce;
-var $timeout;
-var $timeoutSpy;
+let debounce;
+let $timeout;
+let $timeoutSpy;
 
 function init() {
   ngMock.module('kibana');
@@ -19,7 +19,7 @@ function init() {
 }
 
 describe('debounce service', function () {
-  var spy;
+  let spy;
   beforeEach(function () {
     spy = sinon.spy(function () {});
     init();

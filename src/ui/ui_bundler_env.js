@@ -1,7 +1,7 @@
-let { includes, flow, escapeRegExp } = require('lodash');
-let { isString, isArray, isPlainObject, get } = require('lodash');
-let { keys } = require('lodash');
-let fromRoot = require('../utils/fromRoot');
+import fromRoot from '../utils/from_root';
+import { includes, flow, escapeRegExp } from 'lodash';
+import { isString, isArray, isPlainObject, get } from 'lodash';
+import { keys } from 'lodash';
 
 let asRegExp = flow(
   escapeRegExp,
@@ -46,7 +46,7 @@ module.exports = class UiBundlerEnv {
     // webpack aliases, like require paths, mapping a prefix to a directory
     this.aliases = {
       ui: fromRoot('src/ui/public'),
-      testHarness: fromRoot('src/testHarness/public')
+      test_harness: fromRoot('src/test_harness/public')
     };
 
     // map of which plugins created which aliases

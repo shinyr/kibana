@@ -1,25 +1,28 @@
-define(function (require) {
-  var _ = require('lodash');
+import _ from 'lodash';
+import registry from 'ui/registry/settings_sections';
+import uiRoutes from 'ui/routes';
+import uiModules from 'ui/modules';
+import indexTemplate from 'plugins/kibana/settings/sections/about/index.html';
 
-  require('ui/routes')
-  .when('/settings/about', {
-    template: require('plugins/kibana/settings/sections/about/index.html')
-  });
-
-  require('ui/modules').get('apps/settings')
-  .controller('settingsAbout', function ($scope, kbnVersion, buildNum, buildSha) {
-    $scope.kbnVersion = kbnVersion;
-    $scope.buildNum = buildNum;
-    $scope.buildSha = buildSha;
-  });
-
-  return {
-    order: Infinity,
-    name: 'about',
-    display: 'About',
-    url: function () {
-      const hash = window.location.hash;
-      return hash.indexOf('/about') === -1 ? '#/settings/about?' + hash.split('?')[1] : '#/settings/about';
-    }
-  };
+uiRoutes
+.when('/settings/about', {
+  template: indexTemplate
 });
+
+uiModules.get('apps/settings')
+.controller('settingsAbout', function ($scope, kbnVersion, buildNum, buildSha, serverName) {
+  $scope.kbnVersion = kbnVersion;
+  $scope.buildNum = buildNum;
+  $scope.buildSha = buildSha;
+  $scope.serverName = serverName;
+});
+
+registry.register(_.constant({
+  order: 1001,
+  name: 'about',
+  display: 'About',
+  url() {
+    const hash = window.location.hash;
+    return hash.indexOf('/about') === -1 ? '#/settings/about?' + hash.split('?')[1] : '#/settings/about';
+  }
+}));

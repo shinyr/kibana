@@ -1,4 +1,4 @@
-const _ = require('lodash');
+import _ from 'lodash';
 
 let Scanner = function (client, {index, type} = {}) {
   if (!index) throw new Error('Expected index');
@@ -63,8 +63,8 @@ Scanner.prototype.scanAndMap = function (searchString, options, mapFn) {
       type: this.type,
       size: opts.pageSize,
       body,
-      searchType: 'scan',
-      scroll: '1m'
+      scroll: '1m',
+      sort: '_doc',
     }, getMoreUntilDone);
   });
 };

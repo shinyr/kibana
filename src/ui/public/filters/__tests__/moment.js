@@ -1,16 +1,16 @@
-var angular = require('angular');
-var expect = require('expect.js');
-var sinon = require('auto-release-sinon');
-var moment = require('moment');
-var ngMock = require('ngMock');
+import angular from 'angular';
+import expect from 'expect.js';
+import sinon from 'auto-release-sinon';
+import moment from 'moment';
+import ngMock from 'ng_mock';
+import 'ui/filters/moment';
 
-require('ui/filters/moment');
 
-var filter;
+let filter;
 
-var config;
+let config;
 var anchor = '2014-01-01T06:06:06.666';
-var clock;
+let clock;
 
 var init = function (expandable) {
   // Load the application

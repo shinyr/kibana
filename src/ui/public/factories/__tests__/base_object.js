@@ -1,18 +1,18 @@
-var angular = require('angular');
-var _ = require('lodash');
-var sinon = require('sinon');
-var expect = require('expect.js');
-var ngMock = require('ngMock');
-require('ui/private');
+import angular from 'angular';
+import _ from 'lodash';
+import sinon from 'sinon';
+import expect from 'expect.js';
+import ngMock from 'ng_mock';
+import 'ui/private';
 
 describe('Base Object', function () {
-  var $rootScope;
-  var BaseObject;
+  let $rootScope;
+  let BaseObject;
 
   beforeEach(ngMock.module('kibana'));
   beforeEach(ngMock.inject(function (_$rootScope_, Private) {
     $rootScope = _$rootScope_;
-    BaseObject = require('ui/utils/BaseObject');
+    BaseObject = require('ui/utils/base_object');
   }));
 
   it('should take an inital set of values', function () {

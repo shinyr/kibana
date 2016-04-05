@@ -1,15 +1,15 @@
+import { format as formatUrl } from 'url';
+import { readFileSync as readFile } from 'fs';
+import { defaults } from 'lodash';
+import Boom from 'boom';
+import { resolve } from 'path';
+import fromRoot from '../utils/from_root';
+import UiExports from './ui_exports';
+import UiBundle from './ui_bundle';
+import UiBundleCollection from './ui_bundle_collection';
+import UiBundlerEnv from './ui_bundler_env';
 module.exports = async (kbnServer, server, config) => {
-  let { defaults } = require('lodash');
-  let Boom = require('boom');
-  let formatUrl = require('url').format;
-  let { resolve } = require('path');
-  let readFile = require('fs').readFileSync;
 
-  let fromRoot = require('../utils/fromRoot');
-  let UiExports = require('./ui_exports');
-  let UiBundle = require('./ui_bundle');
-  let UiBundleCollection = require('./ui_bundle_collection');
-  let UiBundlerEnv = require('./ui_bundler_env');
   let loadingGif = readFile(fromRoot('src/ui/public/loading.gif'), { encoding: 'base64'});
 
   let uiExports = kbnServer.uiExports = new UiExports({
@@ -35,7 +35,7 @@ module.exports = async (kbnServer, server, config) => {
   }
 
   for (let gen of uiExports.getBundleProviders()) {
-    let bundle = await gen(UiBundle, bundlerEnv, uiExports.getAllApps());
+    let bundle = await gen(UiBundle, bundlerEnv, uiExports.getAllApps(), kbnServer.plugins);
     if (bundle) bundles.add(bundle);
   }
 
@@ -59,24 +59,16 @@ module.exports = async (kbnServer, server, config) => {
     }
   });
 
-  const defaultInjectedVars = {};
-  if (config.has('kibana')) {
-    defaultInjectedVars.kbnIndex = config.get('kibana.index');
-  }
-  if (config.has('elasticsearch')) {
-    defaultInjectedVars.esShardTimeout = config.get('elasticsearch.shardTimeout');
-    defaultInjectedVars.esApiVersion = config.get('elasticsearch.apiVersion');
-  }
-
   server.decorate('reply', 'renderApp', function (app) {
     const payload = {
       app: app,
-      nav: uiExports.apps,
+      nav: uiExports.navLinks.inOrder,
       version: kbnServer.version,
       buildNum: config.get('pkg.buildNum'),
       buildSha: config.get('pkg.buildSha'),
       basePath: config.get('server.basePath'),
-      vars: defaults(app.getInjectedVars() || {}, defaultInjectedVars),
+      serverName: config.get('server.name'),
+      vars: defaults(app.getInjectedVars() || {}, uiExports.defaultInjectedVars),
     };
 
     return this.view(app.templateName, {

@@ -1,13 +1,13 @@
-var angular = require('angular');
-var expect = require('expect.js');
-var ngMock = require('ngMock');
+import angular from 'angular';
+import expect from 'expect.js';
+import ngMock from 'ng_mock';
+import 'ui/directives/validate_index_name';
 
 // Load the kibana app dependencies.
-require('ui/directives/validate_index_name');
 
 describe('Validate index name directive', function () {
-  var $compile;
-  var $rootScope;
+  let $compile;
+  let $rootScope;
   var html = '<input type="text" ng-model="indexName" validate-index-name />';
 
   beforeEach(ngMock.module('kibana'));
