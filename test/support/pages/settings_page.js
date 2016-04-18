@@ -1,8 +1,7 @@
-// in test/support/pages/settings_page.js
-var Promise = require('bluebird');
+import Promise from 'bluebird';
 import { common, remote, defaultTimeout } from '../';
 
-function SettingsPage() {
+export function SettingsPage() {
   this.remote = remote;
 }
 
@@ -333,5 +332,3 @@ SettingsPage.prototype = {
     });
   }
 };
-
-module.exports = SettingsPage;

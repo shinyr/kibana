@@ -2,7 +2,7 @@ import { remote, common, defaultTimeout } from '../';
 
 var thisTime;
 
-function DiscoverPage() {
+export function DiscoverPage() {
   this.remote = remote;
   thisTime = this.remote.setFindTimeout(defaultTimeout);
 }
@@ -213,5 +213,3 @@ DiscoverPage.prototype = {
   }
 
 };
-
-module.exports = DiscoverPage;

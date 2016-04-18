@@ -1,9 +1,6 @@
 import { common, remote, defaultTimeout } from '../';
 
-// the page object is created as a constructor
-// so we can provide the remote Command object
-// at runtime
-function HeaderPage() {
+export function HeaderPage() {
   this.remote = remote;
 }
 
@@ -130,5 +127,3 @@ HeaderPage.prototype = {
   }
 
 };
-
-module.exports = HeaderPage;

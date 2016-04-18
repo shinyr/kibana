@@ -1,6 +1,6 @@
 import { common, defaultTimeout, remote } from '../';
 
-function VisualizePage() {
+export function VisualizePage() {
   this.remote = remote;
 }
 
@@ -678,5 +678,3 @@ VisualizePage.prototype = {
   }
 
 };
-
-module.exports = VisualizePage;

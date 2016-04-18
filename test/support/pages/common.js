@@ -1,14 +1,13 @@
-import { common, config, defaultTimeout, remote } from '../';
+import Promise from 'bluebird';
+import moment from 'moment';
+import testSubjSelector from '@spalger/test-subj-selector';
+import fs from 'fs';
+import _ from 'lodash';
+import { parse, format } from 'url';
+import path from 'path';
 
-var Promise = require('bluebird');
-var moment = require('moment');
-var testSubjSelector = require('@spalger/test-subj-selector');
-var getUrl = require('../../utils/get_url');
-var fs = require('fs');
-var _ = require('lodash');
-var parse = require('url').parse;
-var format = require('url').format;
-var path = require('path');
+import { common, config, defaultTimeout, remote } from '../';
+import getUrl from '../../utils/get_url';
 
 function injectTimestampQuery(func, url) {
   var formatted = modifyQueryString(url, function (parsed) {
@@ -35,7 +34,7 @@ function modifyQueryString(url, func) {
   return format(_.pick(parsed, 'protocol', 'hostname', 'port', 'pathname', 'query', 'hash', 'auth'));
 }
 
-function Common() {
+export function Common() {
   this.remote = remote;
   if (remote.get.wrapper !== injectTimestampQuery) {
     this.remote.get = _.wrap(this.remote.get, injectTimestampQuery);
@@ -258,5 +257,3 @@ Common.prototype = {
       .findDisplayedByCssSelector(testSubjSelector(selector));
   }
 };
-
-module.exports = Common;

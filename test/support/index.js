@@ -1,10 +1,6 @@
 import url from 'url';
 import ScenarioManager from '../fixtures/scenario_manager';
-import Common from './pages/common';
-import DiscoverPage from './pages/discover_page';
-import SettingsPage from './pages/settings_page';
-import HeaderPage from './pages/header_page';
-import VisualizePage from './pages/visualize_page';
+import * as pages from './pages';
 
 const kbnInternVars = global.__kibana__intern__;
 
@@ -15,11 +11,11 @@ exports.defaultTimeout = exports.config.defaultTimeout;
 exports.scenarioManager = new ScenarioManager(url.format(exports.config.servers.elasticsearch));
 
 defineDelayedExport('remote', (suite) => suite.remote);
-defineDelayedExport('common', () => new Common());
-defineDelayedExport('discoverPage', () => new DiscoverPage());
-defineDelayedExport('headerPage', () => new HeaderPage());
-defineDelayedExport('settingsPage', () => new SettingsPage());
-defineDelayedExport('visualizePage', () => new VisualizePage());
+defineDelayedExport('common', () => new pages.Common());
+defineDelayedExport('discoverPage', () => new pages.DiscoverPage());
+defineDelayedExport('headerPage', () => new pages.HeaderPage());
+defineDelayedExport('settingsPage', () => new pages.SettingsPage());
+defineDelayedExport('visualizePage', () => new pages.VisualizePage());
 
 // creates an export for values that aren't actually avaialable until
 // until tests start to run. These getters will throw errors if the export
