@@ -1,6 +1,7 @@
 import url from 'url';
 import ScenarioManager from '../fixtures/scenario_manager';
 import * as pages from './pages';
+import { decorateRemote } from './remote';
 
 const kbnInternVars = global.__kibana__intern__;
 
@@ -10,7 +11,7 @@ exports.config = exports.intern.config;
 exports.defaultTimeout = exports.config.defaultTimeout;
 exports.scenarioManager = new ScenarioManager(url.format(exports.config.servers.elasticsearch));
 
-defineDelayedExport('remote', (suite) => suite.remote);
+defineDelayedExport('remote', (suite) => decorateRemote(suite.remote));
 defineDelayedExport('common', () => new pages.Common());
 defineDelayedExport('discoverPage', () => new pages.DiscoverPage());
 defineDelayedExport('headerPage', () => new pages.HeaderPage());
