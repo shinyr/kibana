@@ -1,43 +1,32 @@
 import { remote, common, defaultTimeout } from '../';
+import Bluebird from 'bluebird';
 
-var thisTime;
+export class DiscoverPage {
+  getQueryField() {
+    return remote.findByCssSelector('input[ng-model=\'state.query\']');
+  }
 
-export function DiscoverPage() {
-  this.remote = remote;
-  thisTime = this.remote.setFindTimeout(defaultTimeout);
-}
+  getQuerySearchButton() {
+    return remote.findByCssSelector('button[aria-label=\'Search\']');
+  }
 
-DiscoverPage.prototype = {
-  constructor: DiscoverPage,
-
-  getQueryField: function getQueryField() {
-    return thisTime
-    .findByCssSelector('input[ng-model=\'state.query\']');
-  },
-
-  getQuerySearchButton: function getQuerySearchButton() {
-    return thisTime
-    .findByCssSelector('button[aria-label=\'Search\']');
-  },
-
-  getTimespanText: function getTimespanText() {
-    return thisTime
+  getTimespanText() {
+    return remote
     .findByCssSelector('.kibana-nav-options .navbar-timepicker-time-desc pretty-duration')
     .getVisibleText();
-  },
+  }
 
-  getChartTimespan: function getChartTimespan() {
-    return thisTime
+  getChartTimespan() {
+    return remote
     .findByCssSelector('center.small > span:nth-child(1)')
     .getVisibleText();
-  },
+  }
 
-  saveSearch: function saveSearch(searchName) {
-    var self = this;
-    return self.clickSaveSearchButton()
+  saveSearch(searchName) {
+    return this.clickSaveSearchButton()
     .then(function () {
       common.debug('--saveSearch button clicked');
-      return thisTime.findDisplayedById('SaveSearch')
+      return remote.findDisplayedById('SaveSearch')
       .pressKeys(searchName);
     })
     .then(function clickSave() {
@@ -45,171 +34,165 @@ DiscoverPage.prototype = {
       return common.findTestSubject('discover-save-search-btn').click();
     })
     .catch(common.handleError(this));
-  },
+  }
 
-  loadSavedSearch: function loadSavedSearch(searchName) {
+  loadSavedSearch(searchName) {
     var self = this;
     return self.clickLoadSavedSearchButton()
     .then(function () {
-      thisTime.findByLinkText(searchName).click();
+      return remote.findByLinkText(searchName).click();
     });
-  },
+  }
 
-  clickNewSearchButton: function clickNewSearchButton() {
-    return thisTime
+  clickNewSearchButton() {
+    return remote
     .findByCssSelector('button[aria-label="New Search"]')
     .click();
-  },
-  clickSaveSearchButton: function clickSaveSearchButton() {
-    return thisTime
+  }
+
+  clickSaveSearchButton() {
+    return remote
     .findByCssSelector('button[aria-label="Save Search"]')
     .click();
-  },
+  }
 
-  clickLoadSavedSearchButton: function clickLoadSavedSearchButton() {
-    return thisTime
+  clickLoadSavedSearchButton() {
+    return remote
     .findDisplayedByCssSelector('button[aria-label="Load Saved Search"]')
     .click();
-  },
+  }
 
-  getCurrentQueryName: function getCurrentQueryName() {
-    return thisTime
-      .findByCssSelector('span.kibana-nav-info-title span')
-      .getVisibleText();
-  },
+  getCurrentQueryName() {
+    return remote
+    .findByCssSelector('span.kibana-nav-info-title span')
+    .getVisibleText();
+  }
 
-  getBarChartData: function getBarChartData() {
-    return thisTime
+  getBarChartData() {
+    return remote
     .findAllByCssSelector('rect[data-label="Count"]')
-    .then(function (chartData) {
+    .then((chartData) =>
+      Bluebird.map(chartData, chart =>
+        chart.getAttribute('height')
+      )
+    );
+  }
 
-      function getChartData(chart) {
-        return chart
-        .getAttribute('height');
-      }
-
-      var getChartDataPromises = chartData.map(getChartData);
-      return Promise.all(getChartDataPromises);
-    })
-    .then(function (bars) {
-      return bars;
-    });
-  },
-
-  getChartInterval: function getChartInterval() {
-    return thisTime
+  getChartInterval() {
+    return remote
     .findByCssSelector('a[ng-click="toggleInterval()"]')
     .getVisibleText();
-  },
+  }
 
-  setChartInterval: function setChartInterval(interval) {
-    return this.remote.setFindTimeout(5000)
-    .findByCssSelector('a[ng-click="toggleInterval()"]')
-    .click()
-    .catch(function () {
-      // in some cases we have the link above, but after we've made a
-      // selection we just have a select list.
-    })
-    .then(function () {
-      return thisTime
-      .findByCssSelector('option[label="' + interval + '"]')
-      .click();
+  setChartInterval(interval) {
+    return remote.withFindTimeout(5000, () => {
+      return remote
+      .findByCssSelector('a[ng-click="toggleInterval()"]')
+      .click()
+      .catch(function () {
+        // in some cases we have the link above, but after we've made a
+        // selection we just have a select list.
+      })
+      .then(function () {
+        return remote
+        .findByCssSelector('option[label="' + interval + '"]')
+        .click();
+      });
     });
-  },
+  }
 
-  getHitCount: function getHitCount() {
-    return thisTime
+  getHitCount() {
+    return remote
     .findByCssSelector('strong.discover-info-hits')
     .getVisibleText();
-  },
+  }
 
-  query: function query(queryString) {
-    return thisTime
+  query(queryString) {
+    return remote
     .findByCssSelector('input[aria-label="Search input"]')
     .clearValue()
     .type(queryString)
     .then(function () {
-      return thisTime
+      return remote
       .findByCssSelector('button[aria-label="Search"]')
       .click();
     });
-  },
+  }
 
-  getDocHeader: function getDocHeader() {
-    return thisTime
+  getDocHeader() {
+    return remote
     .findByCssSelector('thead.ng-isolate-scope > tr:nth-child(1)')
     .getVisibleText();
-  },
+  }
 
-  getDocTableIndex: function getDocTableIndex(index) {
-    return thisTime
+  getDocTableIndex(index) {
+    return remote
     .findByCssSelector('tr.discover-table-row:nth-child(' + (index) + ')')
     .getVisibleText();
-  },
+  }
 
-  clickDocSortDown: function clickDocSortDown() {
-    return thisTime
+  clickDocSortDown() {
+    return remote
     .findByCssSelector('.fa-sort-down')
     .click();
-  },
+  }
 
-  clickDocSortUp: function clickDocSortUp() {
-    return thisTime
+  clickDocSortUp() {
+    return remote
     .findByCssSelector('.fa-sort-up')
     .click();
-  },
+  }
 
-  getMarks: function getMarks() {
-    return thisTime
+  getMarks() {
+    return remote
     .findAllByCssSelector('mark')
     .getVisibleText();
-  },
+  }
 
-  clickShare: function clickShare() {
-    return thisTime
+  clickShare() {
+    return remote
     .findByCssSelector('button[aria-label="Share Search"]')
     .click();
-  },
+  }
 
-  clickShortenUrl: function clickShortenUrl() {
-    return thisTime
+  clickShortenUrl() {
+    return remote
     .findByCssSelector('button.shorten-button')
     .click();
-  },
+  }
 
-  clickCopyToClipboard: function clickCopyToClipboard() {
-    return thisTime
+  clickCopyToClipboard() {
+    return remote
     .findDisplayedByCssSelector('button.clipboard-button')
     .click();
-  },
+  }
 
-  getShareCaption: function getShareCaption() {
-    return thisTime
+  getShareCaption() {
+    return remote
     .findByCssSelector('.vis-share label')
     .getVisibleText();
-  },
+  }
 
-  getSharedUrl: function getSharedUrl() {
-    return thisTime
+  getSharedUrl() {
+    return remote
     .findByCssSelector('.url')
     .getProperty('value');
-  },
+  }
 
-  getShortenedUrl: function getShortenedUrl() {
-    return thisTime
+  getShortenedUrl() {
+    return remote
     .findByCssSelector('.url')
     .getProperty('value');
-  },
+  }
 
-  toggleSidebarCollapse: function toggleSidebarCollapse() {
-    return thisTime.findDisplayedByCssSelector('.sidebar-collapser .chevron-cont')
+  toggleSidebarCollapse() {
+    return remote.findDisplayedByCssSelector('.sidebar-collapser .chevron-cont')
       .click();
-  },
+  }
 
-  getSidebarWidth: function getSidebarWidth() {
-    return thisTime
+  getSidebarWidth() {
+    return remote
       .findByClassName('sidebar-list')
       .getProperty('clientWidth');
   }
-
 };

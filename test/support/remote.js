@@ -11,9 +11,21 @@ export function decorateRemote(remote) {
     remote[`with${name}Timeout`] = async function withSomeTimeout(timeout, block) {
       const initialTimeout = await remote.getTimeout(type);
       await remote.setTimeout(type, timeout);
-      const ret = await block();
-      await remote.setTimeout(type, initialTimeout);
-      return ret;
+      let ret;
+      let err;
+      let errored = true;
+
+      try {
+        ret = await block();
+        errored = false;
+      } catch (_err) {
+        err = _err;
+      } finally {
+        await remote.setTimeout(type, initialTimeout);
+      }
+
+      if (errored) throw err;
+      else return ret;
     };
   });
 }
