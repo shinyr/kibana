@@ -14,7 +14,7 @@ describe('pattern review directive', function () {
 
   describe('handling geopoints', function () {
 
-    it('should detect geo_point stored_fields when they\'re expressed as an object', function () {
+    it('should detect geo_point fields when they\'re expressed as an object', function () {
       const scope = $rootScope.$new();
       scope.sampleDoc = {
         geoip: {
@@ -29,10 +29,10 @@ describe('pattern review directive', function () {
       scope.$digest();
 
       expect(scope).to.have.property('indexPattern');
-      expect(scope.indexPattern.stored_fields[0].type).to.be('geo_point');
+      expect(scope.indexPattern.fields[0].type).to.be('geo_point');
     });
 
-    it('should not count the lat and lon properties as their own stored_fields', function () {
+    it('should not count the lat and lon properties as their own fields', function () {
       const scope = $rootScope.$new();
       scope.sampleDoc = {
         geoip: {
@@ -47,14 +47,14 @@ describe('pattern review directive', function () {
       scope.$digest();
 
       expect(scope).to.have.property('indexPattern');
-      expect(scope.indexPattern.stored_fields[0].type).to.be('geo_point');
-      expect(scope.indexPattern.stored_fields.length).to.be(1);
+      expect(scope.indexPattern.fields[0].type).to.be('geo_point');
+      expect(scope.indexPattern.fields.length).to.be(1);
     });
   });
 
-  describe('detecting date stored_fields', function () {
+  describe('detecting date fields', function () {
 
-    it('should detect sample strings in ISO 8601 format as date stored_fields', function () {
+    it('should detect sample strings in ISO 8601 format as date fields', function () {
       const scope = $rootScope.$new();
       scope.sampleDoc = {
         isodate: '2004-03-08T00:05:49.000Z'
@@ -64,7 +64,7 @@ describe('pattern review directive', function () {
       scope.$digest();
 
       expect(scope).to.have.property('indexPattern');
-      expect(scope.indexPattern.stored_fields[0].type).to.be('date');
+      expect(scope.indexPattern.fields[0].type).to.be('date');
     });
 
   });

@@ -77,7 +77,7 @@ modules.get('apps/management')
         _.defaults(this.indexPattern, {
           id: this.patternInput.defaultValue,
           title: 'filebeat-*',
-          stored_fields: _(sampleFields)
+          fields: _(sampleFields)
             .map((field, fieldName) => {
               return {name: fieldName, type: field.type};
             })
