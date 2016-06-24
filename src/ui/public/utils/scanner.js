@@ -27,7 +27,7 @@ Scanner.prototype.scanAndMap = function (searchString, options, mapFn) {
       query: {
         simple_query_string: {
           query: searchString + '*',
-          fields: ['title^3', 'description'],
+          stored_fields: ['title^3', 'description'],
           default_operator: 'AND'
         }
       }
