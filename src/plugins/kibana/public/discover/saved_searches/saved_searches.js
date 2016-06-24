@@ -73,7 +73,7 @@ module.service('savedSearches', function (Promise, config, kbnIndex, es, createN
         query: {
           simple_query_string: {
             query: searchString + '*',
-            fields: ['title^3', 'description'],
+            stored_fields: ['title^3', 'description'],
             default_operator: 'AND'
           }
         }

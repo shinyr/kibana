@@ -18,7 +18,7 @@ export default function () {
   });
 
   return {
-    fields: ['*', '_source'],
+    storedFields: ['*', '_source'],
     scriptFields: scriptFields,
     fielddataFields: fielddataFields
   };
