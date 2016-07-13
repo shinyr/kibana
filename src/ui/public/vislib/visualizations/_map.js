@@ -1,25 +1,18 @@
 import _ from 'lodash';
 import $ from 'jquery';
 import L from 'leaflet';
+
 import VislibVisualizationsMarkerTypesScaledCirclesProvider from 'ui/vislib/visualizations/marker_types/scaled_circles';
 import VislibVisualizationsMarkerTypesShadedCirclesProvider from 'ui/vislib/visualizations/marker_types/shaded_circles';
 import VislibVisualizationsMarkerTypesGeohashGridProvider from 'ui/vislib/visualizations/marker_types/geohash_grid';
 import VislibVisualizationsMarkerTypesHeatmapProvider from 'ui/vislib/visualizations/marker_types/heatmap';
+import UiTilesProvider from 'ui/tiles';
 export default function MapFactory(Private) {
 
+  const tiles = Private(UiTilesProvider);
   let defaultMapZoom = 2;
   let defaultMapCenter = [15, 5];
   let defaultMarkerType = 'Scaled Circle Markers';
-
-  let mapTiles = {
-    url: 'https://otile{s}-s.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg',
-    options: {
-      attribution: 'Tiles by <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ' +
-        'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-      subdomains: '1234'
-    }
-  };
 
   let markerTypes = {
     'Scaled Circle Markers': Private(VislibVisualizationsMarkerTypesScaledCirclesProvider),
@@ -52,8 +45,8 @@ export default function MapFactory(Private) {
     this._attr = params.attr || {};
 
     let mapOptions = {
-      minZoom: 1,
-      maxZoom: 18,
+      minZoom: tiles.minZoom,
+      maxZoom: tiles.maxZoom,
       noWrap: true,
       maxBounds: L.latLngBounds([-90, -220], [90, 220]),
       scrollWheelZoom: false,
@@ -279,7 +272,7 @@ export default function MapFactory(Private) {
     if (this._attr.wms && this._attr.wms.enabled) {
       this._tileLayer = L.tileLayer.wms(this._attr.wms.url, this._attr.wms.options);
     } else {
-      this._tileLayer = L.tileLayer(mapTiles.url, mapTiles.options);
+      this._tileLayer = L.tileLayer(tiles.tilePattern, tiles.leafletLayerOptions);
     }
 
     // append tile layers, center and zoom to the map options

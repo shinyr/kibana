@@ -27,7 +27,8 @@ window.__KBN__ = {
     kbnIndex: '.kibana',
     esShardTimeout: 1500,
     esApiVersion: '2.0',
-    esRequestTimeout: '300000'
+    esRequestTimeout: '300000',
+    tileServiceUrl: 'https://tiles.elastic.co/v1/default/'
   },
   uiSettings: {
     defaults: ${JSON.stringify(env.defaultUiSettings, null, 2).split('\n').join('\n    ')},

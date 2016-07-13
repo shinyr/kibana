@@ -130,6 +130,10 @@ module.exports = () => Joi.object({
 
   status: Joi.object({
     allowAnonymous: Joi.boolean().default(false)
-  }).default()
+  }).default(),
+
+  tileService: Joi.object({
+    url: Joi.string().uri().default('https://tiles.elastic.co/v1/default/'),
+  }).default(),
 
 }).default();
